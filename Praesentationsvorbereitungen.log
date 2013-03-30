@@ -1,0 +1,38 @@
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=latex 2013.3.30)  30 MAR 2013 11:35
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**Praesentationsvorbereitungen.rst
+(./Praesentationsvorbereitungen.rst
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, ge
+rman-x-2012-05-30, ngerman-x-2012-05-30, ukenglish, usenglishmax, german, ngerm
+an, swissgerman, latin, loaded.
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 W
+     ord Model
+? 
+! Emergency stop.
+ ...                                              
+                                                  
+l.1 W
+     ord Model
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+ 
+Here is how much of TeX's memory you used:
+ 7 strings out of 494962
+ 354 string characters out of 3177563
+ 45304 words of memory out of 3000000
+ 3312 multiletter control sequences out of 15000+200000
+ 3640 words of font info for 14 fonts, out of 3000000 for 9000
+ 36 hyphenation exceptions out of 8191
+ 5i,0n,4p,45b,14s stack positions out of 5000i,500n,10000p,200000b,50000s
+No pages of output.
