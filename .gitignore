@@ -1,4 +1,14 @@
+############
+## MikTex outputs
+############
 /documentation/build/
+/documentation/*.aux
+/documentation/*.lof
+/documentation/*.log
+/documentation/*.out
+/documentation/*.synctex.gz
+/documentation/*.toc
+/documentation/*.pdf
 
 ############
 ## Windows
