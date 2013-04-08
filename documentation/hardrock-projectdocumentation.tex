@@ -124,6 +124,7 @@ urlcolor=black
 		1.0 & Dokumentenentwurf & Tobias Blaser & 24.03.2013 \\
 		1.1 & Entwurf Konzept & Tobias Blaser & 28.03.2013 \\
 		1.2 & Ergänzungen und Korrekturen & Reto Schelbert & 03.04.2013 \\
+		1.3 & Überarbeitung Konzept (Word Model) & Tobias Blaser & 08.04.2013 \\
 		\hline
 \end{tabularx}
 
@@ -135,7 +136,7 @@ urlcolor=black
 
 
 \section{Model}
-Als Ausgangskonzept wird das Hardrock in Atlanta City verwendet.
+Als Ausgangskonzept wird das Hardrock in Atlantic City verwendet.
 \begin{figure}[htp]
 	\centering
 		\includegraphics[width=1\textwidth]{img/hardrock-plan.png}
@@ -143,29 +144,36 @@ Als Ausgangskonzept wird das Hardrock in Atlanta City verwendet.
 		\label{planHardrock}
 \end{figure}
 
-\subsection{Bar}
-Die Bar dient als Warteschlange bis ein Tisch frei wird.
-Servierpersonal an der Bar wird nicht berücksichtigt. Grund dafür ist eine fixe Anzahl Barpersonal.
+\subsection{Eingangsbereich}
+Vor dem Eingangsbereich warten die Gäste in einer Schlange, bis an der Bar Plätze frei werden. Die Schlange soll dabei so kurz wie möglich sein. Die Gäste sollen stattdessen an der Bar warten und konsumieren.
 
-Ziel ist es, dass an der Bar möglichst viele Plätze besetzt sind, weil diese Konsumenten konsumieren und Umsatz bescheren. Gleichzeitig sollte vor der Türe die Schlange möglichst klein oder gar nicht existieren, damit niemand an der Kälte warten muss, bzw wieder geht. Die Wartezeit an der Bar sollte nicht mehr als ein bis zwei Drinks betragen, damit niemand wieder geht, bevor ein Tisch frei wird.
-Drinklänge: ca. eine Viertelstunde.
+\subsection{Bar}
+Die Bar dient als Warteschlange an einem Tisch frei werden. Gäste werden an der Bar bedient und konsumieren.
+Das Servierpersonal an der Bar soll in unserer Simulation nicht berücksichtigt werden. Grund dafür ist die Unabhängigkeit des Barpersonals vom Rest des Lokals. Das Barersonal geht nicht zwischendurch raus und bedient noch Tische, sondern bedient nur die Gäste an der Bar.
+
+Ziel ist es, dass an der Bar möglichst viele Plätze besetzt sind, weil dies Einnahmen durch Konsumation generiert. Gleichzeitig sollte vor der Türe die Schlange möglichst klein sein oder gar nicht existieren, damit keine Gäste an der Kälte warten müssen, oder sogar wieder gehen. Die Wartezeit an der Bar sollte nicht mehr als ein bis zwei Drinks betragen, damit niemand wieder geht, bevor ein Tisch frei wird.
+
+$\rightarrow$ Annahme Drinklänge: ca. eine Viertelstunde bis 20 Minuten.
 
 \subsection{Tische}
-Zu Tisch werden ein bis drei Gänge gegessen -> Verteilfunktion.
-Als Erstes soll die Simulation einfach gehalten werden:
-Servierpersonal kommt einmal und bedient -> belegte Ressource für best. Zeit -> Verteilfunktion.
-Teller und Karte bringen soll erst in einem zweiten Schritt modelliert werden, je nach Zeit.
-In der realen Welt bestehen die Tische aus Virertwischen. Ankommenden Gruppen müssen aufgeteilt werden. Bei weniger als 4 Personen kann es zu leeren Plätzen kommen. Der Einfachheit halber soll dies nicht berücksichtigt werden in der Simulation.
-Die Plätze werden fix gewählt anhand des Beispiels von Atlantic City. -> 250 Plätze
+Zu Tisch werden ein bis drei Gänge gegessen. In einem ersten Schritt soll dies sehr einfach abgebildet werden und auf eine komplexe Menüsimulation verzichtet werden.
+
+Das Servierpersonal kommt einmal und bedient. Das Servierpersonal ist somit für eine bestimmte Zeit belegt und anschliessend wieder frei. 
+
+Das Szenario Teller und Karte bringen soll erst in einem zweiten Schritt modelliert werden, je nach verfügbarer Projektzeit.
+
+In der realen Welt bestehen die Tische aus Vierertischen. Ankommenden Gruppen müssen aufgeteilt werden. Oder Tische zusammengeschoben werden. Bei weniger als 4 Personen kann es zu leeren Plätzen kommen. Der Einfachheit halber soll dies nicht berücksichtigt werden in der Simulation.
+Die Plätze werden fix gewählt anhand des Beispiels von Atlantic City (250 Plätze).
+
+Nach dem Esssen  verlassen die Gäste das Hardrock und der Tisch wird frei für neue Gäste.
+In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zurückkehren.
 
 
 \subsection{Küche}
-Erster Schritt: Keine Küche, nur bestimmte Wartezeit bis Essen fertig + serviert.
-Verschiedene Köche, die pro Essen und Gang eine bestimmte Zeit gebunden sind -> Verteilfunktion.
-Essen bestimmt Servicezeit der Köche.
+In einem ersten Schritt soll die Küche sehr rudimentär simuliert werden. Es existieren Köche, die eine bestimmte Zeit benötigen, um Essen zuzubereiten. 
 
-Anschliessend verlassen die Gäste das Hardrock und der Tisch wird frei für neue Gäste.
-Optional könnten einige Gäste erneut an die Bar zurückkehren.
+In einem Zweiten Schritte könnnten verschiedene Köche, die pro Essen und Gang an eine bestimmte Zeit gebunden sind modelliert werden.
+
 
 
 \section{Warum soll Simuliert werden?}
@@ -256,7 +264,7 @@ In einem weiteren Projekt kann die Simulation ausgebaut und verfeinert werden, i
 
 \chapter{Materialnachweise}
 \section{Titelblatt}
-\begin{tabularx}{\textwidth}{|Xlr|} % Versionstabelle, Rahmen links und rechts
+\begin{tabularx}{\textwidth}{|Xlr|}
 		\hline
 		Logo Hardrock & www.hardrock.com & 25.03.2013 \\
 		\hline
