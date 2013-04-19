@@ -1,0 +1,71 @@
+
+                                      ARENA Simulation Results
+                                                 HSR
+
+                                  Summary for Replication 1 of 1
+
+Project: Unnamed Project                                             Run execution date : 4/19/2013
+Analyst: HSR                                                         Model revision date: 4/19/2013
+
+Replication ended at time      : 24.0 Hours (Saturday, April 20, 2013, 00:00:00)
+Base Time Units: Hours
+
+                                           TALLY VARIABLES
+
+Identifier                                  Average   Half Width  Minimum    Maximum   Observations
+___________________________________________________________________________________________________
+
+Entity 1.VATime                             .00000     .00000     .00000     .00000        496    
+Entity 1.NVATime                            .00000     .00000     .00000     .00000        496    
+Entity 1.WaitTime                           .35598     (Corr)     .00000     1.2943        496    
+Entity 1.TranTime                           .00000     .00000     .00000     .00000        496    
+Entity 1.OtherTime                          2.8333     (Corr)     2.8333     2.8333        496    
+Entity 1.TotalTime                          3.1893     (Corr)     2.8333     4.1276        496    
+Seize Table.Queue.WaitingTime               .00627     (Corr)     .00000     .14960        617    
+Seize Dish Service.Queue.WaitingTime        .00000     .00000     .00000     .00000        616    
+Seize Service.Queue.WaitingTime             .52326     (Corr)     .00000     1.4041        617    
+Seize Bar.Queue.WaitingTime                 .00000     .00000     .00000     .00000        617    
+
+                                     DISCRETE-CHANGE VARIABLES
+
+Identifier                                  Average   Half Width  Minimum    Maximum   Final Value
+___________________________________________________________________________________________________
+
+Entity 1.WIP                                81.370     (Corr)     .00000     259.00     121.00    
+Table.NumberBusy                            81.208     (Corr)     .00000     250.00     121.00    
+Table.NumberScheduled                       250.00     (Insuf)    250.00     250.00     250.00    
+Table.Utilization                           .32484     (Corr)     .00000     1.0000     .48400    
+Bar.NumberBusy                              .16120     (Insuf)    .00000     9.0000     .00000    
+Bar.NumberScheduled                         40.000     (Insuf)    40.000     40.000     40.000    
+Bar.Utilization                             .00403     (Insuf)    .00000     .22500     .00000    
+Dish Service.NumberBusy                     2.1358     (Corr)     .00000     9.0000     1.0000    
+Dish Service.NumberScheduled                10.000     (Insuf)    10.000     10.000     10.000    
+Dish Service.Utilization                    .21359     (Corr)     .00000     .90000     .10000    
+Service.NumberBusy                          4.2847     (Insuf)    .00000     10.000     .00000    
+Service.NumberScheduled                     10.000     (Insuf)    10.000     10.000     10.000    
+Service.Utilization                         .42847     (Insuf)    .00000     1.0000     .00000    
+Seize Table.Queue.NumberInQueue             .16120     (Insuf)    .00000     9.0000     .00000    
+Seize Dish Service.Queue.NumberInQueue      .00000     (Insuf)    .00000     .00000     .00000    
+Seize Service.Queue.NumberInQueue           13.452     (Corr)     .00000     85.000     .00000    
+Seize Bar.Queue.NumberInQueue               .00000     (Insuf)    .00000     .00000     .00000    
+
+                                             OUTPUTS
+
+Identifier                                   Value
+_____________________________________________________________
+
+Entity 1.NumberIn                           617.00    
+Entity 1.NumberOut                          496.00    
+Table.NumberSeized                          617.00    
+Table.ScheduledUtilization                  .32484    
+Bar.NumberSeized                            617.00    
+Bar.ScheduledUtilization                    .00403    
+Dish Service.NumberSeized                   616.00    
+Dish Service.ScheduledUtilization           .21359    
+Service.NumberSeized                        617.00    
+Service.ScheduledUtilization                .42847    
+System.NumberOut                            496.00    
+
+
+Simulation run time: 2.15 minutes.
+Simulation run complete.

@@ -1,0 +1,8 @@
+[RESOURCES]
+Table
+Bar
+Dish Service
+Service
+[VARIABLES]
+Dispose 1.NumberOut
+Customer.NumberOut
