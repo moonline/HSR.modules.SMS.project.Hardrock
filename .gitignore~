@@ -9,8 +9,6 @@
 /documentation/*.synctex.gz
 /documentation/*.toc
 /documentation/*.pdf
-/documentation/*.tex.swp
-
 
 ############
 ## Windows
