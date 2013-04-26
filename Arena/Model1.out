@@ -1,13 +1,15 @@
+SIMAN Run Controller.
 
+19.892022 Hours>
                                       ARENA Simulation Results
                                                  HSR
 
                                   Summary for Replication 1 of 1
 
-Project: Unnamed Project                                             Run execution date : 4/19/2013
-Analyst: HSR                                                         Model revision date: 4/19/2013
+Project: Unnamed Project                                             Run execution date : 4/26/2013
+Analyst: HSR                                                         Model revision date: 4/26/2013
 
-Replication ended at time      : 24.0 Hours (Saturday, April 20, 2013, 00:00:00)
+Replication ended at time      : 19.892022 Hours (Friday, April 19, 2013, 19:53:31)
 Base Time Units: Hours
 
                                            TALLY VARIABLES
@@ -15,38 +17,38 @@ Base Time Units: Hours
 Identifier                                  Average   Half Width  Minimum    Maximum   Observations
 ___________________________________________________________________________________________________
 
-Entity 1.VATime                             .00000     .00000     .00000     .00000        496    
-Entity 1.NVATime                            .00000     .00000     .00000     .00000        496    
-Entity 1.WaitTime                           .35598     (Corr)     .00000     1.2943        496    
-Entity 1.TranTime                           .00000     .00000     .00000     .00000        496    
-Entity 1.OtherTime                          2.8333     (Corr)     2.8333     2.8333        496    
-Entity 1.TotalTime                          3.1893     (Corr)     2.8333     4.1276        496    
-Seize Table.Queue.WaitingTime               .00627     (Corr)     .00000     .14960        617    
-Seize Dish Service.Queue.WaitingTime        .00000     .00000     .00000     .00000        616    
-Seize Service.Queue.WaitingTime             .52326     (Corr)     .00000     1.4041        617    
-Seize Bar.Queue.WaitingTime                 .00000     .00000     .00000     .00000        617    
+Entity 1.VATime                             .00000     (Insuf)    .00000     .00000        255    
+Entity 1.NVATime                            .00000     (Insuf)    .00000     .00000        255    
+Entity 1.WaitTime                           .20016     (Insuf)    .00000     .61387        255    
+Entity 1.TranTime                           .00000     (Insuf)    .00000     .00000        255    
+Entity 1.OtherTime                          2.8333     (Insuf)    2.8333     2.8333        255    
+Entity 1.TotalTime                          3.0335     (Insuf)    2.8333     3.4472        255    
+Seize Table.Queue.WaitingTime               .00000     .00000     .00000     .00000        498    
+Seize Dish Service.Queue.WaitingTime        .00000     .00000     .00000     .00000        376    
+Seize Service.Queue.WaitingTime             .22297     (Corr)     .00000     .77310        415    
+Seize Bar.Queue.WaitingTime                 .00000     .00000     .00000     .00000        498    
 
                                      DISCRETE-CHANGE VARIABLES
 
 Identifier                                  Average   Half Width  Minimum    Maximum   Final Value
 ___________________________________________________________________________________________________
 
-Entity 1.WIP                                81.370     (Corr)     .00000     259.00     121.00    
-Table.NumberBusy                            81.208     (Corr)     .00000     250.00     121.00    
+Entity 1.WIP                                54.205     (Corr)     .00000     243.00     243.00    
+Table.NumberBusy                            54.205     (Corr)     .00000     243.00     243.00    
 Table.NumberScheduled                       250.00     (Insuf)    250.00     250.00     250.00    
-Table.Utilization                           .32484     (Corr)     .00000     1.0000     .48400    
-Bar.NumberBusy                              .16120     (Insuf)    .00000     9.0000     .00000    
+Table.Utilization                           .21682     (Corr)     .00000     .97200     .97200    
+Bar.NumberBusy                              .00000     (Insuf)    .00000     1.0000     .00000    
 Bar.NumberScheduled                         40.000     (Insuf)    40.000     40.000     40.000    
-Bar.Utilization                             .00403     (Insuf)    .00000     .22500     .00000    
-Dish Service.NumberBusy                     2.1358     (Corr)     .00000     9.0000     1.0000    
+Bar.Utilization                             .00000     (Insuf)    .00000     .02500     .00000    
+Dish Service.NumberBusy                     1.5591     (Corr)     .00000     9.0000     7.0000    
 Dish Service.NumberScheduled                10.000     (Insuf)    10.000     10.000     10.000    
-Dish Service.Utilization                    .21359     (Corr)     .00000     .90000     .10000    
-Service.NumberBusy                          4.2847     (Insuf)    .00000     10.000     .00000    
+Dish Service.Utilization                    .15591     (Corr)     .00000     .90000     .70000    
+Service.NumberBusy                          3.4324     (Insuf)    .00000     10.000     10.000    
 Service.NumberScheduled                     10.000     (Insuf)    10.000     10.000     10.000    
-Service.Utilization                         .42847     (Insuf)    .00000     1.0000     .00000    
-Seize Table.Queue.NumberInQueue             .16120     (Insuf)    .00000     9.0000     .00000    
+Service.Utilization                         .34324     (Insuf)    .00000     1.0000     1.0000    
+Seize Table.Queue.NumberInQueue             .00000     (Insuf)    .00000     .00000     .00000    
 Seize Dish Service.Queue.NumberInQueue      .00000     (Insuf)    .00000     .00000     .00000    
-Seize Service.Queue.NumberInQueue           13.452     (Corr)     .00000     85.000     .00000    
+Seize Service.Queue.NumberInQueue           6.1129     (Corr)     .00000     78.000     77.000    
 Seize Bar.Queue.NumberInQueue               .00000     (Insuf)    .00000     .00000     .00000    
 
                                              OUTPUTS
@@ -54,18 +56,18 @@ Seize Bar.Queue.NumberInQueue               .00000     (Insuf)    .00000     .00
 Identifier                                   Value
 _____________________________________________________________
 
-Entity 1.NumberIn                           617.00    
-Entity 1.NumberOut                          496.00    
-Table.NumberSeized                          617.00    
-Table.ScheduledUtilization                  .32484    
-Bar.NumberSeized                            617.00    
-Bar.ScheduledUtilization                    .00403    
-Dish Service.NumberSeized                   616.00    
-Dish Service.ScheduledUtilization           .21359    
-Service.NumberSeized                        617.00    
-Service.ScheduledUtilization                .42847    
-System.NumberOut                            496.00    
+Entity 1.NumberIn                           498.00    
+Entity 1.NumberOut                          255.00    
+Table.NumberSeized                          498.00    
+Table.ScheduledUtilization                  .21682    
+Bar.NumberSeized                            498.00    
+Bar.ScheduledUtilization                    .00000    
+Dish Service.NumberSeized                   376.00    
+Dish Service.ScheduledUtilization           .15591    
+Service.NumberSeized                        415.00    
+Service.ScheduledUtilization                .34324    
+System.NumberOut                            255.00    
 
 
-Simulation run time: 2.15 minutes.
+Simulation run time: 1.12 minutes.
 Simulation run complete.

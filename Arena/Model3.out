@@ -1,0 +1,86 @@
+SIMAN Run Controller.
+
+11.121994 Hours>
+                                      ARENA Simulation Results
+                                                 HSR
+
+                                  Summary for Replication 1 of 1
+
+Project: Unnamed Project                                             Run execution date : 4/26/2013
+Analyst: HSR                                                         Model revision date: 4/26/2013
+
+Replication ended at time      : 11.121994 Hours (Friday, April 19, 2013, 11:07:19)
+Base Time Units: Hours
+
+                                           TALLY VARIABLES
+
+Identifier                                  Average   Half Width  Minimum    Maximum   Observations
+___________________________________________________________________________________________________
+
+Client.VATime                               .00000     (Insuf)    .00000     .00000          1    
+Client.NVATime                              .00000     (Insuf)    .00000     .00000          1    
+Client.WaitTime                             .00000     (Insuf)    .00000     .00000          1    
+Client.TranTime                             .00000     (Insuf)    .00000     .00000          1    
+Client.OtherTime                            .95565     (Insuf)    .95565     .95565          1    
+Client.TotalTime                            .95565     (Insuf)    .95565     .95565          1    
+Seize Entry.Queue.WaitingTime               .00000     (Insuf)    .00000     .00000         83    
+Seize Table.Queue.WaitingTime               .00000     (Insuf)    .00000     .00000         83    
+Seize Dish Service.Queue.WaitingTime        .00000     (Insuf)    .00000     .00000         19    
+Seize Service.Queue.WaitingTime             .00183     (Insuf)    .00000     .02755         80    
+Enter Cafe.Queue.WaitingTime                    --         --         --         --          0
+Seize Cook.Queue.WaitingTime                .24178     (Insuf)    .00000     .59781         25    
+Seize Bar.Queue.WaitingTime                 .00000     (Insuf)    .00000     .00000         83    
+
+                                     DISCRETE-CHANGE VARIABLES
+
+Identifier                                  Average   Half Width  Minimum    Maximum   Final Value
+___________________________________________________________________________________________________
+
+Client.WIP                                  3.6749     (Insuf)    .00000     82.000     82.000    
+Table.NumberBusy                            3.6749     (Insuf)    .00000     82.000     82.000    
+Table.NumberScheduled                       250.00     (Insuf)    250.00     250.00     250.00    
+Table.Utilization                           .01470     (Insuf)    .00000     .32800     .32800    
+Entry.NumberBusy                            .00000     (Insuf)    .00000     1.0000     .00000    
+Bar.NumberBusy                              .00000     (Insuf)    .00000     1.0000     .00000    
+Bar.NumberScheduled                         40.000     (Insuf)    40.000     40.000     40.000    
+Bar.Utilization                             .00000     (Insuf)    .00000     .02500     .00000    
+Dish Service.NumberBusy                     .06671     (Insuf)    .00000     3.0000     1.0000    
+Dish Service.NumberScheduled                8.0000     (Insuf)    8.0000     8.0000     8.0000    
+Dish Service.Utilization                    .00834     (Insuf)    .00000     .37500     .12500    
+Service.NumberBusy                          .62440     (Insuf)    .00000     12.000     8.0000    
+Service.NumberScheduled                     12.000     (Insuf)    12.000     12.000     12.000    
+Service.Utilization                         .05203     (Insuf)    .00000     1.0000     .66667    
+Cook.NumberBusy                             .50615     (Insuf)    .00000     6.0000     6.0000    
+Cook.NumberScheduled                        6.0000     (Insuf)    6.0000     6.0000     6.0000    
+Cook.Utilization                            .08436     (Insuf)    .00000     1.0000     1.0000    
+Seize Entry.Queue.NumberInQueue             .00000     (Insuf)    .00000     .00000     .00000    
+Seize Table.Queue.NumberInQueue             .00000     (Insuf)    .00000     .00000     .00000    
+Seize Dish Service.Queue.NumberInQueue      .00000     (Insuf)    .00000     .00000     .00000    
+Seize Service.Queue.NumberInQueue           .01317     (Insuf)    .00000     5.0000     .00000    
+Enter Cafe.Queue.NumberInQueue              .00000     (Insuf)    .00000     .00000     .00000    
+Seize Cook.Queue.NumberInQueue              1.4364     (Insuf)    .00000     48.000     47.000    
+Seize Bar.Queue.NumberInQueue               .00000     (Insuf)    .00000     .00000     .00000    
+
+                                             OUTPUTS
+
+Identifier                                   Value
+_____________________________________________________________
+
+Client.NumberIn                             83.000    
+Client.NumberOut                            1.0000    
+Table.NumberSeized                          83.000    
+Table.ScheduledUtilization                  .01470    
+Entry.NumberSeized                          83.000    
+Bar.NumberSeized                            83.000    
+Bar.ScheduledUtilization                    .00000    
+Dish Service.NumberSeized                   19.000    
+Dish Service.ScheduledUtilization           .00834    
+Service.NumberSeized                        80.000    
+Service.ScheduledUtilization                .05203    
+Cook.NumberSeized                           25.000    
+Cook.ScheduledUtilization                   .08436    
+System.NumberOut                            1.0000    
+
+
+Simulation run time: 0.10 minutes.
+Simulation run complete.
