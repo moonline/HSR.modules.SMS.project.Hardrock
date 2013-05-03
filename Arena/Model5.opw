@@ -1,0 +1,10 @@
+[RESOURCES]
+Table
+Entry
+Bar
+Dish Service
+Service
+Cook
+[VARIABLES]
+Customer In.NumberOut
+Customer Out.NumberOut

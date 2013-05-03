@@ -1,0 +1,125 @@
+
+                                      ARENA Simulation Results
+                                                 HSR
+
+                                  Summary for Replication 1 of 1
+
+Project: HardRock                                                    Run execution date : 5/ 3/2013
+Analyst: HSR                                                         Model revision date: 5/ 3/2013
+
+Replication ended at time      : 24.0 Hours 
+Base Time Units: Hours
+
+                                           TALLY VARIABLES
+
+Identifier                                  Average   Half Width  Minimum    Maximum   Observations
+___________________________________________________________________________________________________
+
+Client.VATime                               .00000     (Insuf)    .00000     .00000        277    
+Client.NVATime                              .00000     (Insuf)    .00000     .00000        277    
+Client.WaitTime                             4.0410     (Insuf)    .00000     8.2605        277    
+Client.TranTime                             .00000     (Insuf)    .00000     .00000        277    
+Client.OtherTime                            1.9024     (Insuf)    .21028     3.8820        277    
+Client.TotalTime                            5.9434     (Insuf)    .42327     10.520        277    
+Client.VACost                               .00000     (Insuf)    .00000     .00000        277    
+Client.NVACost                              .00000     (Insuf)    .00000     .00000        277    
+Client.WaitCost                             .00000     (Insuf)    .00000     .00000        277    
+Client.TranCost                             .00000     (Insuf)    .00000     .00000        277    
+Client.OtherCost                            .00000     (Insuf)    .00000     .00000        277    
+Client.TotalCost                            .00000     (Insuf)    .00000     .00000        277    
+Seize Entry.Queue.WaitingTime               .00000     .00000     .00000     .00000        689    
+Seize Entry.Queue.WaitingCost               .00000     .00000     .00000     .00000        689    
+Seize Table.Queue.WaitingTime               .40249     (Corr)     .00000     1.9629        527    
+Seize Table.Queue.WaitingCost               .00000     .00000     .00000     .00000        527    
+Seize Dish Service.Queue.WaitingTime        .00000     .00000     .00000     .00000        323    
+Seize Dish Service.Queue.WaitingCost        .00000     .00000     .00000     .00000        323    
+Seize Service.Queue.WaitingTime             .00115     .00103     .00000     .05133        527    
+Seize Service.Queue.WaitingCost             .00000     .00000     .00000     .00000        527    
+Enter Cafe.Queue.WaitingTime                    --         --         --         --          0
+Enter Cafe.Queue.WaitingCost                    --         --         --         --          0
+Seize Cook.Queue.WaitingTime                4.5868     (Corr)     .00000     8.2605        329    
+Seize Cook.Queue.WaitingCost                .00000     .00000     .00000     .00000        329    
+Seize Bar.Queue.WaitingTime                 .52332     (Corr)     .00000     4.4506        567    
+Seize Bar.Queue.WaitingCost                 .00000     .00000     .00000     .00000        567    
+
+                                     DISCRETE-CHANGE VARIABLES
+
+Identifier                                  Average   Half Width  Minimum    Maximum   Final Value
+___________________________________________________________________________________________________
+
+Client.WIP                                  164.61     (Corr)     .00000     474.00     412.00    
+Table.NumberBusy                            121.97     (Corr)     .00000     250.00     250.00    
+Table.NumberScheduled                       250.00     (Insuf)    250.00     250.00     250.00    
+Table.Utilization                           .48791     (Corr)     .00000     1.0000     1.0000    
+Entry.NumberBusy                            32.258     (Corr)     .00000     184.00     122.00    
+Bar.NumberBusy                              10.375     (Insuf)    .00000     40.000     40.000    
+Bar.NumberScheduled                         40.000     (Insuf)    40.000     40.000     40.000    
+Bar.Utilization                             .25940     (Insuf)    .00000     1.0000     1.0000    
+Dish Service.NumberBusy                     .49785     (Corr)     .00000     5.0000     1.0000    
+Dish Service.NumberScheduled                8.0000     (Insuf)    8.0000     8.0000     8.0000    
+Dish Service.Utilization                    .06223     (Corr)     .00000     .62500     .12500    
+Service.NumberBusy                          2.0248     (Corr)     .00000     12.000     1.0000    
+Service.NumberScheduled                     12.000     (Insuf)    12.000     12.000     12.000    
+Service.Utilization                         .16873     (Corr)     .00000     1.0000     .08333    
+Cook.NumberBusy                             3.4542     (Insuf)    .00000     6.0000     6.0000    
+Cook.NumberScheduled                        6.0000     (Insuf)    6.0000     6.0000     6.0000    
+Cook.Utilization                            .57570     (Insuf)    .00000     1.0000     1.0000    
+Seize Entry.Queue.NumberInQueue             .00000     (Insuf)    .00000     .00000     .00000    
+Seize Table.Queue.NumberInQueue             10.375     (Insuf)    .00000     40.000     40.000    
+Seize Dish Service.Queue.NumberInQueue      .00000     (Insuf)    .00000     .00000     .00000    
+Seize Service.Queue.NumberInQueue           .02523     (Insuf)    .00000     6.0000     .00000    
+Enter Cafe.Queue.NumberInQueue              .00000     (Insuf)    .00000     .00000     .00000    
+Seize Cook.Queue.NumberInQueue              96.023     (Corr)     .00000     207.00     197.00    
+Seize Bar.Queue.NumberInQueue               32.258     (Corr)     .00000     184.00     122.00    
+
+                                             OUTPUTS
+
+Identifier                                   Value
+_____________________________________________________________
+
+Client.NumberIn                             689.00    
+Client.NumberOut                            277.00    
+Table.NumberSeized                          527.00    
+Table.ScheduledUtilization                  .48791    
+Table.BusyCost                              .00000    
+Table.IdleCost                              .00000    
+Table.UsageCost                             .00000    
+Entry.NumberSeized                          689.00    
+Entry.BusyCost                              .00000    
+Entry.UsageCost                             .00000    
+Bar.NumberSeized                            567.00    
+Bar.ScheduledUtilization                    .25940    
+Bar.BusyCost                                .00000    
+Bar.IdleCost                                .00000    
+Bar.UsageCost                               .00000    
+Dish Service.NumberSeized                   323.00    
+Dish Service.ScheduledUtilization           .06223    
+Dish Service.BusyCost                       .00000    
+Dish Service.IdleCost                       .00000    
+Dish Service.UsageCost                      .00000    
+Service.NumberSeized                        527.00    
+Service.ScheduledUtilization                .16873    
+Service.BusyCost                            .00000    
+Service.IdleCost                            .00000    
+Service.UsageCost                           .00000    
+Cook.NumberSeized                           329.00    
+Cook.ScheduledUtilization                   .57570    
+Cook.BusyCost                               .00000    
+Cook.IdleCost                               .00000    
+Cook.UsageCost                              .00000    
+All Entities.VACost                         .00000    
+All Entities.NVACost                        .00000    
+All Entities.WaitCost                       .00000    
+All Entities.TranCost                       .00000    
+All Entities.OtherCost                      .00000    
+All Entities.TotalCost                      .00000    
+All Resources.BusyCost                      .00000    
+All Resources.IdleCost                      .00000    
+All Resources.UsageCost                     .00000    
+All Resources.TotalCost                     .00000    
+System.TotalCost                            .00000    
+System.NumberOut                            277.00    
+
+
+Simulation run time: 2.02 minutes.
+Simulation run complete.
