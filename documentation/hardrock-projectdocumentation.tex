@@ -125,6 +125,7 @@ urlcolor=black
 		1.1 & Entwurf Konzept & Tobias Blaser & 28.03.2013 \\
 		1.2 & Ergänzungen und Korrekturen & Reto Schelbert & 03.04.2013 \\
 		1.3 & Überarbeitung Konzept (Word Model) & Tobias Blaser & 08.04.2013 \\
+		1.4 & Modell \& Verteilungsfunktionen & Tobias Blaser & 03.05.2013 \\
 		\hline
 \end{tabularx}
 
@@ -256,8 +257,69 @@ In einem weiteren Projekt kann die Simulation ausgebaut und verfeinert werden, i
 \end{itemize}
 
 
-\chapter{Simulation}
+\chapter{Modellierung}
+	\section{Activities}
+		\begin{figure}[H]
+			\centering
+				\includegraphics[width=1\textwidth]{img/activityDiagramm-v1.png}
+				\caption[Activity Diagramm]{Activity Diagramm}
+				\label{activityDiagramm}
+		\end{figure}
+		
+		\subsection{Gastgruppe}
+		
+		\subsection{Service}
+		
+		\subsection{Tellerbringer}
+		
+		\subsection{Koch}
+		
 
+\begin{landscape}
+	\section{Hardrock Flow}
+		\begin{figure}[H]
+			\centering
+				\includegraphics[width=1.4\textwidth]{img/flowDiagramm1-v1.png}
+				\caption[Hardrock Flow Diagramm Teil1]{Hardrock Flow Diagramm Teil1}
+				\label{flowDiagramm1}
+		\end{figure}
+		
+		\subsection{Customer}
+		
+		\subsection{Placement}
+		
+		\subsection{Ordering}
+		
+		
+		\begin{figure}[H]
+				\includegraphics[width=1.4\textwidth]{img/flowDiagramm2-v1.png}
+				\caption[Hardrock Flow Diagramm Teil2]{Hardrock Flow Diagramm Teil2}
+				\label{flowDiagramm2}
+		\end{figure}
+		
+		\subsection{Dinnering}
+		
+		\subsection{Payment}
+		
+		\subsection{Exit}
+		
+		
+\end{landscape}
+
+
+
+\chapter{Simulation}
+	\section{Verteilung der ankommenden Gäste}
+	Um die Verteilung des Andrangs und die beiden Spitzenzeiten zu simulieren, nutzen wir einen Scedule.
+	Der Sceduler erzeugt eine negative Exponentialverteilung.
+	
+	\section{Verteilung der Zubereitungszeit}
+	Für die Verteilung der Kochzeit wählen wir eine Mormalverteilung mit einem Mittelwert von fünf und einer Standardabweichung von drei Minuten.
+	
+	Da im Hardrock verschiedenste Speisen zubereitet werden, von Salaten über Hauptgängen bis Deserts, ist Normalverteilung hier die sinnvollste Abbildung.
+	
+	\section{Gruppenbestellungen}
+	Gruppen bestellen gemeinsam, erhalten ihr Essen gemeinsam, gekocht wird es jedoch unabhängig. Dazu wird die Bestellung dupliziert und damit in der Küche vier Unterbestellungen simuliert. Vor dem Servieren werden die Bestellungen wieder zu einer gesammtbestellung zusammengefügt.
 
 \chapter{Auswertung}
 
