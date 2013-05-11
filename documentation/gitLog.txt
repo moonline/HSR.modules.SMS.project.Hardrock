@@ -1,0 +1,237 @@
+commit 9f9d425da0700fe767ad4f3c4f7b4b324af3214a
+Author: Tobias Blaser <tobiasblaser@colvarim.ch>
+Date:   Sat May 11 21:32:35 2013 +0200
+
+    Modellbeschreibungen
+
+commit 01a183dfa9317c2eeea775d88e5f2076e78387fd
+Merge: 8d79d45 e227b5a
+Author: ubaumann.ch <github@m.ubaumann.ch>
+Date:   Sat May 11 15:55:25 2013 +0200
+
+    Merge branch 'master' of https://github.com/moonline/Hardrock
+
+commit 8d79d45942349bfaa776e06869fd9ef6ce978de2
+Author: ubaumann.ch <github@m.ubaumann.ch>
+Date:   Sat May 11 15:53:42 2013 +0200
+
+    Modelv9
+    
+    Fehlerbehebung
+
+commit e227b5aeadd08220fc5fd4c6e5bac7bc623ed271
+Author: Tobias Blaser <tobiasblaser@colvarim.ch>
+Date:   Fri May 10 14:55:19 2013 +0200
+
+    Simulationsdoku
+
+commit 8d0d77936137a897a3bd768488e660e5f45b136e
+Author: Reto Schelbert <hert@hertus.ch>
+Date:   Fri May 3 15:10:49 2013 +0200
+
+    Modelv5 - image scheduler - hugo
+
+commit 0c2468f86a62cab766aef34fd5c746868d91af79
+Author: Tobias Blaser <tobiasblaser@colvarim.ch>
+Date:   Fri May 3 15:02:46 2013 +0200
+
+    Modelle einfügen, Verteilfunktionen entwerfen
+
+commit 6cdecff1100c0013da38191c1693f196279a9b7d
+Author: Reto Schelbert <hert@hertus.ch>
+Date:   Thu May 2 22:24:16 2013 +0200
+
+    Arena Model v4
+
+commit 9f1e7f03dcb95730727ccf94a6eb8fdcd7bb2912
+Merge: 1e46120 4d6f557
+Author: Urs Baumann <github@m.ubaumann.ch>
+Date:   Fri Apr 26 16:21:04 2013 +0200
+
+    Merge branch 'master' of https://github.com/moonline/Hardrock
+
+commit 1e46120e9fcabea96b939b6f78df835526e50de8
+Author: Urs Baumann <github@m.ubaumann.ch>
+Date:   Fri Apr 26 16:20:47 2013 +0200
+
+    add svg
+    
+    svg vom model
+
+commit 4d6f557de59dd8c0f11bba3e2428dba0b2ba7157
+Author: Reto Schelbert <hert@hertus.ch>
+Date:   Fri Apr 26 15:09:09 2013 +0200
+
+    Arena Model v3
+
+commit 2a3fd3fdc52a0c29007ed2a39c4fcd47cfcec20f
+Merge: 7e82322 07eb7bb
+Author: Tobias Blaser <tobiasblaser@colvarim.ch>
+Date:   Fri Apr 26 14:49:38 2013 +0200
+
+    Merge branch 'master' of github.com:moonline/Hardrock
+
+commit 7e82322e532f6eda2b8257f9cbb4f18427e6973a
+Author: Tobias Blaser <tobiasblaser@colvarim.ch>
+Date:   Fri Apr 26 14:49:01 2013 +0200
+
+    add tex swap files to gitignore
+
+commit d6b7cb2a87be6a3452456465c40c5e3420fe7f7b
+Author: Tobias Blaser <tobiasblaser@colvarim.ch>
+Date:   Fri Apr 26 14:47:16 2013 +0200
+
+    Bewegungs und Positionsschema des Hardrock einfügen
+
+commit 07eb7bb5a8d7217a02c7d542b570b785bf0d9638
+Author: Reto Schelbert <hertus@gmail.com>
+Date:   Fri Apr 26 14:27:38 2013 +0200
+
+    Gamma Berechnung Excel
+
+commit 5aeee7de7edd394ba0e129be97e5400926f1f7e1
+Author: Urs Baumann <github@m.ubaumann.ch>
+Date:   Fri Apr 19 15:27:22 2013 +0200
+
+    add Arena Model
+
+commit d29449e6f546a8cb407dcbc96a8b37d7e21094a6
+Author: Reto Schelbert <hertus@gmail.com>
+Date:   Fri Apr 19 14:49:11 2013 +0200
+
+    Arena basics ;)
+
+commit 23aef1c1e1286ae37e8755f3169713abe9073208
+Author: Reto Schelbert <hertus@gmail.com>
+Date:   Fri Apr 19 14:48:51 2013 +0200
+
+    Revert "Arne basics ;)"
+    
+    This reverts commit bf5b7a0a2d5d544a6f688d5b4cf4bf93d16dedcc.
+
+commit bf5b7a0a2d5d544a6f688d5b4cf4bf93d16dedcc
+Author: Reto Schelbert <hertus@gmail.com>
+Date:   Fri Apr 19 14:48:26 2013 +0200
+
+    Arne basics ;)
+
+commit 94ceb772948a5fc4ea5c2a8e545c2691c110513a
+Author: Urs Baumann <github@m.ubaumann.ch>
+Date:   Fri Apr 19 13:15:54 2013 +0200
+
+    Add Visio
+
+commit 2a4b3452f06bd012ed73433e3703c126c6c1f46e
+Author: Reto Schelbert <hertus@gmail.com>
+Date:   Thu Apr 18 13:22:01 2013 +0200
+
+    notizen von meeting heute
+
+commit a3caf0fe82b1bb5a0303bc3a949eb9f803903631
+Author: Reto Schelbert <hertus@gmail.com>
+Date:   Fri Apr 12 15:02:52 2013 +0200
+
+    paper model photos from meeting today
+
+commit a37da80d8f14a33d12e7cb119858822644256d9a
+Author: Tobias Blaser <tobiasblaser@colvarim.ch>
+Date:   Mon Apr 8 22:34:31 2013 +0200
+
+    Überarbeitung Word Model
+
+commit 45b8d1677614d83b814315d8e7d139d6d05a18c8
+Author: Tobias Blaser <tobiasblaser@colvarim.ch>
+Date:   Fri Apr 5 14:58:31 2013 +0200
+
+    Präsentation in Doku einbinden
+
+commit 1bb0ef9f563ed4bb5837c5f56740c5d7cadff241
+Merge: 41bf394 437454f
+Author: Tobias Blaser <tobiasblaser@colvarim.ch>
+Date:   Fri Apr 5 14:34:32 2013 +0200
+
+    Merge branch 'master' of github.com:moonline/Hardrock
+
+commit 41bf394b3e9c9a1cef363eccdbf31544c4499e59
+Author: Tobias Blaser <tobiasblaser@colvarim.ch>
+Date:   Fri Apr 5 14:34:15 2013 +0200
+
+    activity diagramm
+
+commit 437454ff12ac6b75a35aeff7413b4b521c0ecf17
+Author: Reto Schelbert <hertus@gmail.com>
+Date:   Fri Apr 5 14:07:21 2013 +0200
+
+    added optional goals (by rinkel)
+
+commit 9f6e1f4ac65e1e7f0073b1889dd04c93ac3276c6
+Author: Reto Schelbert <hertus@gmail.com>
+Date:   Fri Apr 5 13:38:14 2013 +0200
+
+    modelio project start
+
+commit b3ee3bf66f6c13ecff909ad869af68ec68430b75
+Merge: b50c572 dcbc8e6
+Author: Tobias Blaser <tobiasblaser@colvarim.ch>
+Date:   Fri Apr 5 11:38:43 2013 +0200
+
+    Merge branch 'master' of github.com:moonline/Hardrock
+    Insert presentation.word-model.rst
+
+commit b50c572bf485c8333f804202df9999371da8593c
+Author: Tobias Blaser <tobiasblaser@colvarim.ch>
+Date:   Fri Apr 5 11:37:32 2013 +0200
+
+    presentation.word-model.rst
+
+commit dcbc8e6f96b2abbdd6f3e1a32ca10616992bde4e
+Author: Simon <simplinx@gmail.com>
+Date:   Fri Apr 5 11:22:19 2013 +0200
+
+    added Rinkels Feedback for Presentation
+
+commit 583c915d2c05eb265b904c54660ccf857b3314c0
+Author: Hertus <hert@hertus.ch>
+Date:   Fri Apr 5 11:18:56 2013 +0200
+
+    gitignore with texmakers outputs
+
+commit de8c563155029c0b9a461311e8fae63ae7b8f668
+Author: Reto Schelbert <hertus@gmail.com>
+Date:   Wed Apr 3 14:22:50 2013 +0200
+
+    documentation corrections
+
+commit 195f87466a69458257ecb00479e5d021f423ffb6
+Author: Urs Baumann <github@m.ubaumann.ch>
+Date:   Sat Mar 30 12:06:36 2013 +0100
+
+    del log
+    
+    sry
+
+commit 75f94e37a2a94b0643027739f6df3eeed7a54437
+Author: Urs Baumann <github@m.ubaumann.ch>
+Date:   Sat Mar 30 12:04:32 2013 +0100
+
+    inital my settings
+    
+    gitignore
+
+commit 9224e56d811b38c347462bbf56f14ddba82fa718
+Author: ubaumann <github@m.ubaumann.ch>
+Date:   Thu Mar 28 17:18:51 2013 +0100
+
+    Create README.md
+
+commit 5cc228735ad516f3880e73403672fa29ee60a7ef
+Author: Tobias Blaser <tobiasblaser@colvarim.ch>
+Date:   Thu Mar 28 15:59:25 2013 +0100
+
+    konzept
+
+commit 999298ccd1004babed6221c003d6feb49091b78e
+Author: Tobias Blaser <tobiasblaser@colvarim.ch>
+Date:   Sun Mar 24 21:48:46 2013 +0100
+
+    initial commit

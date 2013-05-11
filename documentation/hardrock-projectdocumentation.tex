@@ -14,6 +14,7 @@
 
 %quellcode
 \usepackage{listings}
+\usepackage{verbatim}
 
 %tabellen
 \usepackage{tabularx}
@@ -37,6 +38,7 @@
 
 %Pdf einbinden
 \usepackage{pdfpages}
+
 
 %Dokumenteigenschaften
 \title{Dkoumentation Simulationsprojekt Hardrock}
@@ -408,6 +410,9 @@ In einem weiteren Projekt kann die Simulation ausgebaut und verfeinert werden, i
 \includepdf[pages=1-3,angle=180, scale=0.9]{media/presentation-hardrock-slides.pdf}
 
 \listoffigures
+
+\chapter{Projekt Log}
+\verbatiminput{gitLog.txt}
 
 \chapter{Materialnachweise}
 \section{Titelblatt}
