@@ -1,0 +1,18 @@
+[RESOURCES]
+Table
+Bar
+Dish Service
+Service
+Cook
+[VARIABLES]
+CookBatch.NumberOut
+Customer In.NumberOut
+Leaving.NumberIn
+EntryQueue.NumberOut True
+CookSeparate.NumberOut Dup
+DisposeToMany.NumberOut
+CookSeparate.NumberOut Orig
+GroupSize
+Customer Out.NumberOut
+Leaving.NumberOut
+EntryQueue.NumberOut False
