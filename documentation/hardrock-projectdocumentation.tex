@@ -127,6 +127,7 @@ urlcolor=black
 		1.3 & Überarbeitung Konzept (Word Model) & Tobias Blaser & 08.04.2013 \\
 		1.4 & Modell \& Verteilungsfunktionen & Tobias Blaser & 03.05.2013 \\
 		1.5 & Simulation & Alle & 10.05.2013 \\
+		1.6 & Modellbeschreibungen & Tobias Blaser & 11.05.2013\\
 		\hline
 \end{tabularx}
 
@@ -273,11 +274,13 @@ In einem weiteren Projekt kann die Simulation ausgebaut und verfeinert werden, i
 		Vor den Verlassen des Lokals wird Bezahlt, anschliessend werden die Plätze wieder freigegeben.
 		
 		\subsection{Service}
-		
+		Die Serviceangestellten befinden sich in einem geschlossenen Zyklus. Sie nehmen am Tisch eine oder mehrere Bestellungen entgegen und bringen diese in die Küche.
 		
 		\subsection{Tellerbringer}
+		Die Köche befinden sich ebenfalls in einem geschlossenen Zyklus. Sie nehmen Bestellungen entgegen und richten Teller an.
 		
 		\subsection{Koch}
+		Auch die Tellerbringer befinden sich in einem geschlossenen Zyklus. Sie holen angerichtete Teller ab und bringen Sie an den Tisch.
 		
 
 \begin{landscape}
@@ -290,10 +293,13 @@ In einem weiteren Projekt kann die Simulation ausgebaut und verfeinert werden, i
 		\end{figure}
 		
 		\subsection{Customer}
+		Gäste werdem in Gruppen von eins bis vier Personen erzeugt. Die Erzeugung unterliegt einer definierten Verteilung.
 		
 		\subsection{Placement}
+		Gäste warten in einer beliebig langen Queue, bis eine Platzressource zur Belegung an der Bar frei wird. Die Platzressource wird freigegeben, sobald eine freie Tischressource belegt werden kann.
 		
 		\subsection{Ordering}
+		Während einer Bestellung wird die Bedienung als Ressource belegt und anschliessend wieder freigegeben.
 		
 		
 		\begin{figure}[H]
@@ -303,11 +309,13 @@ In einem weiteren Projekt kann die Simulation ausgebaut und verfeinert werden, i
 		\end{figure}
 		
 		\subsection{Dinnering}
+		Gäste warten, bis die Bestellung zubereitet wurde (Verteilfunktion), für die Auslieferung der Teller wird die Ressource Tellerbringer für eine bestimmte Zeit (Verteilfunktion) belegt. Die Dauer des Essens wird ebenfalls mittels einer Verteilfunktion modelliert.
 		
 		\subsection{Payment}
 		
-		\subsection{Exit}
 		
+		\subsection{Exit}
+		Gäste geben die belegte Ressource Tisch wieder frei und verlassen das Restaurant.
 		
 \end{landscape}
 
