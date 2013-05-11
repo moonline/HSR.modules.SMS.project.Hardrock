@@ -126,6 +126,7 @@ urlcolor=black
 		1.2 & Ergänzungen und Korrekturen & Reto Schelbert & 03.04.2013 \\
 		1.3 & Überarbeitung Konzept (Word Model) & Tobias Blaser & 08.04.2013 \\
 		1.4 & Modell \& Verteilungsfunktionen & Tobias Blaser & 03.05.2013 \\
+		1.5 & Simulation & Alle & 10.05.2013 \\
 		\hline
 \end{tabularx}
 
@@ -267,8 +268,12 @@ In einem weiteren Projekt kann die Simulation ausgebaut und verfeinert werden, i
 		\end{figure}
 		
 		\subsection{Gastgruppe}
+		Eine Gastgruppe belegt während dem Aufenthalt am Tisch Plätze. Anschliessend werden Bestellungen ausgelöst.
+		Entsprechend den Anzahl Gängen werden soviele Gänge angeliefert.
+		Vor den Verlassen des Lokals wird Bezahlt, anschliessend werden die Plätze wieder freigegeben.
 		
 		\subsection{Service}
+		
 		
 		\subsection{Tellerbringer}
 		
@@ -308,18 +313,83 @@ In einem weiteren Projekt kann die Simulation ausgebaut und verfeinert werden, i
 
 
 
-\chapter{Simulation}
-	\section{Verteilung der ankommenden Gäste}
-	Um die Verteilung des Andrangs und die beiden Spitzenzeiten zu simulieren, nutzen wir einen Scedule.
-	Der Sceduler erzeugt eine negative Exponentialverteilung.
+\chapter{Simulation mit Arena}
+	\section{Customer}			
+		\subsection{Verteilung der ankommenden Gäste}
+			Um die Verteilung des Andrangs, insbesondere die beiden Spitzenzeiten am Mittag und am Abend, zu simulieren, nutzen wir einen Scedule.	
+			Die Ankunftsrate im Sceduler ist negativ exponential verteilt.
 	
-	\section{Verteilung der Zubereitungszeit}
-	Für die Verteilung der Kochzeit wählen wir eine Mormalverteilung mit einem Mittelwert von fünf und einer Standardabweichung von drei Minuten.
+			\begin{figure}[H]
+				\centering
+					\includegraphics[width=0.75\textwidth]{img/scheduler.png}
+					\caption[Arrival Sceduler in Arena]{Ankunfts Sceduler in Arena}
+					\label{arrivalSceduler}
+			\end{figure}
 	
-	Da im Hardrock verschiedenste Speisen zubereitet werden, von Salaten über Hauptgängen bis Deserts, ist Normalverteilung hier die sinnvollste Abbildung.
+			\subsubsection{Gruppengrösse}
+			Einer angekommenen Entität wird anschliessend eine zufällige Gruppengrösse zwischen eins und vier Personen zugeteilt. Dazu wird eine Triangularfunktion mit einem mean von zwei verwendet und der Ausgabewert auf die nächste ganze Zahl gerundet.
+			
 	
-	\section{Gruppenbestellungen}
-	Gruppen bestellen gemeinsam, erhalten ihr Essen gemeinsam, gekocht wird es jedoch unabhängig. Dazu wird die Bestellung dupliziert und damit in der Küche vier Unterbestellungen simuliert. Vor dem Servieren werden die Bestellungen wieder zu einer gesammtbestellung zusammengefügt.
+	\section{Placement}		
+		\subsection{Überlauf am Eingang}
+			Warten zu viele Gäste vor dem Eingang, werden weitere Gruppen abgeschreckt und kehren wieder um.
+		
+			Für die Simulation wird eine fixe Grösse verwendet: 			Befinden sich in der EntryQueue weniger als 10 Gruppen, so stellt sich die neue Gruppe an, andernfalls nicht. Mittels einem alternativen Dispose werden die abgeschreckten Gruppen gezählt.
+			
+			
+		\subsection{Assignement und Release von Warteschlange, Bar und Tisch}
+			In Arena wird das Assign/Release mittels Ressourcen umgesetzt. Als erstes wird die EntryQueue assigned, sobald an der Bar Platz frei wird, ein Platz an der Bar. Erst wenn der Platz an der Bar assigned ist, wird die EntryQueue Released. 
+		
+		Genau gleich wird für den Wechsel von der Bar an den Tisch verfahren.
+	
+	
+		\subsection{Laufweg der Gäste von der Bar zum Tisch}
+			Für den Weg von der Bar zum Tisch wird eine Uniformverteilung von eins bis fünf Minuten eingesetzt. Der Grund liegt darin, dass sich die Gruppen im Restaurant immer möglichst weit auseinander setzen. Daher ist die Wegverteilung uniform.
+	
+	
+	\section{Ordering}			
+		\subsection{Bestellvorgang}
+			Das Erreichen des Tisches und Bestellung werden zusammengefasst und mittels einer Triangularverteilung mit einem mean von drei sowie einem Minimum von 1 und Maximum von fünf abgebildet. Pro Person am Tisch wird eine Minute aufgeschlagen, um die Abhängigkeit der Bestellzeit von der Gruppengrösse zu realisieren.
+	
+	
+	\section{Preparation}	
+		\subsection{Verteilung der Zubereitungszeit}
+			Für die Verteilung der Kochzeit wählen wir eine Mormalverteilung mit einem Mittelwert von fünf und einer Standardabweichung von drei Minuten.
+	
+			Da im Hardrock verschiedenste Speisen zubereitet werden, von Salaten über Hauptgängen bis Deserts, ist die Normalverteilung hier die sinnvollste Abbildung.
+	
+			Die Kochzeit wird so kurz gewählt, weil ein guter Koch durch kochen von mehreren Menüs gleichzeitig Synergien nutzen kann.
+	
+	
+		\subsection{Gruppenbestellungen}
+			Gruppen bestellen gemeinsam, erhalten ihr Essen gemeinsam, gekocht wird es jedoch unabhängig. Dazu wird die Bestellung in der Küche dupliziert und damit bis zu vier Unterbestellungen simuliert. Vor dem Ausliefern werden die Unterbestellungen wieder zu einer gesammtbestellung zusammengefügt.
+			
+			
+	\section{Dinnering}
+		\subsection{Bestellungsauslieferung}					
+			Die Tellerbringer liefern immer nur Gesammtbestellungen aus. Darum wird pro Bestellung nur ein Tellerbringer benötigt.
+			
+			Zur Simulation wird eine Uniformverteilung von einer halben bis vier Minuten verwendet.
+
+
+		\subsection{Essen}
+			Das Essen dauert zwischen 15 Minuten und einer Stunde. Gänge werden nicht unterschieden, sondern nur implizit über die Verteilfunktion simuliert.
+			
+			Genutzer wird eine Triangularverteilung mit einem mean von 40 Minuten.\\
+			
+			
+			Bei bedarf könnte die Simulation einzelner Gänge in einem sepparaten Projekt realisiert werden.
+			
+			
+			
+	\section{Szenarien}
+		Zur einfacheren Realisierung der Szenarien werden Controlls gesetzt um die Parameter für jedes Szenario ohne grosse Aufwände einstellen zu können.		
+			
+			
+			
+			
+			
+			
 
 \chapter{Auswertung}
 
