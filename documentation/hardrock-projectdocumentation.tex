@@ -131,6 +131,7 @@ urlcolor=black
 		1.4 & Modell \& Verteilungsfunktionen & Tobias Blaser & 03.05.2013 \\
 		1.5 & Simulation & Alle & 10.05.2013 \\
 		1.6 & Modellbeschreibungen & Tobias Blaser & 11.05.2013\\
+		1.7 & Plausibilitätscheck, Szenarios & Alle & 13.05.2013\\
 		\hline
 \end{tabularx}
 
@@ -400,6 +401,21 @@ In einem weiteren Projekt kann die Simulation ausgebaut und verfeinert werden, i
 			
 			
 			
+	\section{Blausibilitätscheck}
+	Zur Überprüfung der Plausibilität des aufgebauten Arena Modells variierten wir verschiedene Parameter. Dabei sind einige Dinge aufgefallen:
+	\begin{itemize}
+		\item Die minimale Grösse der Bar muss der grössten Gruppengrösse entsprechen. Andererseits können Gruppen, die grösser als die Bar sind, gar nicht ins Restaurant eintreten.
+		Dieses Szenario entspricht nicht ganz der Realität. In der Realität bestehen grosse Gruppen aus kleineren Gruppen. Daher werden bei einer grossen Gruppe einen Teil der Untergruppen bereits ins Restaurant hineingehen, während die Restlichen noch draussen warten.\\
+		$\rightarrow$ Da wir sowieso eine Bar zwischen 10 und 50 Plätzen anstreben und die Gruppen eine maximale Grösse von vier Personen ausweisen, spielt diese Gegebenheit keine Rolle.
+		\item Fünf Serviceangestellte und drei Tellerbringer sind trotz 250 Gästen zu wenig ausgelastet.\\
+		$\rightarrow$ Hier müssen wir die Zeiten für das Servicepersonal und die Tellerbringer noch noch oben korrigieren.
+		\item Die Köche stellen den Flaschenhals dar. Daraus ergibt sich eine tiefe Utilization des Servicepersonals. Um dieses Problem zu beheben, sollte die Anzahl der Köche im Verhältnis zur Anzahl Servicepersonal erhöht werden.
+		
+		Gleichzeitig bringt das Servierpersonal in der Realität noch Getränke, Speisekarte, Gedecke, weist dem Gast den Tisch, räumt ab und steht für Fragen zuer Verfügung zu.
+		$\rightarrow$ Wir verzichten in unserer Simulation darauf, haben jedoch für die restlichen Bedienungen grosszügig Zeit eingeteilt.
+		\item Die benutzten Zeitvariablen, zur Erfassung von Zeitstempeln im System basieren auf TNOW. Wobei TNOW scheinbar kein Stempel zurückgibt, mit dem gerechnet werden kann.\\
+		$\rightarrow$ TNOW muss zuerst in Basetime konvertiert werden. Wobei noch beachtet werden muss, das Basetime vom Run Setup abhängig ist.
+	\end{itemize}
 			
 
 \chapter{Auswertung}
@@ -408,7 +424,16 @@ In einem weiteren Projekt kann die Simulation ausgebaut und verfeinert werden, i
 
 \appendix
 \chapter{Präsentation Projektvorstellung}
-\includepdf[pages=1-3,angle=180, scale=0.9]{media/presentation-hardrock-slides.pdf}
+\begin{center}
+	\includegraphics[page=1,angle=180, scale=0.7]{media/presentation-hardrock-slides.pdf}
+\end{center}
+\begin{center}
+	\includegraphics[page=2,angle=180, scale=0.8]{media/presentation-hardrock-slides.pdf}
+\end{center}
+\begin{center}
+	\includegraphics[page=3,angle=180, scale=0.8]{media/presentation-hardrock-slides.pdf}
+\end{center}
+%\includepdf[pages=1-3,angle=180, scale=0.9]{media/presentation-hardrock-slides.pdf}
 
 \listoffigures
 
