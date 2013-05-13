@@ -18,6 +18,7 @@
 
 %tabellen
 \usepackage{tabularx}
+\usepackage{csvsimple}
 
 %listen und aufzählungen
 \usepackage{paralist}
@@ -393,9 +394,9 @@ In einem weiteren Projekt kann die Simulation ausgebaut und verfeinert werden, i
 			
 			
 	\section{Szenarien}
-		Zur einfacheren Realisierung der Szenarien werden Controlls gesetzt um die Parameter für jedes Szenario ohne grosse Aufwände einstellen zu können.		
-			
-			
+		Zur einfacheren Realisierung der Szenarien werden Controlls gesetzt um die Parameter für jedes Szenario ohne grosse Aufwände einstellen zu können.\\
+		
+		\csvautotabular{szenario.csv}
 			
 			
 			
