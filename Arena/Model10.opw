@@ -1,0 +1,22 @@
+[RESOURCES]
+Table
+Bar
+Dish Service
+Service
+Cook
+[VARIABLES]
+CookBatch.NumberOut
+Customer In.NumberOut
+TimeToTable
+Leaving.NumberIn
+TimeEat
+EntryQueue.NumberOut True
+TimeWaitForDish
+CookSeparate.NumberOut Dup
+DisposeToMany.NumberOut
+CookSeparate.NumberOut Orig
+Customer Out.NumberOut
+Leaving.NumberOut
+TimeOrdering
+EntryQueue.NumberOut False
+TimeTotal
