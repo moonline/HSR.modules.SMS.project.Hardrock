@@ -17,11 +17,7 @@ Base Time Units: Hours
 Identifier                                  Average   Half Width  Minimum    Maximum   Observations
 ___________________________________________________________________________________________________
 
-Record At Table                             .04948     .00141     .01673     .08319        646    
-Record Total                                1.0862     (Corr)     .54092     1.6641        688    
 Record eating time                          .63889     .01083     .27541     .96540        687    
-Record Wait For Dish                        .25902     (Corr)     .01763     .59586        657    
-Record Ordering                             .08840     .00134     .03559     .14123        650    
 Client.VATime                               .04994     .00117     .01683     .08320        688    
 Client.NVATime                              .00000     .00000     .00000     .00000        688    
 Client.WaitTime                             1.2180     (Corr)     .41074     3.0417        688    
@@ -54,11 +50,11 @@ Seize Bar.Queue.WaitingCost                 .00000     .00000     .00000     .00
 Identifier                                  Average   Half Width  Minimum    Maximum   Final Value
 ___________________________________________________________________________________________________
 
-TimeToTable Value                           .00000     (Insuf)    .00000     .00000     .00000    
+TimeToTable Value                           2.9855     .16496     1.0038     4.9915     1.6377    
 TimeEat Value                               .00000     (Insuf)    .00000     .00000     .00000    
-TimeWaitForDish Value                       .00000     (Insuf)    .00000     .00000     .00000    
-TimeOrdering Value                          .00000     (Insuf)    .00000     .00000     .00000    
-TimeTotal Value                             .00000     (Insuf)    .00000     .00000     .00000    
+TimeWaitForDish Value                       13.590     (Corr)     1.0575     35.751     10.619    
+TimeOrdering Value                          5.2503     .14953     2.1355     8.4736     6.9931    
+TimeTotal Value                             63.268     (Corr)     32.455     99.847     59.944    
 Client.WIP                                  207.02     (Corr)     5.0000     389.00     5.0000    
 Table.NumberBusy                            124.38     (Corr)     3.0000     250.00     3.0000    
 Table.NumberScheduled                       250.00     (Insuf)    250.00     250.00     250.00    
@@ -129,5 +125,5 @@ System.TotalCost                            .00000
 System.NumberOut                            688.00    
 
 
-Simulation run time: 0.02 minutes.
+Simulation run time: 2.65 minutes.
 Simulation run complete.
