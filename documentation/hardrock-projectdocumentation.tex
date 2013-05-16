@@ -154,9 +154,11 @@ Als Ausgangskonzept wird das Hardrock in Atlantic City verwendet.
 \subsection{Eingangsbereich}
 Vor dem Eingangsbereich warten die Gäste in einer Schlange, bis an der Bar Plätze frei werden. Die Schlange soll dabei so kurz wie möglich sein. Die Gäste sollen stattdessen an der Bar warten und konsumieren.
 
+Ist die Schlange vor dem Eingang zu lang, gehen Gäste wieder. Dies soll möglichst vermiedern werden, da diese Gäste keinen Umsatz bescheren.
+
 \subsection{Bar}
-Die Bar dient als Warteschlange an einem Tisch frei werden. Gäste werden an der Bar bedient und konsumieren.
-Das Servierpersonal an der Bar soll in unserer Simulation nicht berücksichtigt werden. Grund dafür ist die Unabhängigkeit des Barpersonals vom Rest des Lokals. Das Barersonal geht nicht zwischendurch raus und bedient noch Tische, sondern bedient nur die Gäste an der Bar.
+Die Bar dient als Warteschlange für die Gäste, bis Plätze an einem Tisch frei werden. Gäste werden an der Bar bedient und konsumieren.
+Das Servierpersonal an der Bar soll in unserer Simulation nicht berücksichtigt werden. Grund dafür ist die Unabhängigkeit des Barpersonals vom Rest des Lokals. Das Barersonal verlässt nicht kurzzeitig die Bar und bedient noch Tische, sondern bedient nur die Gäste an der Bar.
 
 Ziel ist es, dass an der Bar möglichst viele Plätze besetzt sind, weil dies Einnahmen durch Konsumation generiert. Gleichzeitig sollte vor der Türe die Schlange möglichst klein sein oder gar nicht existieren, damit keine Gäste an der Kälte warten müssen, oder sogar wieder gehen. Die Wartezeit an der Bar sollte nicht mehr als ein bis zwei Drinks betragen, damit niemand wieder geht, bevor ein Tisch frei wird.
 
@@ -169,98 +171,124 @@ Das Servierpersonal kommt einmal und bedient. Das Servierpersonal ist somit für
 
 Das Szenario Teller und Karte bringen soll erst in einem zweiten Schritt modelliert werden, je nach verfügbarer Projektzeit.
 
-In der realen Welt bestehen die Tische aus Vierertischen. Ankommenden Gruppen müssen aufgeteilt werden. Oder Tische zusammengeschoben werden. Bei weniger als 4 Personen kann es zu leeren Plätzen kommen. Der Einfachheit halber soll dies nicht berücksichtigt werden in der Simulation.
-Die Plätze werden fix gewählt anhand des Beispiels von Atlantic City (250 Plätze).
+In der realen Welt bestehen die Tische aus Vierertischen. Ankommenden Gruppen müssen aufgeteilt werden. Oder Tische zusammengeschoben werden. Bei weniger als 4 Personen kann es zu leeren Plätzen kommen. Um die Simulation nicht unnötig aufzublähen, soll dies nicht berücksichtigt werden in der Simulation.
+Die Anzahl Plätze werden fix gewählt anhand des Beispiels von Atlantic City (250 Plätze).
 
 Nach dem Esssen  verlassen die Gäste das Hardrock und der Tisch wird frei für neue Gäste.
 In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zurückkehren.
 
 
 \subsection{Küche}
-In einem ersten Schritt soll die Küche sehr rudimentär simuliert werden. Es existieren Köche, die eine bestimmte Zeit benötigen, um Essen zuzubereiten. 
+	In der Küche werden die verschiedenen Mahlzeiten gekocht und angerihtet. Die Köche arbeiten gleichzeitig an mehreren Menüs und versuchen, zusammengehörende Menüs möglichst gleichzeitig fertigzustellen.
 
-In einem Zweiten Schritte könnnten verschiedene Köche, die pro Essen und Gang an eine bestimmte Zeit gebunden sind modelliert werden.
+	In einem ersten Schritt soll die Küche sehr rudimentär simuliert werden. Es existieren Köche, die eine bestimmte Zeit benötigen, um Essen zuzubereiten. Paralleles Kochen von Menüs soll nur durch entsprechende Verkürzung der Gesammtkochzeit abgebildet werden.
 
-\begin{figure}[H]
-	\centering
-		\includegraphics[width=1\textwidth]{img/hardrockSchema.pdf}
-		\caption[Bewegungsschema Hardrock]{Bewegungsschema im Hardrock Cafe, Atlantic City}
-		\label{schemaHardrock}
-\end{figure}
+	In einem Zweiten Schritte könnnten verschiedene Köche, die pro Essen und Gang an eine bestimmte Zeit gebunden sind, modelliert werden.
+
+
+\section{Bewegungsabläufe}
+	\begin{figure}[H]
+		\centering
+			\includegraphics[width=1\textwidth]{img/hardrockSchema.pdf}
+			\caption[Bewegungsschema Hardrock]{Bewegungsschema im Hardrock Cafe, Atlantic City (Beispiel Bewegungsablauf an einem Tisch)}
+			\label{schemaHardrock}
+	\end{figure}
+
+	Die Verschiedenen Aktivitäten finden an unterschiedlichen Orten im Café statt. Die daraus resultierenden Wegzeiten variieren stark, unterliegen sehr komplexen Verteilungen und können nur empirisch ermittelt werden.
+
+	\subsection{Gäste}
+		\begin{itemize}
+			\item Gäste benötigen eine variierende Zeit, um vom Eingang an die Bar zu gelangen, wobei das Laufverhalten auch von der Gruppengrösse abhängt.
+			\item Gäste benötigen eine variierende Zeit, um von der Bar zum zugewiesenen Tisch zu gelangen. Hierbei spielt die Anordnung der Tische und die Gruppengrösse eine entscheidende Rolle.
+			\item Gäste benötigen eine variierende Zeit, um das Lokal wieder zu verlassen.
+			\item Die Verschiedenen Gästeströme beeinflussen sich gegenseitig. Ist das Lokal gut besetzt, dauern alle Vorgänge spürbar länger.
+		\end{itemize}
+
+	\subsection{Personal}
+		\begin{itemize}
+			\item Köche bewegen sich innerhalb der Küche
+			\item Bedienpersonal benötigt eine variierende Zeit um von Tisch zu Tisch zu gehen sowie eine variierende Zeit um von der Küche zu den Tischen zu gelangen.
+			\item Tellerbinger benötigen eine variierende Zeit, um von der Küche zu den Tischen zu gelangen.
+			\item Bedienpersonal, Tellerbringer und Gäste beeinflussen sich gegenseitig. Theoretisch kann es auch zu Zusammenstössen kommen.
+		\end{itemize}
+
+	\subsection{Realität und Simulation}
+		Für die Simulation sollen sinnvolle Annahmen über das Verhalten der Wegzeiten getroffen werden und die gegenseitige Beeinflussung der Gäste und des Personals gegenseitig und untereinander vernachlässigt werden. Dafür wäre eine sehr aufwändig 2D/3D Simulation nötig, was den Rahmen dieses Projektes sprengen würde.
 
 
 
 \section{Warum soll Simuliert werden?}
-\begin{itemize}
-	\item Gebäudebau: Aus Kostengründen ist es nicht möglich einen Prototyp zu bauen
-	\item Ist das Gebäude einmal gebaut, so kann die Bar kann nachträglich nur mit grossen Kostenaufwänden vergrössert oder verkleinert werden.
-	\item Das Szenario ist zu komplex um alle einfliessenden Faktoren zu berücksichtigen, zu viele Variablen im Spiel sind.
-	\item Testen durch Reallife-Simulation ist nicht möglich, weil Statisten beim Warten sterben würden, vom vielen Essen dick würden oder verhungern würden beim Warten auf die Bestellung. Möglicherweise würden Sie auch an der Bar zu viele Drinks nehmen und wären zu betrunken um an einen Tisch zu wechseln.
-	\item Zudem tauchen Unsicherheiten auf durch Verteilungen und Verstreuungen und Variabilitäten der Gäste, Serviceagents und deren Servicetime, Warteschlangen und Wartezeiten.
-\end{itemize}
+	\begin{itemize}
+		\item Gebäudebau: Aus Kostengründen ist es nicht möglich einen Prototyp zu bauen
+		\item Ist das Gebäude einmal gebaut, so kann die Bar kann nachträglich nur mit grossen Kostenaufwänden vergrössert oder verkleinert werden.
+		\item Das Szenario ist zu komplex um alle einfliessenden Faktoren zu berücksichtigen, weil zu viele Variablen im Spiel sind.
+		\item Testen durch Reallife-Simulation ist nicht möglich, weil Statisten beim Warten sterben würden, vom vielen Essen dick würden oder verhungern würden beim Warten auf die Bestellung. Möglicherweise würden Sie auch an der Bar zu viele Drinks nehmen und wären zu betrunken um an einen Tisch zu wechseln.
+		\item Zudem tauchen Unsicherheiten auf durch Verteilungen und Verstreuungen und Variabilitäten der Gäste, Serviceagents und deren Servicetime, Warteschlangen und Wartezeiten.
+	\end{itemize}
 
 \section{Objectives}
-\begin{itemize}
-	\item Vor der Türe:
-		\begin{itemize}
-			\item Queue: Ankommende Gäste lim(0)
-		\end{itemize}
-	\item Küche
-		\begin{itemize}
-			\item Agents: Köche
-		\end{itemize}
-	\item Bedienung
-		\begin{itemize}
-			\item Agents: Kellner, Tellerbringer
-		\end{itemize}
-	\item Bar
-		\begin{itemize}
-			\item Queue: Anzahl Warteplätze
-		\end{itemize}
-	\item Tische
-		\begin{itemize}
-			\item Ressourcen: Anzahl Plätze
-		\end{itemize}
-\end{itemize}
+	\begin{itemize}
+		\item Vor der Türe:
+			\begin{itemize}
+				\item Queue: Ankommende Gäste lim(0)
+			\end{itemize}
+		\item Küche
+			\begin{itemize}
+				\item Agents: Köche
+			\end{itemize}
+		\item Bedienung
+			\begin{itemize}
+				\item Agents: Kellner, Tellerbringer
+			\end{itemize}
+		\item Bar
+			\begin{itemize}
+				\item Queue: Anzahl Warteplätze
+			\end{itemize}
+		\item Tische
+			\begin{itemize}
+				\item Ressourcen: Anzahl Plätze
+			\end{itemize}
+	\end{itemize}
 
 
 
 \section{Fragestellungen}
-Ziel ist die Gewinnmaximierung durch gute Auslastung. Als gute Auslastung wird 75\% Utilisation angenommen.
-\subsection{Grösse der Bar}
-\textbf{Wie viele Plätze muss die Bar bieten, damit fast keine Gäste in der Kälte vor dem Eingang warten müssen und die mittlere Aufenthaltszeit an der Bar ein bis zwei Drinks nicht übersteigt?} \\
-Als Länge für einen Drink soll 15-20 Minuten angenommen werden.
+	Ziel ist die Gewinnmaximierung durch gute Auslastung. Als gute Auslastung wird 75\% Utilisation angenommen.
+	
+	\subsection{Grösse der Bar}
+		\textbf{Wie viele Plätze muss die Bar bieten, damit fast keine Gäste in der Kälte vor dem Eingang warten müssen und die mittlere Aufenthaltszeit an der Bar ein bis zwei Drinks nicht übersteigt?} \\
+		Als Länge für einen Drink soll 15-20 Minuten angenommen werden.
 
 
-\subsection{Benötigtes Personal}
-\textbf{Wie viel Servierpersonal und wie viele Köche braucht es, damit die Mittlere Aufenthaltszeit am Tisch bei ca. 1.5 Stunden liegt, und die mittlere Wartezeit ca. 15 Minuten nicht übersteigt?} \\
+	\subsection{Benötigtes Personal}
+		\textbf{Wie viel Servierpersonal und wie viele Köche braucht es, damit die Mittlere Aufenthaltszeit am Tisch bei ca. 1.5 Stunden liegt, und die mittlere Wartezeit ca. 15 Minuten nicht übersteigt?} \\
 
 
 \section{Spezifikationen}
-Gearbeitet wird mit Fiktiven Daten, ausgenommen die Anzahl der Plätze im Saal. Diese werden vom Hardrock Atlantic City übernommen.
+	Gearbeitet wird mit Fiktiven Daten, ausgenommen die Anzahl der Plätze im Saal. Diese werden vom Hardrock Atlantic City übernommen.
 
-\subsection{Variable Grössen}
-Es sollen verschiedene Szenarien simuliert werden. Die dazu benötigten Grössen sollen Variabel sein:
-\begin{itemize}
-	\item Queuelänge
-	\item Anzahl Servierpersonal
-	\item Anzahl Köche
-	\item Gruppen mit unterschiedlichen Anzahlen von Gästen
-\end{itemize}
+	\subsection{Variable Grössen}
+		Es sollen verschiedene Szenarien simuliert werden. Die dazu benötigten Grössen sollen Variabel sein:
+		\begin{itemize}
+			\item Queuelänge
+			\item Anzahl Servierpersonal
+			\item Anzahl Köche
+			\item Gruppen mit unterschiedlichen Anzahlen von Gästen
+		\end{itemize}
 
-\subsection{Resultatgrössen}
-Durch die Simulation sollen die \textbf{Aufenthaltszeiten an der Bar (Queue)}, die \textbf{Dauer des Aufenthaltes und Wartezeiten am Tisch}, die \textbf{Gesammtaufenthaltsdauer im Restaurant} und die \textbf{Auslastung der Agenten} ermittelt werden
+	\subsection{Resultatgrössen}
+		Durch die Simulation sollen die \textbf{Aufenthaltszeiten an der Bar (Queue)}, die \textbf{Dauer des Aufenthaltes und Wartezeiten am Tisch}, die \textbf{Gesammtaufenthaltsdauer im Restaurant} und die \textbf{Auslastung der Agents} ermittelt werden.
 
 \subsection{Zusatzprojekt (optional)}
-In einem weiteren Projekt kann die Simulation ausgebaut und verfeinert werden, indem weitere Parameter hinzugefügt  und detailliertere Daten erhoben werden:
-\begin{itemize}
-	\item Anzahl Personal an der Bar
-	\item Verschiedene Essen/Menüs mit unterschiedlichen Servicezeiten für die Köche.
-	\item Anzahl Tellerbringer
-	\item Gruppen müssen zusammen an einem Tisch untergebracht werden, keine Leerplätze.
-	\item Weitere Resultate: Wie lange dauert die Bestellaufnahme, wie lange muss ein Gast durchschnittlich auf die Bestellung warten und wie lange wartet er auf die Rechnung? Wie oft muss das Servicepersonal an einen Tisch gehen pro Gast?
-	\item Optional: Animation
-\end{itemize}
+	In einem weiteren Projekt kann die Simulation ausgebaut und verfeinert werden, indem weitere Parameter hinzugefügt  und detailliertere Daten erhoben werden:
+	\begin{itemize}
+		\item Anzahl Personal an der Bar
+		\item Verschiedene Essen/Menüs mit unterschiedlichen Servicezeiten für die Köche.
+		\item Anzahl Tellerbringer
+		\item Gruppen müssen zusammen an einem Tisch untergebracht werden, keine Leerplätze.
+		\item Weitere Resultate: Wie lange dauert die Bestellaufnahme, wie lange muss ein Gast durchschnittlich auf die Bestellung warten und wie lange wartet er auf die Rechnung? Wie oft muss das Servicepersonal an einen Tisch gehen pro Gast?
+		\item Optional: Animation
+	\end{itemize}
 
 
 \chapter{Modellierung}
@@ -316,7 +344,7 @@ In einem weiteren Projekt kann die Simulation ausgebaut und verfeinert werden, i
 		Gäste warten, bis die Bestellung zubereitet wurde (Verteilfunktion), für die Auslieferung der Teller wird die Ressource Tellerbringer für eine bestimmte Zeit (Verteilfunktion) belegt. Die Dauer des Essens wird ebenfalls mittels einer Verteilfunktion modelliert.
 		
 		\subsection{Payment}
-		
+		Für die Bezahlung ist bis jetzt kein Szenario definiert
 		
 		\subsection{Exit}
 		Gäste geben die belegte Ressource Tisch wieder frei und verlassen das Restaurant.
@@ -437,8 +465,11 @@ In einem weiteren Projekt kann die Simulation ausgebaut und verfeinert werden, i
 
 \listoffigures
 
+\begin{landscape}
 \chapter{Projekt Log}
+%git log --no-merges --pretty=format:'%ci: %d %s <%an>' > documentation/gitLog.txt
 \verbatiminput{gitLog.txt}
+\end{landscape}
 
 \chapter{Materialnachweise}
 \section{Titelblatt}
