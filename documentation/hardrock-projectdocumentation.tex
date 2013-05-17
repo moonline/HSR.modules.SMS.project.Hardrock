@@ -152,21 +152,21 @@ Als Ausgangskonzept wird das Hardrock in Atlantic City verwendet.
 \end{figure}
 
 \subsection{Eingangsbereich}
-Vor dem Eingangsbereich warten die Gäste in einer Schlange, bis an der Bar Plätze frei werden. Die Schlange soll dabei so kurz wie möglich sein. Die Gäste sollen stattdessen an der Bar warten und konsumieren.
+Vor dem Eingangsbereich warten die Gäste in einer Schlange, bis an der Bar Plätze frei werden. Ziel ist, diese Warteschlange so kurz wie möglich zu halten. Die Gäste sollen stattdessen an der Bar warten und zum Konsumieren angeregt werden.
 
-Ist die Schlange vor dem Eingang zu lang, gehen Gäste wieder. Dies soll möglichst vermiedern werden, da diese Gäste keinen Umsatz bescheren.
+Ist die Schlange vor dem Eingang zu lang, gehen Gäste wieder ohne Besuch im Restaurant. Dies soll möglichst vermieden werden, da diese Gäste keinen Umsatz bescheren.
 
 \subsection{Bar}
-Die Bar dient als Warteschlange für die Gäste, bis Plätze an einem Tisch frei werden. Gäste werden an der Bar bedient und konsumieren.
-Das Servierpersonal an der Bar soll in unserer Simulation nicht berücksichtigt werden. Grund dafür ist die Unabhängigkeit des Barpersonals vom Rest des Lokals. Das Barpersonal verlässt nicht kurzzeitig die Bar und bedient noch Tische, sondern bedient nur die Gäste an der Bar.
+Die Bar dient als Warteschlange für die Gäste, bis Plätze an einem Tisch frei werden. Gäste werden an der Bar bedient und konsumieren Getränke.
+Das Servierpersonal an der Bar soll in unserer Simulation nicht berücksichtigt werden. Grund dafür ist die Unabhängigkeit des Barbereichs vom Rest des Lokals. Das heisst: Das Barpersonal ist nicht in der Lage, kurzzeitig die Bar zu verlassen und Tische zu bedienen. Weil es nur für die Ausgabe der Getränke verantwortlich ist, kann es in der Simulation vernachlässigt werden, ohne das System zu verfälschen.
 
 ???
 Ziel ist es, dass an der Bar möglichst viele Plätze besetzt sind, weil dies Einnahmen durch Konsumation generiert. Gleichzeitig sollte vor der Türe die Schlange möglichst klein sein oder gar nicht existieren, damit keine Gäste an der Kälte warten müssen, oder sogar wieder gehen. Die Wartezeit an der Bar sollte nicht mehr als ein bis zwei Drinks betragen, damit niemand wieder geht, bevor ein Tisch frei wird.
 
-$\rightarrow$ Annahme Drinklänge: ca. eine Viertelstunde bis 20 Minuten.
+$\rightarrow$ Annahme Dauer eines Drinks an der Bar: ca. eine Viertelstunde bis 20 Minuten.
 
 \subsection{Tische}
-Zu Tisch werden ein bis drei Gänge gegessen. In einem ersten Schritt soll dies sehr einfach abgebildet werden und auf eine komplexe Menüsimulation verzichtet werden.
+Am Tisch werden ein bis drei Gänge gegessen. In einem ersten Schritt soll dies sehr einfach abgebildet werden. Auf eine komplexe Menüsimulation in der Granularität der einzelnen Gänge wird verzichtet.
 
 Das Servierpersonal kommt einmal und nimmt Bestelllungen auf. Das Servierpersonal ist somit für eine bestimmte Zeit belegt und anschliessend wieder frei. 
 
@@ -209,8 +209,8 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 		\begin{itemize}
 			\item Köche bewegen sich innerhalb der Küche
 			\item Bedienpersonal benötigt eine variierende Zeit um von Tisch zu Tisch zu gehen sowie eine variierende Zeit um von der Küche zu den Tischen zu gelangen.
-			\item ??? Tellerbinger benötigen eine variierende Zeit, um von der Küche zu den Tischen zu gelangen.
-			\item Bedienpersonal, Tellerbringer und Gäste beeinflussen sich gegenseitig. Theoretisch kann es auch zu Zusammenstössen kommen.
+			\item Die Tellerbinger benötigen je nach Tisch unterschiedlich viel Zeit, um von der Küche zu den Tischen zu gelangen.
+			\item Bedienpersonal, Tellerbringer und Gäste beeinflussen sich gegenseitig. Eine grosse Anzahl von Personen im Raum führt zu Verzögerungen bei allen Laufwegen. Theoretisch kann es auch zu Zusammenstössen kommen. Dies wird in der Simulation nicht berücksichtigt.
 		\end{itemize}
 
 	\subsection{Realität und Simulation}
@@ -218,11 +218,12 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 
 
 
-\section{Warum soll Simuliert werden?}
+\section{Warum soll simuliert werden?}
 	\begin{itemize}
+		\item Das Szenario ist zu komplex, um alle einfliessenden Faktoren in statischen Berechnungen zu berücksichtigen, weil zu viele Variablen im Spiel sind.
+		\item Gegenseitige Beeinflussung der Faktoren: Das System Restaurant eignet sich für die Simulation, da die Werte wie Umsatz und Auslastung von verschiedenen Faktoren abhängen und eine einfache Berechnung deshalb nicht möglich ist. Die Wahl und Anzahl der Ressourcen wie Anzahl Köche, Servicepersonal und Tellerbringer ist entscheidend für das Funktionieren des Systems. Zudem beeinflussen sich die Ressourcen beeinflussen gegenseitig und stehen in Abhängigkeit zueinander.
 		\item Gebäudebau: Aus Kostengründen ist es nicht möglich einen Prototyp zu bauen
 		\item Ist das Gebäude einmal gebaut, so kann die Bar kann nachträglich nur mit grossen Kostenaufwänden vergrössert oder verkleinert werden.
-		\item Das Szenario ist zu komplex um alle einfliessenden Faktoren zu berücksichtigen, weil zu viele Variablen im Spiel sind.
 		\item Testen durch Reallife-Simulation ist nicht möglich, weil Statisten beim Warten sterben würden, vom vielen Essen dick würden oder verhungern würden beim Warten auf die Bestellung. Möglicherweise würden Sie auch an der Bar zu viele Drinks nehmen und wären zu betrunken um an einen Tisch zu wechseln.
 		\item Zudem tauchen Unsicherheiten auf durch Verteilungen und Verstreuungen und Variabilitäten der Gäste, Serviceagents und deren Servicetime, Warteschlangen und Wartezeiten.
 	\end{itemize}
@@ -378,11 +379,11 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 			
 			
 		\subsection{Assignement und Release von Warteschlange, Bar und Tisch}
-			In Arena wird das Assign/Release mittels Ressourcen umgesetzt. Als erstes wird die EntryQueue assigned. Sobald an der Bar Plätze frei werden, wird die BarQueue assigned. Erst wenn der Platz an der BarQueue assigned ist, wird die EntryQueue released. Genau gleich wird für den Wechsel von der Bar an den Tisch verfahren.
+			In Arena wird das Assign/Release mittels Ressourcen umgesetzt. Als erstes wird die EntryQueue zugewiesen. Sobald an der Bar Plätze frei werden, wird die BarQueue assigned. Erst wenn der Platz an der BarQueue assigned ist, wird die EntryQueue released. Genau gleich wird für den Wechsel von der Bar an den Tisch verfahren.
 	
 	
 		\subsection{Laufweg der Gäste von der Bar zum Tisch}
-			Für den Weg von der Bar zum Tisch wird eine Uniformverteilung von eins bis fünf Minuten eingesetzt. Der Grund liegt darin, dass sich die Gruppen im Restaurant immer möglichst ??? weit auseinander setzen. Es entstehen unterschiedliche Laufzeiten da Tische je nach Platzierung näher oder entfernter von der Bar sind, jedoch in einem linear beständigen Abstand. Daher ist die Wegverteilung uniform.
+			Für den Weg von der Bar zum Tisch wird eine Uniformverteilung von eins bis fünf Minuten eingesetzt. Der Grund liegt darin, dass sich die Gruppen im Restaurant oft weit auseinander setzen. Es entstehen unterschiedliche Laufzeiten, da Tische näher oder weiter entfernt von der Bar platziert sind. Da die Entfernung der Tische keine Häufung aufweist und wir von einer gleichmässigen Auslastung aller Tische ausgehen, wird die Wegverteilung als uniform angenommen.
 	
 	
 	\section{Ordering}			
@@ -392,7 +393,7 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 	
 	\section{Preparation}	
 		\subsection{Verteilung der Zubereitungszeit}
-			Für die Verteilung der Kochzeit wählen wir eine Normalverteilung mit einem Mittelwert von fünf und einer Standardabweichung von drei Minuten. Da im Hardrock verschiedenste Speisen zubereitet werden, von Salaten über Hauptgängen bis Deserts, ist die Normalverteilung hier die sinnvollste Abbildung. Die Kochzeit wird so kurz gewählt, weil ein guter Koch durch kochen von mehreren Menüs gleichzeitig Synergien nutzen kann.
+			Für die Verteilung der Kochzeit wählen wir eine Normalverteilung mit einem Mittelwert von fünf und einer Standardabweichung von drei Minuten. Da im Hardrock verschiedenste Speisen zubereitet werden, von Salaten über Hauptgängen bis Desserts, ist die Normalverteilung hier die sinnvollste Abbildung. Die Kochzeit wird so kurz gewählt, weil ein guter Koch durch kochen von mehreren Menüs gleichzeitig Synergien nutzen kann.
 	
 	
 		\subsection{Gruppenbestellungen}
@@ -417,20 +418,36 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 	\section{Plausibilitäts-Checks}
 	Zur Überprüfung der Plausibilität des aufgebauten Arena Modells experimentierten wir mit verschiedenen Parameter. Dabei sind einige Dinge aufgefallen:
 	\begin{itemize}
-		\item Die minimale Grösse der Bar muss der grössten Gruppengrösse entsprechen. Andererseits können Gruppen, die grösser als die Bar sind, gar nicht ins Restaurant eintreten.
-		Dieses Szenario entspricht nicht ganz der Realität. In der Realität bestehen grosse Gruppen aus kleineren Gruppen. Daher werden bei einer grossen Gruppe einen Teil der Untergruppen bereits ins Restaurant hineingehen, während die Restlichen noch draussen warten.\\
-		$\rightarrow$ Da wir sowieso eine Bar zwischen 10 und 50 Plätzen anstreben und die Gruppen eine maximale Grösse von vier Personen ausweisen, spielt diese Gegebenheit keine Rolle.
-		\item Fünf Bedienpersonal und drei Tellerbringer sind trotz 250 Gästen zu wenig ausgelastet.\\
-		$\rightarrow$ Hier müssen wir die Zeiten für das Bedienpersonal und die Tellerbringer korrigieren.
-		\item Die Köche stellen den Flaschenhals dar. Daraus ergibt sich eine tiefe Utilization des Bedienpersonals. Um dieses Problem zu beheben, sollte die Anzahl der Köche im Verhältnis zur Anzahl Bedienpersonal erhöht werden.
+		\item Die minimale Grösse der Bar muss der grösst möglichen Gruppengrösse (in unserem Fall 4) entsprechen. Andererseits können Gruppen, die grösser als die Bar sind, gar nicht ins Restaurant eintreten.
+		Dieses Szenario entspricht nicht ganz der Realität. In der Realität bestehen grosse Gruppen aus kleineren Gruppen. Daher wird ein Teil einer grossen Gruppe bereits das Restaurant betreten, während die Restlichen noch draussen warten.\\
+		$\rightarrow$ Da wir eine Bar zwischen 10 und 50 Plätzen anstreben und die Gruppen eine maximale Grösse von vier Personen ausweisen, spielt diese Gegebenheit keine Rolle.
+		\item Fünf Angestellte im Service und drei Tellerbringer sind trotz 250 Gästen zu wenig ausgelastet. Das scheint für die Realität wenig plausibel.\\
+		$\rightarrow$ Als Korrektur werden die Laufzeiten für das Bedienpersonal und die Tellerbringer angepasst.
+		\item Den Flaschenhals in der Simulation stellen die Köche dar. Die tiefe Utilization des Bedienpersonals ergibt sich daraus, dass die Zubereitung der Essen zu lange dauert. Um dieses Verzerrung zu beheben, muss die Anzahl der Köche im Verhältnis zur Anzahl Bedienpersonal erhöht werden.
 		
-		Gleichzeitig bringt das Servierpersonal in der Realität noch Getränke, Speisekarte, Gedecke, weist dem Gast den Tisch, räumt ab und steht für Fragen zuer Verfügung zu.
-		$\rightarrow$ Wir verzichten in unserer Simulation darauf, haben jedoch für die restlichen ??? Bedienungen grosszügig Zeit eingeteilt.
+		Gleichzeitig bringt das Servierpersonal in der Realität noch Getränke, Speisekarte, Gedecke, weist dem Gast den Tisch, räumt ab und steht für Fragen zur Verfügung.
+		$\rightarrow$ Wir verzichten in unserer Simulation darauf, dies abzubilden. Da die Zeit für die Bedienung aber grosszügig berechnet ist, können die zusätzlichen Zeiten als darin enthalten betrachtet werden.
 		\item Die benutzten Zeitvariablen, zur Erfassung von Zeitstempeln im System basieren auf TNOW. Wobei TNOW scheinbar kein Stempel zurückgibt, mit dem gerechnet werden kann.\\
 		$\rightarrow$ TNOW muss zuerst in Basetime konvertiert werden. Wobei noch beachtet werden muss, das Basetime vom Run Setup abhängig ist.
 	\end{itemize}
 			
+	\section{Umsatz}
+\noindent
+	Um den generierten Umsatz zu berechnen, setzen wir die folgenden Werte ein:
+Die Kosten für Angestellte sind konstant und nicht von der Anzahl Bestellungen / Besucher abhängig. Deshalb wird wird der Lohn den Ressourcen als Kosten fix zugeteilt.
 
+\begin{tabularx}{\textwidth}{|l|l|X|}
+		\hline
+		\textbf{Bezeichnung} & \textbf{Preis CHF} & \textbf{Verteilung}  \\
+		\hline
+		Menu & 20-60 & TRIA(20,30,60)  \\
+		\hline
+		Stundenlohn Koch & 25 & konstant (Mittelwert)\\
+		Stundenlohn Tellerbringer & 20 & konstant (Mittelwert) \\
+		Stundenlohn Servicepersonal & 25 & konstant (Mittelwert)\\
+		\hline
+\end{tabularx}
+	
 \chapter{Auswertung}
 
 
