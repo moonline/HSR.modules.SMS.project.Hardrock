@@ -416,6 +416,59 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 		Zur einfacheren Realisierung der Szenarien werden Controlls gesetzt um die Parameter für jedes Szenario ohne grosse Aufwände einstellen zu können.\\
 		
 		\csvautotabular{szenario.csv}
+		
+		Die Szenarien soll
+			
+		\subsection{Szenarienoptimierung}
+		Nach einer ersten Simulation mit den definierten Szenarien hat sich herausgestellt, dass einige Szenarien gleich von Angang an ausgeschlossen werden können.
+		
+		\subsection{erste Selektion}
+			Aus den besten vier Szenarien und den schlechtesten vier Szenarien lassen sich Tendenzen ableiten:
+			\begin{itemize}
+				\item Es werden viele Köche benötigt. 
+				\item Tellerbringer braucht es sehr wenige.
+				\item Servierpersonal wird etwa halb so viel wie Köche und doppelt so viele wie Tellerbringer benötigt.
+			\end{itemize}
+		
+			Aus diesen Daten entnehmen wir anschliessend den Besten Fall (8 Servierpersonal, 4 Tellerbringer und 16 Köche) und schauen diesen detailiierter an:
+		
+			\begin{itemize}
+				\item Der Service ist mit fast 90 zu hoch ausgelastet. Konkret ist das Personal immer komplett ausgelastet, nur am Nachmittag ist der Service nicht komplett ausgelastet.
+				\item Die Tellerbringer sind zwar regelmässig ausgelastet, insgesammt jedoch zu wenig.
+				\item Die Köche sehr regelmässig und über die gesammte Zeit ausgelastet.
+			\end{itemize}
+			
+			
+		\subsection{zweite Selektion}
+			Als erstes erhöhen wir die Anzahl Simulationsdurchgänge von 10 auf 100, um stabilere Resultate zu erhalten.
+			
+			\subsubsection{Servierpersonal}
+				In einer erneuten Simulation wird nur die Anzahl Servierpersonal zwischen 8 und 14 variiert, während die Anzahl Tellerbringer bei 4 und die Anzahl Köche bei 16 bleibt.
+				
+				Aus der erneuten Simulation geht hervor, dass 11 Servierkräfte die optimale Anzahl sind.
+				
+			\subsection{Tellerbringer}
+				In einem weiteren Schritt fixieren wir das Servierpersonal bei 11 Personen und die Köche bie 16 Personen und variieren die Tellerbringer zwischen 2 und 6.
+				
+				Aus diesen Daten geht hervor, dass die optimale Anzahl Tellerbringer bei den schon bisher gewählten vier liegt.
+
+			\subsection{Köche}
+				Im letzen Schritt fixieren wir die Tellerbringer und das Servierpersonal und variieren die Köche zwischen 11 und 18 Personen.
+				
+				Die optimale Anzahl Köche liegt bei 14. Daraus ergibt sich ein Verhältnis von 11:4:14 oder 0.8 Servierdüsen auf 0.3 Tellerbringer auf einen Koch.
+
+		
+		\subsection{Dritte Selektion}
+			Nach der einzelnen Selektion muss überprüft werden, ob die einzelnen Optimierungen zu globalen Veränderungen geführt haben.
+			
+			Dazu erstellen wir 27 Szenarien, die das Servicepersonal zwischen 10 und 12, die Tellerbringer zwischen 3 und 5 sowie die Köche zwischen 13 und 15 variieren.
+			
+			Die vier Besten Resultate dieser Simulation zeigen die Besten bisher gehabten Resultate. Alle Resultate benötigen 10 Servierkräfte, die Tellerbringer variieren zwischen 4 und vier und die Köche zwischen 13 und 15. Der Beste Fall erhalten wir mit 10 Servierkräften, 3 Tellerbringer und 14 Köchen.
+			
+		
+		\subsection{Vierte Selektion}
+			Nach der Optimierung des Personals geht es noch um die Optimierung der Bargrösse.
+			
 			
 			
 			
