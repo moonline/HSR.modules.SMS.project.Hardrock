@@ -132,6 +132,8 @@ urlcolor=black
 		1.5 & Simulation & Alle & 10.05.2013 \\
 		1.6 & Modellbeschreibungen & Tobias Blaser & 11.05.2013\\
 		1.7 & Plausibilitätscheck, Szenarios & Alle & 13.05.2013\\
+		1.8 & Szenarien, Auswertung & Urs Baumann, Tobias Blaser & 17.05.2013\\
+		1.9 & Auswertung, Überarbeitungen & Alle & 24.05.2013\\
 		\hline
 \end{tabularx}
 
@@ -158,12 +160,10 @@ Ist die Schlange vor dem Eingang zu lang, gehen Gäste wieder ohne Besuch im Res
 
 \subsection{Bar}
 Die Bar dient als Warteschlange für die Gäste, bis Plätze an einem Tisch frei werden. Gäste werden an der Bar bedient und konsumieren Getränke.
-Das Servierpersonal an der Bar soll in unserer Simulation nicht berücksichtigt werden. Grund dafür ist die Unabhängigkeit des Barbereichs vom Rest des Lokals. Das heisst: Das Barpersonal ist nicht in der Lage, kurzzeitig die Bar zu verlassen und Tische zu bedienen. Weil es nur für die Ausgabe der Getränke verantwortlich ist, kann es in der Simulation vernachlässigt werden, ohne das System zu verfälschen.
 
-???
-Ziel ist es, dass an der Bar möglichst viele Plätze besetzt sind, weil dies Einnahmen durch Konsumation generiert. Gleichzeitig sollte vor der Türe die Schlange möglichst klein sein oder gar nicht existieren, damit keine Gäste an der Kälte warten müssen, oder sogar wieder gehen. Die Wartezeit an der Bar sollte nicht mehr als ein bis zwei Drinks betragen, damit niemand wieder geht, bevor ein Tisch frei wird.
+In der Realität wäre das Ziel, dass die Bar optimal besetzt ist, weil dies zusätzliche Einnahmen durch Konsumation generiert. Gleichzeitig sollte vor der Türe die Schlange möglichst klein sein oder gar nicht existieren, damit keine Gäste an der Kälte warten müssen, oder sogar wieder gehen. Die Wartezeit an der Bar sollte nicht mehr als ein bis zwei Drinks betragen, damit niemand wieder geht, bevor ein Tisch frei wird.
 
-$\rightarrow$ Annahme Dauer eines Drinks an der Bar: ca. eine Viertelstunde bis 20 Minuten.
+Das Servierpersonal an der Bar soll in unserer Simulation nicht berücksichtigt werden. Grund dafür ist die Unabhängigkeit des Barbereichs vom Rest des Lokals. Das heisst: Das Barpersonal ist nicht in der Lage, kurzzeitig die Bar zu verlassen und Tische zu bedienen. Weil es nur für die Ausgabe der Getränke verantwortlich ist, kann es in der Simulation vernachlässigt werden, ohne das System zu verfälschen. Zudem gehen wir von einer fixen Bargrösse aus und berechnen auch den durch die Bar erzielten Umsatz nicht.
 
 \subsection{Tische}
 Am Tisch werden ein bis drei Gänge gegessen. In einem ersten Schritt soll dies sehr einfach abgebildet werden. Auf eine komplexe Menüsimulation in der Granularität der einzelnen Gänge wird verzichtet.
@@ -199,10 +199,10 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 
 	\subsection{Gäste}
 		\begin{itemize}
-			\item Gäste benötigen eine variierende Zeit um vom Eingang an die Bar zu gelangen, ??? wobei das Laufverhalten auch von der Gruppengrösse abhängt.
-			\item Gäste benötigen eine variierende Zeit, um von der Bar zum zugewiesenen Tisch zu gelangen. Hierbei spielt die Anordnung der Tische und die ??? Gruppengrösse eine entscheidende Rolle.
+			\item Gäste benötigen eine variierende Zeit um vom Eingang an die Bar zu gelangen. 
+			\item Gäste benötigen eine variierende Zeit, um von der Bar zum zugewiesenen Tisch zu gelangen.
+			Diese kann von der Gruppengrösse, der Anordnung der Tische und der Belegung des Restaurants (verschiedene "Gästeströme") abhängen. Diesen Umstand berücksichtigen wir in der Simulation jedoch nur durch eine variable Zeit - unabhängig von den beeinflussenden Faktoren.
 			\item Gäste benötigen eine variierende Zeit, um das Lokal wieder zu verlassen.
-			\item Die Verschiedenen Gästeströme beeinflussen sich gegenseitig. ??? Ist das Lokal gut besetzt, dauern alle Vorgänge spürbar länger.
 		\end{itemize}
 
 	\subsection{Personal}
@@ -229,10 +229,116 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 	\end{itemize}
 
 \section{Objectives}
+	\subsection{Gewinn}
+	Ziel ist die Gewinnmaximierung durch gute Belegung des Restaurants. Zu optimieren ist die Anzahl des Personals im Hinblick auf dieses Ziel. Die Anzahl des Personals im Service, in der Küche und im Tellerbringen ist voneinander abhängig. Hautpziel ist, die optimale Anzahl für den jeweiligen Bereich zu bestimmen. 
+
+	\subsection{Utilization}
+	Indirekt abhängig von ist das Ziel der Gewinnmaximierung von der Utilization der beteiligten Ressourcen. So ist zum Beispiel ein nicht ausreichend ausgelastetes Servicepersonal mit Kosten verbunden, denen keine Einnahmen in Form von verkauften Mahlzeiten gegenüber steht.
+	  
+	\subsection{Dauer des Aufenthalts}
+		Ebenfalls ein Hinweis auf geringen Umsatz ist eine zu kurze mittlere Aufenthaltszeit am Tisch oder sehr lange Wartezeiten der Gäste auf bestellte Mahlzeiten. Wir gehen davon aus, dass die Aufenthaltsdauer bei ca. 1.5 Stunden liegt, und die mittlere Wartezeit für die Bedienung 15 Minuten nicht übersteigt? 
+
+\section{Spezifikationen}
+	Gearbeitet wird mit fiktiven Daten, ausgenommen die Anzahl der Plätze im Saal. Diese werden vom Hardrock Atlantic City übernommen.
+
+	\subsection{Variable Grössen}
+		Es sollen verschiedene Szenarien simuliert werden. Die dazu benötigten Grössen sollen Variabel sein:
+		\begin{itemize}
+			\item Queuelänge
+			\item Anzahl Bedienpersonal
+			\item Anzahl Tellerbringer
+			\item Anzahl Köche
+			\item Gruppen mit unterschiedlichen Anzahlen von Gästen
+		\end{itemize}
+
+	\subsection{Resultatgrössen}
+		Durch die Simulation sollen die \textbf{Aufenthaltszeiten an der Bar (Queue)}, die \textbf{Dauer des Aufenthaltes und Wartezeiten am Tisch}, die \textbf{Gesammtaufenthaltsdauer im Restaurant} und die \textbf{Auslastung der Agents} ermittelt werden.
+
+\subsection{Zusatzprojekt (optional)}
+	In einem weiteren Projekt kann die Simulation ausgebaut und verfeinert werden, indem weitere Parameter hinzugefügt  und detailliertere Daten erhoben werden:
 	\begin{itemize}
+		\item Anzahl Personal an der Bar
+		\item Verschiedene Essen/Menüs mit unterschiedlichen Servicezeiten für die Köche.
+		\item Gruppen müssten zusammen an einem Tisch untergebracht werden, keine Leerplätze.
+		\item Weitere Resultate: Wie lange dauert die Bestellaufnahme, wie lange muss ein Gast durchschnittlich auf die Bestellung warten und wie lange wartet er auf die Rechnung? Wie oft muss das Bedienpersonal an einen Tisch gehen pro Gast?
+		\item Optional: Kleine Animation
+	\end{itemize}
+
+
+\chapter{Modellierung}
+	\section{Activities}
+		\begin{figure}[H]
+			\centering
+				\includegraphics[page=4,trim=1cm 3cm 2.5cm 1cm, clip=true,width=\textwidth]{../model/Modell_v2.pdf}
+				\caption[Activity Diagramm]{Activity Diagramm}
+				\label{activityDiagramm}
+		\end{figure}
+		
+		\subsection{Gastgruppe}
+		Eine Gastgruppe belegt während dem Aufenthalt am Tisch Plätze. Anschliessend werden Bestellungen ausgelöst.
+		Entsprechend den Anzahl Gängen werden soviele Gänge angeliefert.
+		Vor den Verlassen des Lokals wird Bezahlt, anschliessend werden die Plätze wieder freigegeben.
+		
+		\subsection{Bedienung}
+		Das Bedienpersonal befinden sich in einem geschlossenen Zyklus. Sie nehmen am Tisch eine oder mehrere Bestellungen entgegen und bringen diese in die Küche.
+		
+		\subsection{Köche}
+		Die Köche befinden sich ebenfalls in einem geschlossenen Zyklus. Sie nehmen Bestellungen entgegen und richten Teller an.
+		
+		\subsection{Tellerbringer}
+		Auch die Tellerbringer befinden sich in einem geschlossenen Zyklus. Sie holen angerichtete Teller ab und bringen Sie an den Tisch.
+		
+
+\begin{landscape}
+	\section{Hardrock Flow}
+		\begin{figure}[H]
+			\centering
+				\includegraphics[page=1,trim=2cm 7cm 2cm 5cm, clip=true,width=1.4\textwidth]{../model/Modell_v2.pdf}
+				\caption[Hardrock Flow Diagramm Teil1]{Hardrock Flow Diagramm Teil1}
+				\label{flowDiagramm1}
+		\end{figure}
+		
+		\subsection{Customer}
+		Gäste werdem in Gruppen von eins bis vier Personen erzeugt. Die Erzeugung unterliegt einer definierten Verteilung.
+		
+		\subsection{Placement}
+		Gäste warten in einer beliebig langen Queue, bis eine Platzressource zur Belegung an der Bar frei wird. Die Platzressource wird freigegeben, sobald eine freie Tischressource belegt werden kann.
+		
+		\subsection{Ordering}
+		Während einer Bestellung wird die Bedienung als Ressource belegt und anschliessend wieder freigegeben.
+		
+		\begin{figure}[H]
+				\includegraphics[page=2,trim=0cm 7cm 2cm 5cm, clip=true,width=1.4\textwidth]{../model/Modell_v2.pdf}
+				\caption[Hardrock Flow Diagramm Teil2]{Hardrock Flow Diagramm Teil2}
+				\label{flowDiagramm2}
+		\end{figure}
+		
+		\subsection{Dinnering}
+		Gäste warten, bis die Bestellung zubereitet wurde (Verteilfunktion), für die Auslieferung der Teller wird die Ressource Tellerbringer für eine bestimmte Zeit (Verteilfunktion) belegt. Die Dauer des Essens wird ebenfalls mittels einer Verteilfunktion modelliert.
+		
+		\subsection{Payment}
+		Für die Bezahlung ist bis jetzt kein Szenario definiert
+		
+		\subsection{Exit}
+		Gäste geben die belegte Ressource Tisch wieder frei und verlassen das Restaurant.
+		\begin{figure}[H]
+				\includegraphics[page=3,trim=2cm 12cm 12cm 2cm, clip=true,width=1\textwidth]{../model/Modell_v2.pdf}
+				\caption[Hardrock Flow Diagramm Kitchen]{Hardrock Flow Diagramm Kitchen}
+				\label{flowDiagrammKitchen}
+		\end{figure}
+		
+		\subsection{Kitchen}
+		Die Bestellung der Gruppe wird in einzelne Unterbestellungen aufgesplittet und kann parallel verarbeitet werden. Eine Unterbestellung belegt für die Zubereitung einen Koch.
+		
+\end{landscape}
+
+		\subsection{Entitäten}
+		Zusammengefasst sind in der Modellierung des Systems die folgenden Entitäten vorhanden.
+		
+			\begin{itemize}
 		\item Vor der Türe:
 			\begin{itemize}
-				\item Queue: Ankommende Gäste lim(0)
+				\item Queue: Ankommende Gäste
 			\end{itemize}
 		\item Küche
 			\begin{itemize}
@@ -257,112 +363,10 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 	\end{itemize}
 
 
-
-\section{Fragestellungen}
-	Ziel ist die Gewinnmaximierung durch gute Belegung des Restaurants. Zu optimieren ist die Anzahl des Personals. Die Anzahl des Personals im Service, in der Küche und im Tellerbringen ist voneinander abhängig. Ziel ist, die optimale Anzahl für den jeweiligen Bereich zu bestimmen. Als gute Auslastung wird ??? 75\% Utilisation angenommen.
-	
-	\subsection{Grösse der Bar}
-		\textbf{Wie viele Plätze muss die Bar bieten, damit fast keine Gäste in der Kälte vor dem Eingang warten müssen und die mittlere Aufenthaltszeit an der Bar ein bis zwei Drinks nicht übersteigt?} \\
-		Als Länge für einen Drink soll 15-20 Minuten angenommen werden.
-
-	\subsection{Benötigtes Personal}
-		\textbf{Wie viel Bedienpersonal, Tellerbringer und wie viele Köche braucht es, damit die Mittlere Aufenthaltszeit am Tisch bei ca. 1.5 Stunden liegt, und die mittlere Wartezeit für die Bedienung ??? 15 Minuten nicht übersteigt?} \\
-
-
-\section{Spezifikationen}
-	Gearbeitet wird mit fiktiven Daten, ausgenommen die Anzahl der Plätze im Saal. Diese werden vom Hardrock Atlantic City übernommen.
-
-	\subsection{Variable Grössen}
-		Es sollen verschiedene Szenarien simuliert werden. Die dazu benötigten Grössen sollen Variabel sein:
-		\begin{itemize}
-			\item Queuelänge
-			\item Anzahl Bedienpersonal
-			\item Anzahl Tellerbringer
-			\item Anzahl Köche
-			\item Gruppen mit unterschiedlichen Anzahlen von Gästen
-		\end{itemize}
-
-	\subsection{Resultatgrössen}
-		Durch die Simulation sollen die \textbf{Aufenthaltszeiten an der Bar (Queue)}, die \textbf{Dauer des Aufenthaltes und Wartezeiten am Tisch}, die \textbf{Gesammtaufenthaltsdauer im Restaurant} und die \textbf{Auslastung der Agents} ermittelt werden.
-
-\subsection{Zusatzprojekt (optional)}
-	In einem weiteren Projekt kann die Simulation ausgebaut und verfeinert werden, indem weitere Parameter hinzugefügt  und detailliertere Daten erhoben werden:
-	\begin{itemize}
-		\item Anzahl Personal an der Bar
-		\item Verschiedene Essen/Menüs mit unterschiedlichen Servicezeiten für die Köche.
-		\item ??? Gruppen müssen zusammen an einem Tisch untergebracht werden, keine Leerplätze.
-		\item Weitere Resultate: Wie lange dauert die Bestellaufnahme, wie lange muss ein Gast durchschnittlich auf die Bestellung warten und wie lange wartet er auf die Rechnung? Wie oft muss das Bedienpersonal an einen Tisch gehen pro Gast?
-		\item Optional: Kleine Animation
-	\end{itemize}
-
-
-\chapter{Modellierung}
-	\section{Activities}
-		\begin{figure}[H]
-			\centering
-				\includegraphics[width=1\textwidth]{img/activityDiagramm-v1.png}
-				\caption[Activity Diagramm]{Activity Diagramm}
-				\label{activityDiagramm}
-		\end{figure}
-		
-		\subsection{Gastgruppe}
-		Eine Gastgruppe belegt während dem Aufenthalt am Tisch Plätze. Anschliessend werden Bestellungen ausgelöst.
-		Entsprechend den Anzahl Gängen werden soviele Gänge angeliefert.
-		Vor den Verlassen des Lokals wird Bezahlt, anschliessend werden die Plätze wieder freigegeben.
-		
-		\subsection{Bedienung}
-		Das Bedienpersonal befinden sich in einem geschlossenen Zyklus. Sie nehmen am Tisch eine oder mehrere Bestellungen entgegen und bringen diese in die Küche.
-		
-		\subsection{Köche}
-		Die Köche befinden sich ebenfalls in einem geschlossenen Zyklus. Sie nehmen Bestellungen entgegen und richten Teller an.
-		
-		\subsection{Tellerbringer}
-		Auch die Tellerbringer befinden sich in einem geschlossenen Zyklus. Sie holen angerichtete Teller ab und bringen Sie an den Tisch.
-		
-
-\begin{landscape}
-	\section{Hardrock Flow}
-		\begin{figure}[H]
-			\centering
-				\includegraphics[width=1.4\textwidth]{img/flowDiagramm1-v1.png}
-				\caption[Hardrock Flow Diagramm Teil1]{Hardrock Flow Diagramm Teil1}
-				\label{flowDiagramm1}
-		\end{figure}
-		
-		\subsection{Customer}
-		Gäste werdem in Gruppen von eins bis vier Personen erzeugt. Die Erzeugung unterliegt einer definierten Verteilung.
-		
-		\subsection{Placement}
-		Gäste warten in einer beliebig langen Queue, bis eine Platzressource zur Belegung an der Bar frei wird. Die Platzressource wird freigegeben, sobald eine freie Tischressource belegt werden kann.
-		
-		\subsection{Ordering}
-		Während einer Bestellung wird die Bedienung als Ressource belegt und anschliessend wieder freigegeben.
-		
-		
-		\begin{figure}[H]
-				\includegraphics[width=1.4\textwidth]{img/flowDiagramm2-v1.png}
-				\caption[Hardrock Flow Diagramm Teil2]{Hardrock Flow Diagramm Teil2}
-				\label{flowDiagramm2}
-		\end{figure}
-		
-		\subsection{Dinnering}
-		Gäste warten, bis die Bestellung zubereitet wurde (Verteilfunktion), für die Auslieferung der Teller wird die Ressource Tellerbringer für eine bestimmte Zeit (Verteilfunktion) belegt. Die Dauer des Essens wird ebenfalls mittels einer Verteilfunktion modelliert.
-		
-		\subsection{Payment}
-		Für die Bezahlung ist bis jetzt kein Szenario definiert
-		
-		\subsection{Exit}
-		Gäste geben die belegte Ressource Tisch wieder frei und verlassen das Restaurant.
-		
-\end{landscape}
-
-
-
 \chapter{Simulation mit Arena}
 	\section{Customer}			
 		\subsection{Verteilung der ankommenden Gäste}
-			Um die Verteilung des Andrangs, insbesondere die beiden Spitzenzeiten am Mittag und am Abend, zu simulieren, nutzen wir einen Schedule.	
-			Die Ankunftsrate im Scheduler ist ??? negativ exponential verteilt.
+			Um die Verteilung des Andrangs, insbesondere die beiden Spitzenzeiten am Mittag und am Abend, zu simulieren, nutzen wir einen Schedule. Die Ankunftsrate im Scheduler ist negativ exponential verteilt.
 	
 			\begin{figure}[H]
 				\centering
@@ -392,7 +396,7 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 	
 	\section{Ordering}			
 		\subsection{Bestellvorgang}
-			Das Erreichen des Tisches und die Bestellung werden zusammengefasst und mittels einer Triangularverteilung mit einem Mittelwert von 6 sowie einem Minimum von 3 und Maximum von 8 abgebildet. Pro Person am Tisch wird eine Minute aufgeschlagen, um die Abhängigkeit der Bestellzeit von der Gruppengrösse zu realisieren. Zudem ist in dieser grosszügigen Zeitberechnung der Anteil für einen zweiten Besuch am Tisch und die zusätzlichen Aufgaben wie Bereitmachen und Abräumen des Tisches enthalten.
+			Das Erreichen des Tisches durch die Bedienung und die Bestellungsaufnahme werden zusammengefasst und mittels einer Triangularverteilung mit einem Mittelwert von 6 sowie einem Minimum von 3 und Maximum von 8 abgebildet. Pro Person am Tisch wird eine Minute aufgeschlagen, um die Abhängigkeit der Bestellzeit von der Gruppengrösse zu realisieren. Zudem ist in dieser grosszügigen Zeitberechnung der Anteil für einen zweiten Besuch am Tisch und die zusätzlichen Aufgaben wie Bereitmachen und Abräumen des Tisches enthalten.
 	
 	
 	\section{Preparation}	
@@ -401,61 +405,61 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 	
 	
 		\subsection{Gruppenbestellungen}
-			Gruppen bestellen gemeinsam, erhalten ihr Essen gemeinsam, gekocht wird es jedoch unabhängig. Dazu wird die Bestellung in der Küche dupliziert und damit bis zu vier Unterbestellungen simuliert. Vor dem Ausliefern werden die Unterbestellungen wieder zu einer Gesammtbestellung zusammengefügt.
+			Gruppen bestellen gemeinsam und erhalten ihr Essen zum gleichen Zeitpunkt, gekocht wird es jedoch unabhängig. Um dies abzubilden, verwenden wir da folgende Vorgehen: Die Bestellung der Gruppe wird in der Küche dupliziert und damit werden bis zu vier Unterbestellungen simuliert. Vor dem Ausliefern werden die Unterbestellungen wieder zu einer Gesamtbestellung zusammengefügt.
 			
 			
 	\section{Dinnering}
 		\subsection{Bestellungsauslieferung}					
-			Die Tellerbringer liefern immer nur Gesammtbestellungen aus. Darum wird ??? pro Bestellung nur ein Tellerbringer benötigt. Zur Simulation wird eine Uniformverteilung von einer halben bis vier Minuten verwendet.
+			Die Tellerbringer liefern immer nur Gesamtbestellungen an eine Gruppe aus. Darum wird Bestellung nur ein Tellerbringer benötigt, der bis zu vier Teller (maximale Gruppengrösse) zum Tisch bringt. Zur Simulation wird die Laufzeit von der Theke bis zum Tisch in einer Uniformverteilung von einer halben bis vier Minuten abgebildet.
 
 
 		\subsection{Essen}
-			Das Essen dauert zwischen 15 Minuten und einer Stunde. Gänge werden nicht unterschieden, sondern nur implizit über die Verteilfunktion simuliert. Genutzt wird eine Triangularverteilung mit einem Mittelwert von 40 Minuten.\\
+			Das Essen dauert zwischen 15 Minuten und einer Stunde. Einzelne Gänge des Essens werden nicht konkret unterschieden, sondern nur implizit über die Dauer des Aufenthalts am Tisch in einer Verteilfunktion simuliert. Genutzt wird eine Triangularverteilung mit einem Mittelwert von 40 Minuten.\\
 			
 	\section{Szenarien}
-		Zur einfacheren Realisierung der Szenarien werden Controlls gesetzt um die Parameter für jedes Szenario ohne grosse Aufwände einstellen zu können.\\
+		Zur einfacheren Realisierung der Szenarien werden Controls gesetzt, um die Parameter für jedes Szenario ohne grossen Aufwand variieren zu können.\\
 		
-		\csvautotabular{szenario.csv}
+		\csvautotabular{szenario.csv}\\
 		
-		Die Szenarien soll
+		Die Szenarien sollen in einem ersten Schritt aufzeigen, in welcher Grössenordnung sich die Anzahl der benötigten Servicekräfte, Tellerbringer und Köche zueinander bewegt.
 			
 		\subsection{Szenarienoptimierung}
-		Nach einer ersten Simulation mit den definierten Szenarien hat sich herausgestellt, dass einige Szenarien gleich von Angang an ausgeschlossen werden können.
+		Nach einer ersten Simulation hat sich herausgestellt, dass einige der oben definierten Szenarien gleich von Anfang an ausgeschlossen werden können. So zeigte sich, dass die Anzahl der Tellerbringer und Servicekräfte nicht über der Anzahl Köche liegen kann. Dies wurde ersichtlich, weil sich der Umsatz und damit der Durchsatz (Servicezeiten) im System nicht änderten, wenn die Anzahl der Tellerbringer und Servicekräfte variiert wurden, wenn sie überhalb der Anzahl der Köche lag. Lediglich deren Utilization verringerte sich bei einer Erhöhung der Anzahl.
+		 Ebenso konnte ausgeschlossen werden, dass die Anzahl der Köche um einen Faktor von mehr als ca. 4 über der Anzhal der Servicekräfte und des Tellerbringer liegt.  
 		
 		\subsection{erste Selektion}
-			Aus den besten vier Szenarien und den schlechtesten vier Szenarien lassen sich Tendenzen ableiten:
+			Bezogen auf die Umsatzoptimierung lassen sich aus den besten vier und den schlechtesten vier Szenarien die folgenden Tendenzen ableiten:
 			\begin{itemize}
 				\item Es werden viele Köche benötigt. 
 				\item Tellerbringer braucht es sehr wenige.
 				\item Servierpersonal wird etwa halb so viel wie Köche und doppelt so viele wie Tellerbringer benötigt.
 			\end{itemize}
 		
-			Aus diesen Daten entnehmen wir anschliessend den Besten Fall (8 Servierpersonal, 4 Tellerbringer und 16 Köche) und schauen diesen detailiierter an:
+			Aus diesen Daten entnehmen wir anschliessend den besten Fall (8 Servierpersonal, 4 Tellerbringer und 16 Köche) und analysieren diesen detailierter an:
 		
 			\begin{itemize}
-				\item Der Service ist mit fast 90 zu hoch ausgelastet. Konkret ist das Personal immer komplett ausgelastet, nur am Nachmittag ist der Service nicht komplett ausgelastet.
-				\item Die Tellerbringer sind zwar regelmässig ausgelastet, insgesammt jedoch zu wenig.
-				\item Die Köche sehr regelmässig und über die gesammte Zeit ausgelastet.
+				\item Der Service ist mit fast 90\% zu hoch ausgelastet. Konkret ist das Personal nicht nur zu den im Scheduler definierten Spitzenzeiten komplett ausgelastet, sondern über den ganzen Zeitraum ausser in den Nachmittagsstunden. 				\item Die Tellerbringer sind zwar über die ganze Simulationszeit regelmässig ausgelastet, insgesammt jedoch zu wenig.
+				\item Die Köche sind sehr konstant und über die gesamte Simulationszeit ausgelastet.
 			\end{itemize}
 			
 			
 		\subsection{zweite Selektion}
-			Als erstes erhöhen wir die Anzahl Simulationsdurchgänge von 10 auf 100, um stabilere Resultate zu erhalten.
+			Als erstes erhöhen wir die Anzahl Simulationsdurchgänge von 10 auf 100, um stabilere und vertrauenswürdigere Resultate zu erhalten.
 			
 			\subsubsection{Servierpersonal}
 				In einer erneuten Simulation wird nur die Anzahl Servierpersonal zwischen 8 und 14 variiert, während die Anzahl Tellerbringer bei 4 und die Anzahl Köche bei 16 bleibt.
 				
-				Aus der erneuten Simulation geht hervor, dass 11 Servierkräfte die optimale Anzahl sind.
+				Aus der erneuten Simulation geht hervor, dass sich die optimale Anzahl der Servicekräfte um 11 bewegt.
 				
 			\subsection{Tellerbringer}
-				In einem weiteren Schritt fixieren wir das Servierpersonal bei 11 Personen und die Köche bie 16 Personen und variieren die Tellerbringer zwischen 2 und 6.
+				In einem weiteren Schritt fixieren wir das Servierpersonal bei 11 und die Köche bie 16 Personen, variieren aber die Tellerbringer zwischen 2 und 6.
 				
-				Aus diesen Daten geht hervor, dass die optimale Anzahl Tellerbringer bei den schon bisher gewählten vier liegt.
+				Aus den Ergebnissen der Simulationsläufe geht hervor, dass die optimale Anzahl Tellerbringer bei den schon zuvor gewählten vier liegt.
 
 			\subsection{Köche}
-				Im letzen Schritt fixieren wir die Tellerbringer und das Servierpersonal und variieren die Köche zwischen 11 und 18 Personen.
+				Im letzen Schritt fixieren wir die Tellerbringer und das Servierpersonal, variieren stattdessen die Köche zwischen 11 und 18 Personen.
 				
-				Die optimale Anzahl Köche liegt bei 14. Daraus ergibt sich ein Verhältnis von 11:4:14 oder 0.8 Servierdüsen auf 0.3 Tellerbringer auf einen Koch.
+				Die optimale Anzahl Köche liegt bei 14. Daraus ergibt sich ein Verhältnis von 11:4:14 oder 0.8 Servicekräfte auf 0.3 Tellerbringer auf einen Koch.
 
 		
 		\subsection{Dritte Selektion}
@@ -466,14 +470,26 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 			Die vier Besten Resultate dieser Simulation zeigen die Besten bisher gehabten Resultate. Alle Resultate benötigen 10 Servierkräfte, die Tellerbringer variieren zwischen 4 und vier und die Köche zwischen 13 und 15. Der Beste Fall erhalten wir mit 10 Servierkräften, 3 Tellerbringer und 14 Köchen.
 			
 		
-		\subsection{Vierte Selektion}
-			Nach der Optimierung des Personals geht es noch um die Optimierung der Bargrösse.
+		\subsection{Verifikation}
+			Zur Verifikation der Resultate nutzen wir OptQuest von Arena. Wir lassen OptQuest die Personalgrössen nach dem Gewinn optimieren. Arena liefert beinahe das gleiche Resultat, wie wir erhalten haben. Lediglich für die Servicekräfte schlägt Arena noch eine Person weniger vor.
+			\begin{figure}[H]
+				\centering
+					\includegraphics[width=\textwidth]{img/OptQuest.PNG}
+					\caption[OptQuest in Arena]{OptQuest in Arena}
+					\label{optQuestInArena}
+			\end{figure}
 			
+			\begin{figure}[H]
+				\centering
+					\includegraphics[trim=10cm 3.5cm 18.5cm 12.5cm, clip=true,width=0.75\textwidth]{img/OptQuest.PNG}
+					\caption[OptQuest Suchverlauf]{OptQuest Suchverlauf}
+					\label{optQuestSuchverlauf}
+			\end{figure}
 			
 			
 			
 	\section{Plausibilitäts-Checks}
-	Zur Überprüfung der Plausibilität des aufgebauten Arena Modells experimentierten wir mit verschiedenen Parameter. Dabei sind einige Dinge aufgefallen:
+	Zur Überprüfung der Plausibilität des aufgebauten Arena Modells experimentierten wir mit verschiedenen Parametern. Dabei sind einige Dinge aufgefallen:
 	\begin{itemize}
 		\item Die minimale Grösse der Bar muss der grösst möglichen Gruppengrösse (in unserem Fall 4) entsprechen. Andererseits können Gruppen, die grösser als die Bar sind, gar nicht ins Restaurant eintreten.
 		Dieses Szenario entspricht nicht ganz der Realität. In der Realität bestehen grosse Gruppen aus kleineren Gruppen. Daher wird ein Teil einer grossen Gruppe bereits das Restaurant betreten, während die Restlichen noch draussen warten.\\
@@ -491,7 +507,7 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 	\section{Umsatz}
 \noindent
 	Um den generierten Umsatz zu berechnen, setzen wir die folgenden Werte ein:
-Die Kosten für Angestellte sind konstant und nicht von der Anzahl Bestellungen / Besucher abhängig. Deshalb wird wird der Lohn den Ressourcen als Kosten fix zugeteilt.
+Die Kosten für Angestellte sind konstant und nicht von der Anzahl Bestellungen / Besucher abhängig. Deshalb wird wird der Lohn den Ressourcen als Kosten fix zugeteilt.\\
 
 \begin{tabularx}{\textwidth}{|l|l|X|}
 		\hline
@@ -506,13 +522,35 @@ Die Kosten für Angestellte sind konstant und nicht von der Anzahl Bestellungen 
 \end{tabularx}
 	
 \chapter{Auswertung}
-
+	\section{Fragestellungen (If Questions)}
+		\begin{itemize}
+			\item \textbf{Was passiert, wenn wir die Anzahl Köche variiert wird?} \\
+				Die Köche bringen eine grössere Menge an Bestellungen durch in der gleichen Zeit. Das Servicepersonal ist besser ausgelastet. Sobald das Verhältnis von Köchen zu Servicepersonal 1.4:1 übersteigt, sind die Servierkräfte kommplett ausgelastet, bzw. überlastet. Die Tellerbringer sind überlastet, sobald das Verhältnis von Köchen zu Tellerbringern 4.7:1 übersteigt.
+			\item \textbf{Was passiert, wenn die Anzahl Köche verringert wird?} \\
+				In der Küche stauen sich die Bestellungen. Die Gäste müssen zu lange auf das Essen warten. Zu wenige neue Gäste können in das Lokal eintreten, das Servierpersonal und die Tellerbringer sind ab den genannten Grenzen nicht mehr ausgelastet.
+			\item \textbf{Was passiert, wenn die Anzahl Tellerbringer erhöht wird?}\\
+				Sind zu viele Tellerbringer vorhanden, sind diese nicht ausgelastet und stehen herum.
+			\item \textbf{Was passiert, wenn die Anzahl Tellerbringer verringert wird?}\\
+				Sind weniger Tellerbringer als oben erwähnt vorhanden, stauen sich die gekochten Bestellungen in der Küche. Die Gäste erhalten wiederum die Bestellungen verspätet, belegen das Lokal länger und insgesammt sinkt die Anzahl Bestellungen, die durchgebracht werden können.
+			\item \textbf{Was passiert, wenn die Anzahl Servicekräfte erhöht wird?}\\
+				Werden die Servicekräfte erhöht, können mehr Bestellungen aufgenommen werden. Sobald das oben genannte Verhältnis zu den Köchen überstiegen wird, Stauen sich die Bestellungen in der Küche, das Servierpersonal ist unterausgelastet.
+			\item \textbf{Was passiert, wenn die Anzahl Servierkräfte verringert wird?}\\
+				Die Servierkräfte können weniger Bestellungen aufnehmen. Die Küche und die Tellerbringer sind weniger stark ausgelastet.
+			\item \textbf{Was passiert, wenn die Anzahl Plätze an der Bar verändert werden?}\\
+				Wird die Platzzahl erhöht, so ist die Schlange vor der Türe kleiner und weniger Leute gehen wieder nach Hause. Das Restaurant ist länger besetzt und mehr Umsatz wird generiert. Ist die Bar zu gross, führt der Verzögerungseffekt dazu, dass Gäste noch nach Betriebsschluss im Lokal sind.
+				
+				Ist die Bar zu klein, gehen viele Leute wieder nach Hause, weil die Schlange vor der Tür zu lang ist. Weniger Gäste durchlaufen das Lokal und weniger Umsatz wird generiert.
+			\item \textbf{Was passiert, wenn die Grösse der akzeptablen Schlange variiert wird, bis Gäste wieder nach Hause gehen?}\\
+				Wird die Grösse angehoben, gehen weniger Leute nach Hause. Es braucht Mehr Personal im Lokal und die Gäste verbleiben durch den Verzögerungseffekt wie bei der Bar möglicherweise bis nach Betriebsschluss.
+				
+				Wir die Grösse verkleinert, so gehen mehr Leute nach Hause. Es wird weniger Personal benötigt und weniger Umsatz generiert.
+		\end{itemize}
 
 
 \appendix
 \chapter{Präsentation Projektvorstellung}
 \begin{center}
-	\includegraphics[page=1,angle=180, scale=0.7]{media/presentation-hardrock-slides.pdf}
+	\includegraphics[page=1,angle=180, scale=0.67]{media/presentation-hardrock-slides.pdf}
 \end{center}
 \begin{center}
 	\includegraphics[page=2,angle=180, scale=0.8]{media/presentation-hardrock-slides.pdf}
@@ -525,9 +563,9 @@ Die Kosten für Angestellte sind konstant und nicht von der Anzahl Bestellungen 
 \listoffigures
 
 \begin{landscape}
-\chapter{Projekt Log}
+%\chapter{Projekt Log}
 %git log --no-merges --pretty=format:'%ci: %d %s <%an>' > documentation/gitLog.txt
-\verbatiminput{gitLog.txt}
+%\verbatiminput{gitLog.txt}
 \end{landscape}
 
 \chapter{Materialnachweise}
