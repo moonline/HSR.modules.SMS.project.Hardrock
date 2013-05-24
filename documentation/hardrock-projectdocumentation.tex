@@ -160,12 +160,10 @@ Ist die Schlange vor dem Eingang zu lang, gehen Gäste wieder ohne Besuch im Res
 
 \subsection{Bar}
 Die Bar dient als Warteschlange für die Gäste, bis Plätze an einem Tisch frei werden. Gäste werden an der Bar bedient und konsumieren Getränke.
-Das Servierpersonal an der Bar soll in unserer Simulation nicht berücksichtigt werden. Grund dafür ist die Unabhängigkeit des Barbereichs vom Rest des Lokals. Das heisst: Das Barpersonal ist nicht in der Lage, kurzzeitig die Bar zu verlassen und Tische zu bedienen. Weil es nur für die Ausgabe der Getränke verantwortlich ist, kann es in der Simulation vernachlässigt werden, ohne das System zu verfälschen.
 
-???
-Ziel ist es, dass an der Bar möglichst viele Plätze besetzt sind, weil dies Einnahmen durch Konsumation generiert. Gleichzeitig sollte vor der Türe die Schlange möglichst klein sein oder gar nicht existieren, damit keine Gäste an der Kälte warten müssen, oder sogar wieder gehen. Die Wartezeit an der Bar sollte nicht mehr als ein bis zwei Drinks betragen, damit niemand wieder geht, bevor ein Tisch frei wird.
+In der Realität wäre das Ziel, dass die Bar optimal besetzt ist, weil dies zusätzliche Einnahmen durch Konsumation generiert. Gleichzeitig sollte vor der Türe die Schlange möglichst klein sein oder gar nicht existieren, damit keine Gäste an der Kälte warten müssen, oder sogar wieder gehen. Die Wartezeit an der Bar sollte nicht mehr als ein bis zwei Drinks betragen, damit niemand wieder geht, bevor ein Tisch frei wird.
 
-$\rightarrow$ Annahme Dauer eines Drinks an der Bar: ca. eine Viertelstunde bis 20 Minuten.
+Das Servierpersonal an der Bar soll in unserer Simulation nicht berücksichtigt werden. Grund dafür ist die Unabhängigkeit des Barbereichs vom Rest des Lokals. Das heisst: Das Barpersonal ist nicht in der Lage, kurzzeitig die Bar zu verlassen und Tische zu bedienen. Weil es nur für die Ausgabe der Getränke verantwortlich ist, kann es in der Simulation vernachlässigt werden, ohne das System zu verfälschen. Zudem gehen wir von einer fixen Bargrösse aus und berechnen auch den durch die Bar erzielten Umsatz nicht.
 
 \subsection{Tische}
 Am Tisch werden ein bis drei Gänge gegessen. In einem ersten Schritt soll dies sehr einfach abgebildet werden. Auf eine komplexe Menüsimulation in der Granularität der einzelnen Gänge wird verzichtet.
@@ -201,10 +199,10 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 
 	\subsection{Gäste}
 		\begin{itemize}
-			\item Gäste benötigen eine variierende Zeit um vom Eingang an die Bar zu gelangen, ??? wobei das Laufverhalten auch von der Gruppengrösse abhängt.
-			\item Gäste benötigen eine variierende Zeit, um von der Bar zum zugewiesenen Tisch zu gelangen. Hierbei spielt die Anordnung der Tische und die ??? Gruppengrösse eine entscheidende Rolle.
+			\item Gäste benötigen eine variierende Zeit um vom Eingang an die Bar zu gelangen. 
+			\item Gäste benötigen eine variierende Zeit, um von der Bar zum zugewiesenen Tisch zu gelangen.
+			Diese kann von der Gruppengrösse, der Anordnung der Tische und der Belegung des Restaurants (verschiedene "Gästeströme") abhängen. Diesen Umstand berücksichtigen wir in der Simulation jedoch nur durch eine variable Zeit - unabhängig von den beeinflussenden Faktoren.
 			\item Gäste benötigen eine variierende Zeit, um das Lokal wieder zu verlassen.
-			\item Die Verschiedenen Gästeströme beeinflussen sich gegenseitig. ??? Ist das Lokal gut besetzt, dauern alle Vorgänge spürbar länger.
 		\end{itemize}
 
 	\subsection{Personal}
@@ -240,18 +238,6 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 	\subsection{Dauer des Aufenthalts}
 		Ebenfalls ein Hinweis auf geringen Umsatz ist eine zu kurze mittlere Aufenthaltszeit am Tisch oder sehr lange Wartezeiten der Gäste auf bestellte Mahlzeiten. Wir gehen davon aus, dass die Aufenthaltsdauer bei ca. 1.5 Stunden liegt, und die mittlere Wartezeit für die Bedienung 15 Minuten nicht übersteigt? 
 
-
-\section{Fragestellungen}
-	Ziel ist die Gewinnmaximierung durch gute Belegung des Restaurants. Zu optimieren ist die Anzahl des Personals. Die Anzahl des Personals im Service, in der Küche und im Tellerbringen ist voneinander abhängig. Ziel ist, die optimale Anzahl für den jeweiligen Bereich zu bestimmen. Als gute Auslastung wird ??? 75\% Utilisation angenommen.
-	
-	\subsection{Grösse der Bar}
-		\textbf{Wie viele Plätze muss die Bar bieten, damit fast keine Gäste in der Kälte vor dem Eingang warten müssen und die mittlere Aufenthaltszeit an der Bar ein bis zwei Drinks nicht übersteigt?} \\
-		Als Länge für einen Drink soll 15-20 Minuten angenommen werden.
-
-	\subsection{Benötigtes Personal}
-		\textbf{Wie viel Bedienpersonal, Tellerbringer und wie viele Köche braucht es, damit die Mittlere Aufenthaltszeit am Tisch bei ca. 1.5 Stunden liegt, und die mittlere Wartezeit für die Bedienung ??? 15 Minuten nicht übersteigt?} \\
-
-
 \section{Spezifikationen}
 	Gearbeitet wird mit fiktiven Daten, ausgenommen die Anzahl der Plätze im Saal. Diese werden vom Hardrock Atlantic City übernommen.
 
@@ -273,7 +259,7 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 	\begin{itemize}
 		\item Anzahl Personal an der Bar
 		\item Verschiedene Essen/Menüs mit unterschiedlichen Servicezeiten für die Köche.
-		\item ??? Gruppen müssen zusammen an einem Tisch untergebracht werden, keine Leerplätze.
+		\item Gruppen müssten zusammen an einem Tisch untergebracht werden, keine Leerplätze.
 		\item Weitere Resultate: Wie lange dauert die Bestellaufnahme, wie lange muss ein Gast durchschnittlich auf die Bestellung warten und wie lange wartet er auf die Rechnung? Wie oft muss das Bedienpersonal an einen Tisch gehen pro Gast?
 		\item Optional: Kleine Animation
 	\end{itemize}
@@ -381,8 +367,7 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 \chapter{Simulation mit Arena}
 	\section{Customer}			
 		\subsection{Verteilung der ankommenden Gäste}
-			Um die Verteilung des Andrangs, insbesondere die beiden Spitzenzeiten am Mittag und am Abend, zu simulieren, nutzen wir einen Schedule.	
-			Die Ankunftsrate im Scheduler ist ??? negativ exponential verteilt.
+			Um die Verteilung des Andrangs, insbesondere die beiden Spitzenzeiten am Mittag und am Abend, zu simulieren, nutzen wir einen Schedule. Die Ankunftsrate im Scheduler ist negativ exponential verteilt.
 	
 			\begin{figure}[H]
 				\centering
