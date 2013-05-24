@@ -236,15 +236,14 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 	Indirekt abhängig von ist das Ziel der Gewinnmaximierung von der Utilization der beteiligten Ressourcen. So ist zum Beispiel ein nicht ausreichend ausgelastetes Servicepersonal mit Kosten verbunden, denen keine Einnahmen in Form von verkauften Mahlzeiten gegenüber steht.
 	  
 	\subsection{Dauer des Aufenthalts}
-		Ebenfalls ein Hinweis auf geringen Umsatz ist eine zu kurze mittlere Aufenthaltszeit am Tisch oder sehr lange Wartezeiten der Gäste auf bestellte Mahlzeiten. Wir gehen davon aus, dass die Aufenthaltsdauer bei ca. 1.5 Stunden liegt, und die mittlere Wartezeit für die Bedienung 15 Minuten nicht übersteigt? 
-
+		Ebenfalls ein Hinweis auf geringen Umsatz ist eine zu kurze mittlere Aufenthaltszeit am Tisch oder sehr lange Wartezeiten der Gäste auf bestellte Mahlzeiten. Wir gehen davon aus, dass die Aufenthaltsdauer bei ca. 1.5 Stunden liegt, und die mittlere Wartezeit für die Bedienung 15 Minuten nicht übersteigt. 
+		
 \section{Spezifikationen}
 	Gearbeitet wird mit fiktiven Daten, ausgenommen die Anzahl der Plätze im Saal. Diese werden vom Hardrock Atlantic City übernommen.
 
 	\subsection{Variable Grössen}
 		Es sollen verschiedene Szenarien simuliert werden. Die dazu benötigten Grössen sollen Variabel sein:
 		\begin{itemize}
-			\item Queuelänge
 			\item Anzahl Bedienpersonal
 			\item Anzahl Tellerbringer
 			\item Anzahl Köche
@@ -252,13 +251,14 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 		\end{itemize}
 
 	\subsection{Resultatgrössen}
-		Durch die Simulation sollen die \textbf{Aufenthaltszeiten an der Bar (Queue)}, die \textbf{Dauer des Aufenthaltes und Wartezeiten am Tisch}, die \textbf{Gesammtaufenthaltsdauer im Restaurant} und die \textbf{Auslastung der Agents} ermittelt werden.
+		Durch die Simulation sollen der \textbf{erzielte Umsatz}, die \textbf{Dauer des Aufenthaltes und Wartezeiten am Tisch}, die \textbf{Gesammtaufenthaltsdauer im Restaurant} und die \textbf{Auslastung der Agents} ermittelt und optimiert werden.
 
 \subsection{Zusatzprojekt (optional)}
 	In einem weiteren Projekt kann die Simulation ausgebaut und verfeinert werden, indem weitere Parameter hinzugefügt  und detailliertere Daten erhoben werden:
 	\begin{itemize}
+		\item Grösse der Bar
 		\item Anzahl Personal an der Bar
-		\item Verschiedene Essen/Menüs mit unterschiedlichen Servicezeiten für die Köche.
+		\item Differenzierung der Mahlzeiten: verschieden Menüs mit unterschiedlichen Zubereitungszeiten für die Köche.
 		\item Gruppen müssten zusammen an einem Tisch untergebracht werden, keine Leerplätze.
 		\item Weitere Resultate: Wie lange dauert die Bestellaufnahme, wie lange muss ein Gast durchschnittlich auf die Bestellung warten und wie lange wartet er auf die Rechnung? Wie oft muss das Bedienpersonal an einen Tisch gehen pro Gast?
 		\item Optional: Kleine Animation
@@ -280,7 +280,7 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 		Vor den Verlassen des Lokals wird Bezahlt, anschliessend werden die Plätze wieder freigegeben.
 		
 		\subsection{Bedienung}
-		Das Bedienpersonal befinden sich in einem geschlossenen Zyklus. Sie nehmen am Tisch eine oder mehrere Bestellungen entgegen und bringen diese in die Küche.
+		Das Bedienpersonal befinden sich in einem geschlossenen Zyklus. Es nimmt dabei am Tisch eine oder mehrere Bestellungen entgegen und reicht diese an die Küche weiter.
 		
 		\subsection{Köche}
 		Die Köche befinden sich ebenfalls in einem geschlossenen Zyklus. Sie nehmen Bestellungen entgegen und richten Teller an.
@@ -302,7 +302,7 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 		Gäste werdem in Gruppen von eins bis vier Personen erzeugt. Die Erzeugung unterliegt einer definierten Verteilung.
 		
 		\subsection{Placement}
-		Gäste warten in einer beliebig langen Queue, bis eine Platzressource zur Belegung an der Bar frei wird. Die Platzressource wird freigegeben, sobald eine freie Tischressource belegt werden kann.
+		Gäste warten in einer Queue, bis eine Platzressource zur Belegung an der Bar frei wird. Sind mehr als zehn Gruppen (mean: 20 Personen) in der Queue, so verlassen die Gäste den Ort ohne Restaurantbesuch. Eine belegte Platzressource an der Bar wird freigegeben, sobald eine freie Tischressource belegt werden kann.
 		
 		\subsection{Ordering}
 		Während einer Bestellung wird die Bedienung als Ressource belegt und anschliessend wieder freigegeben.
@@ -317,7 +317,8 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 		Gäste warten, bis die Bestellung zubereitet wurde (Verteilfunktion), für die Auslieferung der Teller wird die Ressource Tellerbringer für eine bestimmte Zeit (Verteilfunktion) belegt. Die Dauer des Essens wird ebenfalls mittels einer Verteilfunktion modelliert.
 		
 		\subsection{Payment}
-		Für die Bezahlung ist bis jetzt kein Szenario definiert
+		Der Vorgang des Bezahlens ist für unser Modell nicht relevant, könnte aber einfach durch eine Verzögerung vor dem Verlassen des Restaurants realisiert werden.
+		Für die Bezahlung ist bis jetzt kein Szenario definiert.
 		
 		\subsection{Exit}
 		Gäste geben die belegte Ressource Tisch wieder frei und verlassen das Restaurant.
