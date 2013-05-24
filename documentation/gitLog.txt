@@ -1,5 +1,13 @@
-2013-05-14 15:27:10 +0200:  (HEAD, master) Time Records <ubaumann.ch>
-2013-05-13 19:50:42 +0200:  (origin/master) Plausibilitätscheck <Tobias Blaser>
+2013-05-20 12:02:42 +0200:  merge <ubaumann.ch>
+2013-05-20 12:00:13 +0200:  optimization <ubaumann.ch>
+2013-05-17 17:55:04 +0200:  (origin/master) Szenariensimulation <Tobias Blaser>
+2013-05-17 14:58:48 +0200:  adjusted ordering time <simplinx>
+2013-05-17 14:52:49 +0200:  2nd doku refactoring <simplinx>
+2013-05-17 14:27:56 +0200:  doku refactoring <simplinx>
+2013-05-16 18:17:12 +0200:  Korrekturen und Fragestellung (???) für Besprechung morgen <Reto Schelbert>
+2013-05-16 08:33:30 +0200:  Word-Model überarbeiten <Tobias Blaser>
+2013-05-14 15:27:10 +0200:  Time Records <ubaumann.ch>
+2013-05-13 19:50:42 +0200:  Plausibilitätscheck <Tobias Blaser>
 2013-05-13 19:50:38 +0200:  Arena model für noobs <Reto Schelbert>
 2013-05-13 19:49:10 +0200:  Model10 - Variablen mit 0er! <Reto Schelbert>
 2013-05-13 18:22:01 +0200:  Szenario csv Hinzufügen <Tobias Blaser>
