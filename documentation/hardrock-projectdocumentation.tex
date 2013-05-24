@@ -132,6 +132,8 @@ urlcolor=black
 		1.5 & Simulation & Alle & 10.05.2013 \\
 		1.6 & Modellbeschreibungen & Tobias Blaser & 11.05.2013\\
 		1.7 & Plausibilitätscheck, Szenarios & Alle & 13.05.2013\\
+		1.8 & Szenarien, Auswertung & Urs Baumann, Tobias Blaser & 17.05.2013\\
+		1.9 & Auswertung, Überarbeitungen & Alle & 24.05.2013\\
 		\hline
 \end{tabularx}
 
@@ -238,10 +240,19 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 	\subsection{Dauer des Aufenthalts}
 		Ebenfalls ein Hinweis auf geringen Umsatz ist eine zu kurze mittlere Aufenthaltszeit am Tisch oder sehr lange Wartezeiten der Gäste auf bestellte Mahlzeiten. Wir gehen davon aus, dass die Aufenthaltsdauer bei ca. 1.5 Stunden liegt, und die mittlere Wartezeit für die Bedienung 15 Minuten nicht übersteigt? 
 
+
+\section{Fragestellungen}
+	Ziel ist die Gewinnmaximierung durch gute Belegung des Restaurants. Zu optimieren ist die Anzahl des Personals. Die Anzahl des Personals im Service, in der Küche und im Tellerbringen ist voneinander abhängig. Ziel ist, die optimale Anzahl für den jeweiligen Bereich zu bestimmen. Als gute Auslastung wird ??? 75\% Utilisation angenommen.
+	
 	\subsection{Grösse der Bar}
-		Die Bar funktioniert als Puffer für wartende Gäste. So kann das Restaurant auf einen Tisch wartende Gäste trotzdem aufnehmen und erzeugt in der Realität auch Umsatz damit. Wir lassen diesen Aspekt unberücksichtigt. Eine mögliche Fragestellung ist, ob die bei 40 Plätzen angesetzte Grösse der Bar optimal ist.
-		
-	\section{Spezifikationen}
+		\textbf{Wie viele Plätze muss die Bar bieten, damit fast keine Gäste in der Kälte vor dem Eingang warten müssen und die mittlere Aufenthaltszeit an der Bar ein bis zwei Drinks nicht übersteigt?} \\
+		Als Länge für einen Drink soll 15-20 Minuten angenommen werden.
+
+	\subsection{Benötigtes Personal}
+		\textbf{Wie viel Bedienpersonal, Tellerbringer und wie viele Köche braucht es, damit die Mittlere Aufenthaltszeit am Tisch bei ca. 1.5 Stunden liegt, und die mittlere Wartezeit für die Bedienung ??? 15 Minuten nicht übersteigt?} \\
+
+
+\section{Spezifikationen}
 	Gearbeitet wird mit fiktiven Daten, ausgenommen die Anzahl der Plätze im Saal. Diese werden vom Hardrock Atlantic City übernommen.
 
 	\subsection{Variable Grössen}
@@ -465,9 +476,13 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 			Dazu erstellen wir 27 Szenarien, die das Servicepersonal zwischen 10 und 12, die Tellerbringer zwischen 3 und 5 sowie die Köche zwischen 13 und 15 variieren.
 			
 			Die vier Besten Resultate dieser Simulation zeigen die Besten bisher gehabten Resultate. Alle Resultate benötigen 10 Servierkräfte, die Tellerbringer variieren zwischen 4 und vier und die Köche zwischen 13 und 15. Der Beste Fall erhalten wir mit 10 Servierkräften, 3 Tellerbringer und 14 Köchen.
+			
 		
 		\subsection{Vierte Selektion}
 			Nach der Optimierung des Personals geht es noch um die Optimierung der Bargrösse.
+			
+			
+			
 			
 	\section{Plausibilitäts-Checks}
 	Zur Überprüfung der Plausibilität des aufgebauten Arena Modells experimentierten wir mit verschiedenen Parametern. Dabei sind einige Dinge aufgefallen:
@@ -503,16 +518,35 @@ Die Kosten für Angestellte sind konstant und nicht von der Anzahl Bestellungen 
 \end{tabularx}
 	
 \chapter{Auswertung}
-
-		\subsection{Kriterium Bargrösse}	
-			Die Frage, ob eine Bargrösse von 40 Personen ausreichend ist, lässt sich mit allen Simulationsläufen bejahen. Da die Bar jedoch als unabhängiges Teilsystem funktioniert und deren Umsatz nicht in die Gewinnberechnung miteinbezogen wird, ist diese Frage ausgelagert. Die Auslastung der Bar wurde in der Simulation erhoben und liegt bei einem geringen Wert. Voll besetzt ist sie nur am Abend. Es ist zu überprüfen, ob eine Verkleinerung angebracht wäre. Dies könnte in einem Folgeprojekt überprüft werden. 
-			
+	\section{If Questions}
+		\begin{itemize}
+			\item \textbf{Was passiert, wenn wir die Anzahl Köche variiert wird?} \\
+				Die Köche bringen eine grössere Menge an Bestellungen durch in der gleichen Zeit. Das Servicepersonal ist besser ausgelastet. Sobald das Verhältnis von Köchen zu Servicepersonal 1.4:1 übersteigt, sind die Servierkräfte kommplett ausgelastet, bzw. überlastet. Die Tellerbringer sind überlastet, sobald das Verhältnis von Köchen zu Tellerbringern 4.7:1 übersteigt.
+			\item \textbf{Was passiert, wenn die Anzahl Köche verringert wird?} \\
+				In der Küche stauen sich die Bestellungen. Die Gäste müssen zu lange auf das Essen warten. Zu wenige neue Gäste können in das Lokal eintreten, das Servierpersonal und die Tellerbringer sind ab den genannten Grenzen nicht mehr ausgelastet.
+			\item \textbf{Was passiert, wenn die Anzahl Tellerbringer erhöht wird?}\\
+				Sind zu viele Tellerbringer vorhanden, sind diese nicht ausgelastet und stehen herum.
+			\item \textbf{Was passiert, wenn die Anzahl Tellerbringer verringert wird?}\\
+				Sind weniger Tellerbringer als oben erwähnt vorhanden, stauen sich die gekochten Bestellungen in der Küche. Die Gäste erhalten wiederum die Bestellungen verspätet, belegen das Lokal länger und insgesammt sinkt die Anzahl Bestellungen, die durchgebracht werden können.
+			\item \textbf{Was passiert, wenn die Anzahl Servicekräfte erhöht wird?}\\
+				Werden die Servicekräfte erhöht, können mehr Bestellungen aufgenommen werden. Sobald das oben genannte Verhältnis zu den Köchen überstiegen wird, Stauen sich die Bestellungen in der Küche, das Servierpersonal ist unterausgelastet.
+			\item \textbf{Was passiert, wenn die Anzahl Servierkräfte verringert wird?}\\
+				Die Servierkräfte können weniger Bestellungen aufnehmen. Die Küche und die Tellerbringer sind weniger stark ausgelastet.
+			\item \textbf{Was passiert, wenn die Anzahl Plätze an der Bar verändert werden?}\\
+				Wird die Platzzahl erhöht, so ist die Schlange vor der Türe kleiner und weniger Leute gehen wieder nach Hause. Das Restaurant ist länger besetzt und mehr Umsatz wird generiert. Ist die Bar zu gross, führt der Verzögerungseffekt dazu, dass Gäste noch nach Betriebsschluss im Lokal sind.
+				
+				Ist die Bar zu klein, gehen viele Leute wieder nach Hause, weil die Schlange vor der Tür zu lang ist. Weniger Gäste durchlaufen das Lokal und weniger Umsatz wird generiert.
+			\item \textbf{Was passiert, wenn die Grösse der akzeptablen Schlange variiert wird, bis Gäste wieder nach Hause gehen?}\\
+				Wird die Grösse angehoben, gehen weniger Leute nach Hause. Es braucht Mehr Personal im Lokal und die Gäste verbleiben durch den Verzögerungseffekt wie bei der Bar möglicherweise bis nach Betriebsschluss.
+				
+				Wir die Grösse verkleinert, so gehen mehr Leute nach Hause. Es wird weniger Personal benötigt und weniger Umsatz generiert.
+		\end{itemize}
 
 
 \appendix
 \chapter{Präsentation Projektvorstellung}
 \begin{center}
-	\includegraphics[page=1,angle=180, scale=0.7]{media/presentation-hardrock-slides.pdf}
+	\includegraphics[page=1,angle=180, scale=0.67]{media/presentation-hardrock-slides.pdf}
 \end{center}
 \begin{center}
 	\includegraphics[page=2,angle=180, scale=0.8]{media/presentation-hardrock-slides.pdf}
