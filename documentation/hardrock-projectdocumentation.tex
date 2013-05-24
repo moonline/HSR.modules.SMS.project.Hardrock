@@ -145,7 +145,7 @@ urlcolor=black
 
 
 \section{Model}
-Als Ausgangskonzept wird das Hardrock in Atlantic City verwendet.
+Als Ausgangskonzept wird das Hardrock Cafe in Atlantic City verwendet. Wir verwenden auch die realen Grössen dieses Lokals als Ausgangslage.  
 \begin{figure}[htp]
 	\centering
 		\includegraphics[width=1\textwidth]{img/hardrock-plan.png}
@@ -159,28 +159,28 @@ Vor dem Eingangsbereich warten die Gäste in einer Schlange, bis an der Bar Plä
 Ist die Schlange vor dem Eingang zu lang, gehen Gäste wieder ohne Besuch im Restaurant. Dies soll möglichst vermieden werden, da diese Gäste keinen Umsatz bescheren.
 
 \subsection{Bar}
-Die Bar dient als Warteschlange für die Gäste, bis Plätze an einem Tisch frei werden. Gäste werden an der Bar bedient und konsumieren Getränke.
+Die Bar dient als Warteschlange und Puffer für die Gäste, bis Plätze an einem Tisch frei werden. Gäste werden an der Bar bedient und konsumieren Getränke.
 
-In der Realität wäre das Ziel, dass die Bar optimal besetzt ist, weil dies zusätzliche Einnahmen durch Konsumation generiert. Gleichzeitig sollte vor der Türe die Schlange möglichst klein sein oder gar nicht existieren, damit keine Gäste an der Kälte warten müssen, oder sogar wieder gehen. Die Wartezeit an der Bar sollte nicht mehr als ein bis zwei Drinks betragen, damit niemand wieder geht, bevor ein Tisch frei wird.
+In der Realität wäre das Ziel, dass die Bar optimal besetzt ist, weil dies zusätzliche Einnahmen durch Konsumation generiert. Die Wartezeit an der Bar sollte nicht mehr als ein bis zwei Drinks betragen, damit niemand wieder geht, bevor ein Tisch frei wird.
 
 Das Servierpersonal an der Bar soll in unserer Simulation nicht berücksichtigt werden. Grund dafür ist die Unabhängigkeit des Barbereichs vom Rest des Lokals. Das heisst: Das Barpersonal ist nicht in der Lage, kurzzeitig die Bar zu verlassen und Tische zu bedienen. Weil es nur für die Ausgabe der Getränke verantwortlich ist, kann es in der Simulation vernachlässigt werden, ohne das System zu verfälschen. Zudem gehen wir von einer fixen Bargrösse aus und berechnen auch den durch die Bar erzielten Umsatz nicht.
 
 \subsection{Tische}
-Am Tisch werden ein bis drei Gänge gegessen. In einem ersten Schritt soll dies sehr einfach abgebildet werden. Auf eine komplexe Menüsimulation in der Granularität der einzelnen Gänge wird verzichtet.
+Gäste eines Restaurants essen in der Regel einen bis drei Gänge an einem Tisch. In einem ersten Schritt soll dieser Umstand  vereinfach durch die Dauer der Konsumation abgebildet werden. Auf eine komplexe Menüsimulation in der Granularität der einzelnen Gänge wird verzichtet.
 
 Das Servierpersonal kommt einmal und nimmt Bestelllungen auf. Das Servierpersonal ist somit für eine bestimmte Zeit belegt und anschliessend wieder frei. 
 
 Das Szenario Teller und Karte bringen soll erst in einem zweiten Schritt modelliert werden, je nach verfügbarer Projektzeit.
 
-In der realen Welt bestehen die Tische aus Vierertischen. Ankommende Gruppen müssen aufgeteilt oder Tische zusammengeschoben werden. Bei weniger als 4 Personen kann es zu leeren Plätzen kommen. Um die Simulation nicht unnötig aufzublähen, soll dies nicht berücksichtigt werden in der Simulation.
+In der realen Welt bestehen die Tische aus Vierertischen. Ankommende Gruppen müssen aufgeteilt oder Tische zusammengeschoben werden. Bei weniger als 4 Personen kann es zu leeren Plätzen kommen. Um die Simulation nicht unnötig aufzublähen, soll dies nicht berücksichtigt werden.
 Die Anzahl Plätze werden fix gewählt anhand des Beispiels von Atlantic City (250 Plätze).
 
-Nach dem Esssen  verlassen die Gäste das Hardrock und der Tisch wird frei für neue Gäste.
-In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zurückkehren.
+Nach dem Essen verlassen die Gäste das Hardrock Cafe. Der von ihnen besetzte Tisch wird für neue Gäste freigegeben.
+In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zurückkehren. Wir berücksichtigen diese Option nicht.
 
 
 \subsection{Küche}
-	In der Küche werden die verschiedenen Mahlzeiten gekocht und angerichtet. Die Köche arbeiten gleichzeitig an mehreren Menüs und versuchen, zusammengehörende Menüs möglichst gleichzeitig fertigzustellen.
+	In der Küche werden die verschiedenen Mahlzeiten gekocht und angerichtet. Die Köche arbeiten gleichzeitig an mehreren Menüs und versuchen, zu einer einzelnen Bestellung gehörende Mahlzeiten möglichst gleichzeitig fertigzustellen.
 
 	In einem ersten Schritt soll die Küche sehr rudimentär simuliert werden. Es existieren Köche, die eine bestimmte Zeit benötigen, um Essen zuzubereiten. Paralleles Kochen von Menüs soll nur durch entsprechende Verkürzung der Gesammtkochzeit abgebildet werden.
 
@@ -479,6 +479,8 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 	\section{Plausibilitäts-Checks}
 	Zur Überprüfung der Plausibilität des aufgebauten Arena Modells experimentierten wir mit verschiedenen Parametern. Dabei sind einige Dinge aufgefallen:
 	\begin{itemize}
+		\item In Arena wurde der OptQuest eingesetzt, um das von uns manuell gefundene Optimum zu verifizieren. OptQuest hat unser Resultat bestätigt.   
+		\item Anzahl der Köche: Auf den ersten Blick scheint die von uns ermittelte optimale Anzahl der Köche scheint auf den ersten Blick sehr hoch zu sein im Vergleich zum übrigen Personal. Nachfragen bei Fachleuten haben uns bestätigt, dass diese Anzahl sehr stark von den Gegebenheiten eines Restaurants abhängen kann: Anzahl der angebotenen Menus, Art der Zubereitung etc. 
 		\item Die minimale Grösse der Bar muss der grösst möglichen Gruppengrösse (in unserem Fall 4) entsprechen. Andererseits können Gruppen, die grösser als die Bar sind, gar nicht ins Restaurant eintreten.
 		Dieses Szenario entspricht nicht ganz der Realität. In der Realität bestehen grosse Gruppen aus kleineren Gruppen. Daher wird ein Teil einer grossen Gruppe bereits das Restaurant betreten, während die Restlichen noch draussen warten.\\
 		$\rightarrow$ Da wir eine Bar zwischen 10 und 50 Plätzen anstreben und die Gruppen eine maximale Grösse von vier Personen ausweisen, spielt diese Gegebenheit keine Rolle.
