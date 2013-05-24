@@ -229,47 +229,19 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 	\end{itemize}
 
 \section{Objectives}
-	\begin{itemize}
-		\item Vor der Türe:
-			\begin{itemize}
-				\item Queue: Ankommende Gäste lim(0)
-			\end{itemize}
-		\item Küche
-			\begin{itemize}
-				\item Agents: Köche
-			\end{itemize}
-		\item Bedienung
-			\begin{itemize}
-				\item Agents: Bedienpersonal, Tellerbringer
-			\end{itemize}
-		\item Bar
-			\begin{itemize}
-				\item Queue: Anzahl Warteplätze
-			\end{itemize}
-		\item Tische
-			\begin{itemize}
-				\item Ressourcen: Anzahl Plätze
-			\end{itemize}
-	\end{itemize}
-	\begin{itemize}
-		\item Gäste
-		\item Entities: Gruppen von 1-4 Personen 
-	\end{itemize}
+	\subsection{Gewinn}
+	Ziel ist die Gewinnmaximierung durch gute Belegung des Restaurants. Zu optimieren ist die Anzahl des Personals im Hinblick auf dieses Ziel. Die Anzahl des Personals im Service, in der Küche und im Tellerbringen ist voneinander abhängig. Hautpziel ist, die optimale Anzahl für den jeweiligen Bereich zu bestimmen. 
 
+	\subsection{Utilization}
+	Indirekt abhängig von ist das Ziel der Gewinnmaximierung von der Utilization der beteiligten Ressourcen. So ist zum Beispiel ein nicht ausreichend ausgelastetes Servicepersonal mit Kosten verbunden, denen keine Einnahmen in Form von verkauften Mahlzeiten gegenüber steht.
+	  
+	\subsection{Dauer des Aufenthalts}
+		Ebenfalls ein Hinweis auf geringen Umsatz ist eine zu kurze mittlere Aufenthaltszeit am Tisch oder sehr lange Wartezeiten der Gäste auf bestellte Mahlzeiten. Wir gehen davon aus, dass die Aufenthaltsdauer bei ca. 1.5 Stunden liegt, und die mittlere Wartezeit für die Bedienung 15 Minuten nicht übersteigt? 
 
-
-\section{Fragestellungen}
-	Ziel ist die Gewinnmaximierung durch gute Belegung des Restaurants. Zu optimieren ist die Anzahl des Personals. Die Anzahl des Personals im Service, in der Küche und im Tellerbringen ist voneinander abhängig. Ziel ist, die optimale Anzahl für den jeweiligen Bereich zu bestimmen. Als gute Auslastung wird ??? 75\% Utilisation angenommen.
-	
 	\subsection{Grösse der Bar}
-		\textbf{Wie viele Plätze muss die Bar bieten, damit fast keine Gäste in der Kälte vor dem Eingang warten müssen und die mittlere Aufenthaltszeit an der Bar ein bis zwei Drinks nicht übersteigt?} \\
-		Als Länge für einen Drink soll 15-20 Minuten angenommen werden.
-
-	\subsection{Benötigtes Personal}
-		\textbf{Wie viel Bedienpersonal, Tellerbringer und wie viele Köche braucht es, damit die Mittlere Aufenthaltszeit am Tisch bei ca. 1.5 Stunden liegt, und die mittlere Wartezeit für die Bedienung ??? 15 Minuten nicht übersteigt?} \\
-
-
-\section{Spezifikationen}
+		Die Bar funktioniert als Puffer für wartende Gäste. So kann das Restaurant auf einen Tisch wartende Gäste trotzdem aufnehmen und erzeugt in der Realität auch Umsatz damit. Wir lassen diesen Aspekt unberücksichtigt. Eine mögliche Fragestellung ist, ob die bei 40 Plätzen angesetzte Grösse der Bar optimal ist.
+		
+	\section{Spezifikationen}
 	Gearbeitet wird mit fiktiven Daten, ausgenommen die Anzahl der Plätze im Saal. Diese werden vom Hardrock Atlantic City übernommen.
 
 	\subsection{Variable Grössen}
@@ -356,6 +328,35 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 		
 \end{landscape}
 
+		\subsection{Entitäten}
+		Zusammengefasst sind in der Modellierung des Systems die folgenden Entitäten vorhanden.
+		
+			\begin{itemize}
+		\item Vor der Türe:
+			\begin{itemize}
+				\item Queue: Ankommende Gäste
+			\end{itemize}
+		\item Küche
+			\begin{itemize}
+				\item Agents: Köche
+			\end{itemize}
+		\item Bedienung
+			\begin{itemize}
+				\item Agents: Bedienpersonal, Tellerbringer
+			\end{itemize}
+		\item Bar
+			\begin{itemize}
+				\item Queue: Anzahl Warteplätze
+			\end{itemize}
+		\item Tische
+			\begin{itemize}
+				\item Ressourcen: Anzahl Plätze
+			\end{itemize}
+	\end{itemize}
+	\begin{itemize}
+		\item Gäste
+		\item Entities: Gruppen von 1-4 Personen 
+	\end{itemize}
 
 
 \chapter{Simulation mit Arena}
@@ -401,61 +402,61 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 	
 	
 		\subsection{Gruppenbestellungen}
-			Gruppen bestellen gemeinsam, erhalten ihr Essen gemeinsam, gekocht wird es jedoch unabhängig. Dazu wird die Bestellung in der Küche dupliziert und damit bis zu vier Unterbestellungen simuliert. Vor dem Ausliefern werden die Unterbestellungen wieder zu einer Gesammtbestellung zusammengefügt.
+			Gruppen bestellen gemeinsam und erhalten ihr Essen zum gleichen Zeitpunkt, gekocht wird es jedoch unabhängig. Um dies abzubilden, verwenden wir da folgende Vorgehen: Die Bestellung der Gruppe wird in der Küche dupliziert und damit werden bis zu vier Unterbestellungen simuliert. Vor dem Ausliefern werden die Unterbestellungen wieder zu einer Gesamtbestellung zusammengefügt.
 			
 			
 	\section{Dinnering}
 		\subsection{Bestellungsauslieferung}					
-			Die Tellerbringer liefern immer nur Gesammtbestellungen aus. Darum wird ??? pro Bestellung nur ein Tellerbringer benötigt. Zur Simulation wird eine Uniformverteilung von einer halben bis vier Minuten verwendet.
+			Die Tellerbringer liefern immer nur Gesamtbestellungen an eine Gruppe aus. Darum wird Bestellung nur ein Tellerbringer benötigt, der bis zu vier Teller (maximale Gruppengrösse) zum Tisch bringt. Zur Simulation wird die Laufzeit von der Theke bis zum Tisch in einer Uniformverteilung von einer halben bis vier Minuten abgebildet.
 
 
 		\subsection{Essen}
-			Das Essen dauert zwischen 15 Minuten und einer Stunde. Gänge werden nicht unterschieden, sondern nur implizit über die Verteilfunktion simuliert. Genutzt wird eine Triangularverteilung mit einem Mittelwert von 40 Minuten.\\
+			Das Essen dauert zwischen 15 Minuten und einer Stunde. Einzelne Gänge des Essens werden nicht konkret unterschieden, sondern nur implizit über die Dauer des Aufenthalts am Tisch in einer Verteilfunktion simuliert. Genutzt wird eine Triangularverteilung mit einem Mittelwert von 40 Minuten.\\
 			
 	\section{Szenarien}
-		Zur einfacheren Realisierung der Szenarien werden Controlls gesetzt um die Parameter für jedes Szenario ohne grosse Aufwände einstellen zu können.\\
+		Zur einfacheren Realisierung der Szenarien werden Controls gesetzt, um die Parameter für jedes Szenario ohne grossen Aufwand variieren zu können.\\
 		
 		\csvautotabular{szenario.csv}
 		
-		Die Szenarien soll
+		Die Szenarien sollen in einem ersten Schritt aufzeigen, in welcher Grössenordnung sich die Anzahl der benötigten Servicekräfte, Tellerbringer und Köche zueinander bewegt.
 			
 		\subsection{Szenarienoptimierung}
-		Nach einer ersten Simulation mit den definierten Szenarien hat sich herausgestellt, dass einige Szenarien gleich von Angang an ausgeschlossen werden können.
+		Nach einer ersten Simulation hat sich herausgestellt, dass einige der oben definierten Szenarien gleich von Anfang an ausgeschlossen werden können. So zeigte sich, dass die Anzahl der Tellerbringer und Servicekräfte nicht über der Anzahl Köche liegen kann. Dies wurde ersichtlich, weil sich der Umsatz und damit der Durchsatz (Servicezeiten) im System nicht änderten, wenn die Anzahl der Tellerbringer und Servicekräfte variiert wurden, wenn sie überhalb der Anzahl der Köche lag. Lediglich deren Utilization verringerte sich bei einer Erhöhung der Anzahl.
+		 Ebenso konnte ausgeschlossen werden, dass die Anzahl der Köche um einen Faktor von mehr als ca. 4 über der Anzhal der Servicekräfte und des Tellerbringer liegt.  
 		
 		\subsection{erste Selektion}
-			Aus den besten vier Szenarien und den schlechtesten vier Szenarien lassen sich Tendenzen ableiten:
+			Bezogen auf die Umsatzoptimierung lassen sich aus den besten vier und den schlechtesten vier Szenarien die folgenden Tendenzen ableiten:
 			\begin{itemize}
 				\item Es werden viele Köche benötigt. 
 				\item Tellerbringer braucht es sehr wenige.
 				\item Servierpersonal wird etwa halb so viel wie Köche und doppelt so viele wie Tellerbringer benötigt.
 			\end{itemize}
 		
-			Aus diesen Daten entnehmen wir anschliessend den Besten Fall (8 Servierpersonal, 4 Tellerbringer und 16 Köche) und schauen diesen detailiierter an:
+			Aus diesen Daten entnehmen wir anschliessend den besten Fall (8 Servierpersonal, 4 Tellerbringer und 16 Köche) und analysieren diesen detailierter an:
 		
 			\begin{itemize}
-				\item Der Service ist mit fast 90 zu hoch ausgelastet. Konkret ist das Personal immer komplett ausgelastet, nur am Nachmittag ist der Service nicht komplett ausgelastet.
-				\item Die Tellerbringer sind zwar regelmässig ausgelastet, insgesammt jedoch zu wenig.
-				\item Die Köche sehr regelmässig und über die gesammte Zeit ausgelastet.
+				\item Der Service ist mit fast 90\% zu hoch ausgelastet. Konkret ist das Personal nicht nur zu den im Scheduler definierten Spitzenzeiten komplett ausgelastet, sondern über den ganzen Zeitraum ausser in den Nachmittagsstunden. 				\item Die Tellerbringer sind zwar über die ganze Simulationszeit regelmässig ausgelastet, insgesammt jedoch zu wenig.
+				\item Die Köche sind sehr konstant und über die gesamte Simulationszeit ausgelastet.
 			\end{itemize}
 			
 			
 		\subsection{zweite Selektion}
-			Als erstes erhöhen wir die Anzahl Simulationsdurchgänge von 10 auf 100, um stabilere Resultate zu erhalten.
+			Als erstes erhöhen wir die Anzahl Simulationsdurchgänge von 10 auf 100, um stabilere und vertrauenswürdigere Resultate zu erhalten.
 			
 			\subsubsection{Servierpersonal}
 				In einer erneuten Simulation wird nur die Anzahl Servierpersonal zwischen 8 und 14 variiert, während die Anzahl Tellerbringer bei 4 und die Anzahl Köche bei 16 bleibt.
 				
-				Aus der erneuten Simulation geht hervor, dass 11 Servierkräfte die optimale Anzahl sind.
+				Aus der erneuten Simulation geht hervor, dass sich die optimale Anzahl der Servicekräfte um 11 bewegt.
 				
 			\subsection{Tellerbringer}
-				In einem weiteren Schritt fixieren wir das Servierpersonal bei 11 Personen und die Köche bie 16 Personen und variieren die Tellerbringer zwischen 2 und 6.
+				In einem weiteren Schritt fixieren wir das Servierpersonal bei 11 und die Köche bie 16 Personen, variieren aber die Tellerbringer zwischen 2 und 6.
 				
-				Aus diesen Daten geht hervor, dass die optimale Anzahl Tellerbringer bei den schon bisher gewählten vier liegt.
+				Aus den Ergebnissen der Simulationsläufe geht hervor, dass die optimale Anzahl Tellerbringer bei den schon zuvor gewählten vier liegt.
 
 			\subsection{Köche}
-				Im letzen Schritt fixieren wir die Tellerbringer und das Servierpersonal und variieren die Köche zwischen 11 und 18 Personen.
+				Im letzen Schritt fixieren wir die Tellerbringer und das Servierpersonal, variieren stattdessen die Köche zwischen 11 und 18 Personen.
 				
-				Die optimale Anzahl Köche liegt bei 14. Daraus ergibt sich ein Verhältnis von 11:4:14 oder 0.8 Servierdüsen auf 0.3 Tellerbringer auf einen Koch.
+				Die optimale Anzahl Köche liegt bei 14. Daraus ergibt sich ein Verhältnis von 11:4:14 oder 0.8 Servicekräfte auf 0.3 Tellerbringer auf einen Koch.
 
 		
 		\subsection{Dritte Selektion}
@@ -464,16 +465,12 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 			Dazu erstellen wir 27 Szenarien, die das Servicepersonal zwischen 10 und 12, die Tellerbringer zwischen 3 und 5 sowie die Köche zwischen 13 und 15 variieren.
 			
 			Die vier Besten Resultate dieser Simulation zeigen die Besten bisher gehabten Resultate. Alle Resultate benötigen 10 Servierkräfte, die Tellerbringer variieren zwischen 4 und vier und die Köche zwischen 13 und 15. Der Beste Fall erhalten wir mit 10 Servierkräften, 3 Tellerbringer und 14 Köchen.
-			
 		
 		\subsection{Vierte Selektion}
 			Nach der Optimierung des Personals geht es noch um die Optimierung der Bargrösse.
 			
-			
-			
-			
 	\section{Plausibilitäts-Checks}
-	Zur Überprüfung der Plausibilität des aufgebauten Arena Modells experimentierten wir mit verschiedenen Parameter. Dabei sind einige Dinge aufgefallen:
+	Zur Überprüfung der Plausibilität des aufgebauten Arena Modells experimentierten wir mit verschiedenen Parametern. Dabei sind einige Dinge aufgefallen:
 	\begin{itemize}
 		\item Die minimale Grösse der Bar muss der grösst möglichen Gruppengrösse (in unserem Fall 4) entsprechen. Andererseits können Gruppen, die grösser als die Bar sind, gar nicht ins Restaurant eintreten.
 		Dieses Szenario entspricht nicht ganz der Realität. In der Realität bestehen grosse Gruppen aus kleineren Gruppen. Daher wird ein Teil einer grossen Gruppe bereits das Restaurant betreten, während die Restlichen noch draussen warten.\\
@@ -507,6 +504,9 @@ Die Kosten für Angestellte sind konstant und nicht von der Anzahl Bestellungen 
 	
 \chapter{Auswertung}
 
+		\subsection{Kriterium Bargrösse}	
+			Die Frage, ob eine Bargrösse von 40 Personen ausreichend ist, lässt sich mit allen Simulationsläufen bejahen. Da die Bar jedoch als unabhängiges Teilsystem funktioniert und deren Umsatz nicht in die Gewinnberechnung miteinbezogen wird, ist diese Frage ausgelagert. Die Auslastung der Bar wurde in der Simulation erhoben und liegt bei einem geringen Wert. Voll besetzt ist sie nur am Abend. Es ist zu überprüfen, ob eine Verkleinerung angebracht wäre. Dies könnte in einem Folgeprojekt überprüft werden. 
+			
 
 
 \appendix
