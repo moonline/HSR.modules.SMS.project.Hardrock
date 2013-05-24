@@ -321,14 +321,18 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 		
 		\subsection{Exit}
 		Gäste geben die belegte Ressource Tisch wieder frei und verlassen das Restaurant.
-		\begin{figure}[H]
-				\includegraphics[page=3,trim=2cm 12cm 12cm 2cm, clip=true,width=1\textwidth]{../model/Modell_v2.pdf}
-				\caption[Hardrock Flow Diagramm Kitchen]{Hardrock Flow Diagramm Kitchen}
-				\label{flowDiagrammKitchen}
-		\end{figure}
 		
 		\subsection{Kitchen}
 		Die Bestellung der Gruppe wird in einzelne Unterbestellungen aufgesplittet und kann parallel verarbeitet werden. Eine Unterbestellung belegt für die Zubereitung einen Koch.
+		
+		\begin{figure}[H]
+			\begin{center}
+					\includegraphics[page=3,trim=2cm 12cm 12cm 2cm, clip=true,width=0.6\textwidth]{../model/Modell_v2.pdf}
+					\caption[Hardrock Flow Diagramm Kitchen]{Hardrock Flow Diagramm Kitchen}
+					\label{flowDiagrammKitchen}
+			\end{center}
+		\end{figure}
+		
 		
 \end{landscape}
 
@@ -370,7 +374,7 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 	
 			\begin{figure}[H]
 				\centering
-					\includegraphics[width=0.75\textwidth]{img/scheduler.png}
+					\includegraphics[trim=0.35cm 1.75cm 1cm 1.75cm, clip=true,width=0.75\textwidth]{img/scheduler.png}
 					\caption[Arrival Sceduler in Arena]{Ankunfts Sceduler in Arena}
 					\label{arrivalSceduler}
 			\end{figure}
@@ -419,9 +423,15 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 	\section{Szenarien}
 		Zur einfacheren Realisierung der Szenarien werden Controls gesetzt, um die Parameter für jedes Szenario ohne grossen Aufwand variieren zu können.\\
 		
-		\csvautotabular{szenario.csv}\\
-		
 		Die Szenarien sollen in einem ersten Schritt aufzeigen, in welcher Grössenordnung sich die Anzahl der benötigten Servicekräfte, Tellerbringer und Köche zueinander bewegt.
+		
+		\begin{figure}[H]
+			\centering
+				\includegraphics[trim=2cm 22.75cm 2cm 2cm, clip=true,width=\textwidth]{../Auswertung/1_groberOptimumBereich.pdf}
+				\caption[Grobszenarien]{Grobszenarien}
+				\label{grobszenarien}
+		\end{figure}
+		
 			
 		\subsection{Szenarienoptimierung}
 		Nach einer ersten Simulation hat sich herausgestellt, dass einige der oben definierten Szenarien gleich von Anfang an ausgeschlossen werden können. So zeigte sich, dass die Anzahl der Tellerbringer und Servicekräfte nicht über der Anzahl Köche liegen kann. Dies wurde ersichtlich, weil sich der Umsatz und damit der Durchsatz (Servicezeiten) im System nicht änderten, wenn die Anzahl der Tellerbringer und Servicekräfte variiert wurden, wenn sie überhalb der Anzahl der Köche lag. Lediglich deren Utilization verringerte sich bei einer Erhöhung der Anzahl.
@@ -449,10 +459,24 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 			\subsubsection{Servierpersonal}
 				In einer erneuten Simulation wird nur die Anzahl Servierpersonal zwischen 8 und 14 variiert, während die Anzahl Tellerbringer bei 4 und die Anzahl Köche bei 16 bleibt.
 				
+				\begin{figure}[H]
+					\centering
+						\includegraphics[trim=2cm 22.75cm 2.5cm 2cm, clip=true,width=\textwidth]{../Auswertung/2_Service.pdf}
+						\caption[Serviceoptimierungsszenarien]{Serviceoptimierungsszenarien}
+						\label{Serviceoptimierungsszenarien}
+				\end{figure}
+				
 				Aus der erneuten Simulation geht hervor, dass sich die optimale Anzahl der Servicekräfte um 11 bewegt.
 				
 			\subsection{Tellerbringer}
 				In einem weiteren Schritt fixieren wir das Servierpersonal bei 11 und die Köche bie 16 Personen, variieren aber die Tellerbringer zwischen 2 und 6.
+				
+				\begin{figure}[H]
+					\centering
+						\includegraphics[trim=2cm 22.75cm 2.5cm 2cm, clip=true,width=\textwidth]{../Auswertung/3_DishService.pdf}
+						\caption[Tellerbringeroptimierungsszenarien]{Tellerbringeroptimierungsszenarien}
+						\label{Tellerbringeroptimierungsszenarien}
+				\end{figure}				
 				
 				Aus den Ergebnissen der Simulationsläufe geht hervor, dass die optimale Anzahl Tellerbringer bei den schon zuvor gewählten vier liegt.
 
@@ -466,6 +490,13 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 			Nach der einzelnen Selektion muss überprüft werden, ob die einzelnen Optimierungen zu globalen Veränderungen geführt haben.
 			
 			Dazu erstellen wir 27 Szenarien, die das Servicepersonal zwischen 10 und 12, die Tellerbringer zwischen 3 und 5 sowie die Köche zwischen 13 und 15 variieren.
+			
+				\begin{figure}[H]
+					\centering
+						\includegraphics[trim=2cm 22.75cm 2.5cm 2cm, clip=true,width=\textwidth]{../Auswertung/4_+-1.pdf}
+						\caption[Endoptimierung]{Endoptimierung}
+						\label{Endoptimierung}
+				\end{figure}	
 			
 			Die vier Besten Resultate dieser Simulation zeigen die Besten bisher gehabten Resultate. Alle Resultate benötigen 10 Servierkräfte, die Tellerbringer variieren zwischen 4 und vier und die Köche zwischen 13 und 15. Der Beste Fall erhalten wir mit 10 Servierkräften, 3 Tellerbringer und 14 Köchen.
 			
@@ -548,6 +579,48 @@ Die Kosten für Angestellte sind konstant und nicht von der Anzahl Bestellungen 
 
 
 \appendix
+\begin{landscape}
+	\chapter{Simulationsdaten}
+	\begin{center}
+		\includegraphics[page=1, trim=2cm 6cm 2cm 2cm, clip=true, width=1.35\textwidth]{../Auswertung/Data.pdf}
+	\end{center}
+	\begin{center}
+		\includegraphics[page=2, trim=2cm 14cm 2cm 2cm, clip=true, width=1.425\textwidth]{../Auswertung/Data.pdf}
+		\includegraphics[page=3, trim=2cm 15cm 2cm 2cm, clip=true, width=1.425\textwidth]{../Auswertung/Data.pdf}
+	\end{center}
+	\begin{center}
+		\includegraphics[page=4, trim=2cm 5cm 2cm 2cm, clip=true, width=1.35\textwidth]{../Auswertung/Data.pdf}
+	\end{center}
+\end{landscape}
+
+
+\chapter{Arena Report}
+	\begin{center}
+		\includegraphics[page=1, trim=0cm 10cm 0cm 0cm, clip=true, width=\textwidth]{../Auswertung/Raport 14-3-9/category overview.pdf}
+	\end{center}
+	\begin{center}
+		\includegraphics[page=2, trim=0cm 0cm 0cm 0cm, clip=true, width=\textwidth]{../Auswertung/Raport 14-3-9/category overview.pdf}
+	\end{center}
+	\begin{center}
+		\includegraphics[page=3, trim=0cm 0cm 0cm 0cm, clip=true, width=\textwidth]{../Auswertung/Raport 14-3-9/category overview.pdf}
+	\end{center}
+	\begin{center}
+		\includegraphics[page=4, trim=0cm 0cm 0cm 0cm, clip=true, width=\textwidth]{../Auswertung/Raport 14-3-9/category overview.pdf}
+	\end{center}
+	\begin{center}
+		\includegraphics[page=5, trim=0cm 0cm 0cm 0cm, clip=true, width=\textwidth]{../Auswertung/Raport 14-3-9/category overview.pdf}
+	\end{center}
+	\begin{center}
+		\includegraphics[page=6, trim=0cm 0cm 0cm 0cm, clip=true, width=\textwidth]{../Auswertung/Raport 14-3-9/category overview.pdf}
+	\end{center}
+	\begin{center}
+		\includegraphics[page=7, trim=0cm 0cm 0cm 0cm, clip=true, width=\textwidth]{../Auswertung/Raport 14-3-9/category overview.pdf}
+	\end{center}
+	\begin{center}
+		\includegraphics[page=8, trim=0cm 0cm 0cm 0cm, clip=true, width=\textwidth]{../Auswertung/Raport 14-3-9/category overview.pdf}
+	\end{center}
+	
+
 \chapter{Präsentation Projektvorstellung}
 \begin{center}
 	\includegraphics[page=1,angle=180, scale=0.67]{media/presentation-hardrock-slides.pdf}
