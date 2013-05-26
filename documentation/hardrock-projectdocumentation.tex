@@ -421,14 +421,52 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 			Das Essen dauert zwischen 15 Minuten und einer Stunde. Einzelne Gänge des Essens werden nicht konkret unterschieden, sondern nur implizit über die Dauer des Aufenthalts am Tisch in einer Verteilfunktion simuliert. Genutzt wird eine Triangularverteilung mit einem Mittelwert von 40 Minuten.\\
 			
 	\section{Szenarien}
-		Zur einfacheren Realisierung der Szenarien werden Controls gesetzt, um die Parameter für jedes Szenario ohne grossen Aufwand variieren zu können.\\
+		Zur einfacheren Realisierung der Szenarien wird in Arena das Szenario Tool genutzt. Damit können Szenarien definiert werden, die die Simulation mit den definierten Parametern beliebig viele Male aufrufen und die Resultate wieder zusammenführen. \\
 		
-		Die Szenarien sollen in einem ersten Schritt aufzeigen, in welcher Grössenordnung sich die Anzahl der benötigten Servicekräfte, Tellerbringer und Köche zueinander bewegt.
+		Die Szenarien sollen in einem ersten Schritt aufzeigen, in welcher Grössenordnung sich die Anzahl der benötigten Servicekräfte, Tellerbringer und Köche zueinander bewegt. In weiteren Schritten sollen die Szenarien ähnlich einen Lawinensuche auf den jeweils besten Bereich eingeschränkt und verfeinert werden.
+			
+			
+	\section{Plausibilitäts-Checks}
+	Zur Überprüfung der Plausibilität des aufgebauten Arena Modells experimentierten wir mit verschiedenen Parametern. Dabei sind einige Dinge aufgefallen:
+	\begin{itemize}
+		\item Die minimale Grösse der Bar muss der grösst möglichen Gruppengrösse (in unserem Fall 4) entsprechen. Andererseits können Gruppen, die grösser als die Bar sind, gar nicht ins Restaurant eintreten.
+		Dieses Szenario entspricht nicht ganz der Realität. In der Realität bestehen grosse Gruppen aus kleineren Gruppen. Daher wird ein Teil einer grossen Gruppe bereits das Restaurant betreten, während die Restlichen noch draussen warten.\\
+		$\rightarrow$ Da wir eine Bar zwischen 10 und 50 Plätzen anstreben und die Gruppen eine maximale Grösse von vier Personen ausweisen, spielt diese Gegebenheit keine Rolle.
+		\item Fünf Angestellte im Service und drei Tellerbringer sind trotz 250 Gästen zu wenig ausgelastet. Das scheint für die Realität wenig plausibel.\\
+		$\rightarrow$ Als Korrektur werden die Laufzeiten für das Bedienpersonal und die Tellerbringer angepasst.
+		\item Den Flaschenhals in der Simulation stellen die Köche dar. Die tiefe Utilization des Bedienpersonals ergibt sich daraus, dass die Zubereitung der Essen zu lange dauert. Um dieses Verzerrung zu beheben, muss die Anzahl der Köche im Verhältnis zur Anzahl Bedienpersonal erhöht werden.
+		
+		Gleichzeitig bringt das Servierpersonal in der Realität noch Getränke, Speisekarte, Gedecke, weist dem Gast den Tisch, räumt ab und steht für Fragen zur Verfügung.
+		$\rightarrow$ Wir verzichten in unserer Simulation darauf, dies abzubilden. Da die Zeit für die Bedienung aber grosszügig berechnet ist, können die zusätzlichen Zeiten als darin enthalten betrachtet werden.
+		\item Die benutzten Zeitvariablen, zur Erfassung von Zeitstempeln im System basieren auf TNOW. Wobei TNOW scheinbar kein Stempel zurückgibt, mit dem gerechnet werden kann.\\
+		$\rightarrow$ TNOW muss zuerst in Basetime konvertiert werden. Wobei noch beachtet werden muss, das Basetime vom Run Setup abhängig ist.
+	\end{itemize}
+			
+	\section{Umsatz}
+\noindent
+	Um den generierten Umsatz zu berechnen, setzen wir die folgenden Werte ein:
+Die Kosten für Angestellte sind konstant und nicht von der Anzahl Bestellungen / Besucher abhängig. Deshalb wird wird der Lohn den Ressourcen als Kosten fix zugeteilt.\\
+
+\begin{tabularx}{\textwidth}{|l|l|X|}
+		\hline
+		\textbf{Bezeichnung} & \textbf{Preis CHF} & \textbf{Verteilung}  \\
+		\hline
+		Menu & 20-60 & TRIA(20,30,60)  \\
+		\hline
+		Stundenlohn Koch & 25 & konstant (Mittelwert)\\
+		Stundenlohn Tellerbringer & 20 & konstant (Mittelwert) \\
+		Stundenlohn Servicepersonal & 25 & konstant (Mittelwert)\\
+		\hline
+\end{tabularx}
+	
+\chapter{Auswertung}
+	\section{Szenarien}
+			Gestartet wird mit 24 Szenarien, die sich verdoppelden Anzahlen von Angestellten in jedem Bereich (2, 4, 8, 16, 32) und Variationen beinhalten.
 		
 		\begin{figure}[H]
 			\centering
 				\includegraphics[trim=2cm 22.75cm 2cm 2cm, clip=true,width=\textwidth]{../Auswertung/1_groberOptimumBereich.pdf}
-				\caption[Grobszenarien]{Grobszenarien}
+				\caption[Grobszenarien]{Grobszenarien (Y\textsubscript{left}: Mitarbeiter / X: Szenario / Y\textsubscript{right}: Gewinn)}
 				\label{grobszenarien}
 		\end{figure}
 		
@@ -469,7 +507,7 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 				Aus der erneuten Simulation geht hervor, dass sich die optimale Anzahl der Servicekräfte um 11 bewegt.
 				
 			\subsection{Tellerbringer}
-				In einem weiteren Schritt fixieren wir das Servierpersonal bei 11 und die Köche bie 16 Personen, variieren aber die Tellerbringer zwischen 2 und 6.
+				In einem weiteren Schritt fixieren wir das Servierpersonal bei 11 und die Köche bei 16 Personen, variieren aber die Tellerbringer zwischen 2 und 6.
 				
 				\begin{figure}[H]
 					\centering
@@ -478,7 +516,7 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 						\label{Tellerbringeroptimierungsszenarien}
 				\end{figure}				
 				
-				Aus den Ergebnissen der Simulationsläufe geht hervor, dass die optimale Anzahl Tellerbringer bei den schon zuvor gewählten vier liegt.
+				Aus den Ergebnissen der Simulationsläufe geht hervor, dass die optimale Anzahl Tellerbringer bei drei liegt. Wir wählen für das weitere Vorgehen trotzdem 4, um auch mit einer grösseren Anzahl Köchen die Menüs noch rauszurbringen.
 
 			\subsection{Köche}
 				Im letzen Schritt fixieren wir die Tellerbringer und das Servierpersonal, variieren stattdessen die Köche zwischen 11 und 18 Personen.
@@ -500,9 +538,10 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 			
 			Die vier Besten Resultate dieser Simulation zeigen die Besten bisher gehabten Resultate. Alle Resultate benötigen 10 Servierkräfte, die Tellerbringer variieren zwischen 4 und vier und die Köche zwischen 13 und 15. Der Beste Fall erhalten wir mit 10 Servierkräften, 3 Tellerbringer und 14 Köchen.
 			
+			In einem nächsten Schritt müssten wir noch die Fälle noch auf zwei Tellerbringer und 9 oder 8 Servierkräfte ausdehnen, um sicher zu gehen, den optimalen Fall gefunden zu haben. Wir entscheiden uns jedoch für eine Verifikation mit in Arena eingebauten Tools.
 		
 		\subsection{Verifikation}
-			Zur Verifikation der Resultate nutzen wir OptQuest von Arena. Wir lassen OptQuest die Personalgrössen nach dem Gewinn optimieren. Arena liefert beinahe das gleiche Resultat, wie wir erhalten haben. Lediglich für die Servicekräfte schlägt Arena noch eine Person weniger vor.
+			Zur Verifikation der Resultate nutzen wir OptQuest von Arena. Wir lassen OptQuest die Personalgrössen nach dem Gewinn optimieren. Arena liefert nach zwei Tagen simulation beinahe das gleiche Resultat, wie wir erhalten haben. Lediglich für die Servicekräfte schlägt Arena noch eine Person weniger vor.
 			\begin{figure}[H]
 				\centering
 					\includegraphics[width=\textwidth]{img/OptQuest.PNG}
@@ -517,50 +556,19 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 					\label{optQuestSuchverlauf}
 			\end{figure}
 			
+			Damit erhalten wir ein endgültiges Resultat von 14 Köchen, 9 Servierkräften und 3 Tellerbringer, die pro Tag über 55'200 CHF erwirtschaften (Umsatz - Löhne) und dabei über 1'700 Essen ausliefern. 
 			
-			
-	\section{Plausibilitäts-Checks}
-	Zur Überprüfung der Plausibilität des aufgebauten Arena Modells experimentierten wir mit verschiedenen Parametern. Dabei sind einige Dinge aufgefallen:
-	\begin{itemize}
-		\item Die minimale Grösse der Bar muss der grösst möglichen Gruppengrösse (in unserem Fall 4) entsprechen. Andererseits können Gruppen, die grösser als die Bar sind, gar nicht ins Restaurant eintreten.
-		Dieses Szenario entspricht nicht ganz der Realität. In der Realität bestehen grosse Gruppen aus kleineren Gruppen. Daher wird ein Teil einer grossen Gruppe bereits das Restaurant betreten, während die Restlichen noch draussen warten.\\
-		$\rightarrow$ Da wir eine Bar zwischen 10 und 50 Plätzen anstreben und die Gruppen eine maximale Grösse von vier Personen ausweisen, spielt diese Gegebenheit keine Rolle.
-		\item Fünf Angestellte im Service und drei Tellerbringer sind trotz 250 Gästen zu wenig ausgelastet. Das scheint für die Realität wenig plausibel.\\
-		$\rightarrow$ Als Korrektur werden die Laufzeiten für das Bedienpersonal und die Tellerbringer angepasst.
-		\item Den Flaschenhals in der Simulation stellen die Köche dar. Die tiefe Utilization des Bedienpersonals ergibt sich daraus, dass die Zubereitung der Essen zu lange dauert. Um dieses Verzerrung zu beheben, muss die Anzahl der Köche im Verhältnis zur Anzahl Bedienpersonal erhöht werden.
-		
-		Gleichzeitig bringt das Servierpersonal in der Realität noch Getränke, Speisekarte, Gedecke, weist dem Gast den Tisch, räumt ab und steht für Fragen zur Verfügung.
-		$\rightarrow$ Wir verzichten in unserer Simulation darauf, dies abzubilden. Da die Zeit für die Bedienung aber grosszügig berechnet ist, können die zusätzlichen Zeiten als darin enthalten betrachtet werden.
-		\item Die benutzten Zeitvariablen, zur Erfassung von Zeitstempeln im System basieren auf TNOW. Wobei TNOW scheinbar kein Stempel zurückgibt, mit dem gerechnet werden kann.\\
-		$\rightarrow$ TNOW muss zuerst in Basetime konvertiert werden. Wobei noch beachtet werden muss, das Basetime vom Run Setup abhängig ist.
-	\end{itemize}
-			
-	\section{Umsatz}
-\noindent
-	Um den generierten Umsatz zu berechnen, setzen wir die folgenden Werte ein:
-Die Kosten für Angestellte sind konstant und nicht von der Anzahl Bestellungen / Besucher abhängig. Deshalb wird wird der Lohn den Ressourcen als Kosten fix zugeteilt.\\
+			Von diesem Betrag müssten natürlich noch sämmtliche anfallenden Kosten wie Nahrungsmitteleinkäufe, Infrastrukturkosten, Sozialabgaben und Personalausfälle abgezogen werden, wollte man mit den ermittelten Daten einen ernsthaften Businessplan austellen.
 
-\begin{tabularx}{\textwidth}{|l|l|X|}
-		\hline
-		\textbf{Bezeichnung} & \textbf{Preis CHF} & \textbf{Verteilung}  \\
-		\hline
-		Menu & 20-60 & TRIA(20,30,60)  \\
-		\hline
-		Stundenlohn Koch & 25 & konstant (Mittelwert)\\
-		Stundenlohn Tellerbringer & 20 & konstant (Mittelwert) \\
-		Stundenlohn Servicepersonal & 25 & konstant (Mittelwert)\\
-		\hline
-\end{tabularx}
-	
-\chapter{Auswertung}
 	\section{Fragestellungen (If Questions)}
 		\begin{itemize}
-			\item \textbf{Was passiert, wenn wir die Anzahl Köche variiert wird?} \\
-				Die Köche bringen eine grössere Menge an Bestellungen durch in der gleichen Zeit. Das Servicepersonal ist besser ausgelastet. Sobald das Verhältnis von Köchen zu Servicepersonal 1.4:1 übersteigt, sind die Servierkräfte kommplett ausgelastet, bzw. überlastet. Die Tellerbringer sind überlastet, sobald das Verhältnis von Köchen zu Tellerbringern 4.7:1 übersteigt.
+			\item \textbf{Was passiert, wenn die Anzahl Köche erhöht wird?} \\
+				Die Köche bringen eine grössere Menge an Bestellungen durch in der gleichen Zeit. Das Servicepersonal ist besser ausgelastet. Sobald das Verhältnis von Köchen zu Servicepersonal 1.4:1 übersteigt, sind die Servicerkräfte kommplett ausgelastet, bzw. überlastet. Die Tellerbringer sind überlastet, sobald das Verhältnis von Köchen zu Tellerbringern 4.7:1 übersteigt.
 			\item \textbf{Was passiert, wenn die Anzahl Köche verringert wird?} \\
 				In der Küche stauen sich die Bestellungen. Die Gäste müssen zu lange auf das Essen warten. Zu wenige neue Gäste können in das Lokal eintreten, das Servierpersonal und die Tellerbringer sind ab den genannten Grenzen nicht mehr ausgelastet.
 			\item \textbf{Was passiert, wenn die Anzahl Tellerbringer erhöht wird?}\\
 				Sind zu viele Tellerbringer vorhanden, sind diese nicht ausgelastet und stehen herum.
+				
 			\item \textbf{Was passiert, wenn die Anzahl Tellerbringer verringert wird?}\\
 				Sind weniger Tellerbringer als oben erwähnt vorhanden, stauen sich die gekochten Bestellungen in der Küche. Die Gäste erhalten wiederum die Bestellungen verspätet, belegen das Lokal länger und insgesammt sinkt die Anzahl Bestellungen, die durchgebracht werden können.
 			\item \textbf{Was passiert, wenn die Anzahl Servicekräfte erhöht wird?}\\
