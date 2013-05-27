@@ -277,12 +277,12 @@ Zusätzlich soll anhand von festgelegten Kosten der Gewinn berechnet werden.
 		\end{figure}
 		
 		\subsection{Gastgruppe}
-		Eine Gastgruppe belegt während dem Aufenthalt am Tisch Plätze. Anschliessend werden Bestellungen ausgelöst.
+		Eine Gastgruppe belegt während dem Aufenthalt am Tisch Plätze. Anschliessend wird Servicepersonal benachrichtigt um eine Bestellung zu erstellen.
 		Entsprechend den Anzahl Gängen werden soviele Gänge angeliefert.
 		Vor den Verlassen des Lokals wird Bezahlt, anschliessend werden die Plätze wieder freigegeben.
 		
 		\subsection{Service}
-		Das Servicepersonal befindet sich in einem geschlossenen Zyklus. Es nimmt am Tisch eine oder mehrere Bestellungen entgegen und bringt diese in die Küche.
+		Das Servicepersonal befindet sich in einem geschlossenen Zyklus. Es nimmt am Tisch eine oder mehrere Bestellungen auf und bringt diese in die Küche.
 		
 		\subsection{Köche}
 		Die Köche befinden sich ebenfalls in einem geschlossenen Zyklus. Sie nehmen Bestellungen entgegen und richten Teller an.
@@ -292,7 +292,7 @@ Zusätzlich soll anhand von festgelegten Kosten der Gewinn berechnet werden.
 		
 
 \begin{landscape}
-	\section{Hardrock Flow}
+	\section{Hardrock Guest Flow}
 		\begin{figure}[H]
 			\centering
 				\includegraphics[page=1,trim=2cm 7cm 2cm 5cm, clip=true,width=1.4\textwidth]{../model/Modell_v2.pdf}
@@ -318,8 +318,10 @@ Zusätzlich soll anhand von festgelegten Kosten der Gewinn berechnet werden.
 		\subsection{Dinnering}
 		Gäste warten, bis die Bestellung zubereitet wurde (Verteilfunktion). Für die Auslieferung der Teller wird die Ressource Tellerbringer für eine bestimmte Zeit (Verteilfunktion) belegt. Die Dauer des Essens wird ebenfalls mittels einer Verteilfunktion modelliert.
 		
+		Wenn Gäste mehrere Gänge bestellt haben, so kommen auch mehrmals die Tellerbringer und bringen das Gekochte.
+		
 		\subsection{Payment}
-		Für die Bezahlung ist bis jetzt kein Szenario definiert
+		Für die Bezahlung ist bis jetzt kein Szenario definiert, sie wird hier nur der Vollständigkeit Willen aufgeführt.
 		
 		\subsection{Exit}
 		Gäste geben die belegte Ressource Tisch wieder frei und verlassen das Restaurant.
@@ -341,31 +343,31 @@ Zusätzlich soll anhand von festgelegten Kosten der Gewinn berechnet werden.
 		\subsection{Entitäten}
 		Zusammengefasst sind in der Modellierung des Systems die folgenden Entitäten vorhanden.
 		
-			\begin{itemize}
-		\item Vor der Türe:
-			\begin{itemize}
-				\item Queue: Ankommende Gäste
-			\end{itemize}
-		\item Küche
-			\begin{itemize}
-				\item Agents: Köche
-			\end{itemize}
-		\item Bedienung
-			\begin{itemize}
-				\item Agents: Servicepersonal, Tellerbringer
-			\end{itemize}
-		\item Bar
-			\begin{itemize}
-				\item Queue: Anzahl Warteplätze
-			\end{itemize}
-		\item Tische
-			\begin{itemize}
-				\item Ressourcen: Anzahl Plätze
-			\end{itemize}
-	\end{itemize}
-	\begin{itemize}
-		\item Gäste
-		\item Entities: Gruppen von 1-4 Personen 
+		\begin{itemize}
+			\item Vor der Türe:
+				\begin{itemize}
+					\item Queue: Ankommende Gäste
+				\end{itemize}
+			\item Küche
+				\begin{itemize}
+					\item Agents: Köche
+				\end{itemize}
+			\item Bedienung
+				\begin{itemize}
+					\item Agents: Servicepersonal, Tellerbringer
+				\end{itemize}
+			\item Bar
+				\begin{itemize}
+					\item Queue: Anzahl Warteplätze
+				\end{itemize}
+			\item Tische
+				\begin{itemize}
+					\item Ressourcen: Anzahl Plätze
+				\end{itemize}
+			\item Gäste
+				\begin{itemize}
+					\item Entities: Gruppen von 1-4 Personen 
+				\end{itemize}
 	\end{itemize}
 
 
