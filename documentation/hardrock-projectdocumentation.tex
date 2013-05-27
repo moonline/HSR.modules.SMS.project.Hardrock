@@ -383,7 +383,14 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 			Einer angekommenen Entität wird anschliessend eine zufällige Gruppengrösse zwischen eins und vier Personen zugeteilt. Dazu wird eine Triangularfunktion mit einem Mittelwert von 2 verwendet und der Ausgabewert auf die nächste ganze Zahl gerundet.
 			
 	
-	\section{Placement}		
+	\section{Placement}
+		\begin{figure}[H]
+			\centering
+				\includegraphics[width=\textwidth]{img/arena.png}
+				\caption[Simulationsaufbau in Arena]{Aufbau einer ersten Simulation in Arena mit Submodels}
+				\label{arenaSimulationsAufbau}
+		\end{figure}
+		
 		\subsection{Überlauf am Eingang}
 			Warten zu viele Gäste vor dem Eingang, werden weitere Gruppen abgeschreckt und kehren wieder um.
 		
@@ -419,6 +426,14 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 
 		\subsection{Essen}
 			Das Essen dauert zwischen 15 Minuten und einer Stunde. Einzelne Gänge des Essens werden nicht konkret unterschieden, sondern nur implizit über die Dauer des Aufenthalts am Tisch in einer Verteilfunktion simuliert. Genutzt wird eine Triangularverteilung mit einem Mittelwert von 40 Minuten.\\
+			
+		\begin{figure}[H]
+			\centering
+				\includegraphics[trim=5.5cm 7.5cm 2.5cm 15cm, clip=true,width=\textwidth]{img/Model11a.pdf}
+				\caption[Diagramme in Arena]{Überwachung der Simulation in Arena mit Diagrammen}
+				\label{arenaDiagramme}
+		\end{figure}	
+			
 			
 	\section{Szenarien}
 		Zur einfacheren Realisierung der Szenarien wird in Arena das Szenario Tool genutzt. Damit können Szenarien definiert werden, die die Simulation mit den definierten Parametern beliebig viele Male aufrufen und die Resultate wieder zusammenführen. \\
@@ -560,13 +575,6 @@ Die Kosten für Angestellte sind konstant und nicht von der Anzahl Bestellungen 
 			
 			Von diesem Betrag müssten natürlich noch sämmtliche anfallenden Kosten wie Nahrungsmitteleinkäufe, Infrastrukturkosten, Sozialabgaben und Personalausfälle abgezogen werden, wollte man mit den ermittelten Daten einen ernsthaften Businessplan austellen.
 
-	\section{Bewertung der Resultate}
-		Das Optimum mit 14 Köchen scheint auf den ersten Blick relativ gross zu sein. Die Konsultation eines Experten hat ergeben, dass der Zeitaufwand für die Zubereitung und die Möglichkeit zur Parallelität stark von der Speisekarte, den Gegebenheiten des Betriebs und der Erfahrungen des Personals abhängt. Hinzu kommen die saisonalen Schwankungen, welche schwierig ab zu schätzen sind. Das in der Simulation gefundene Optimum müsste empirisch Bestätigt werden. 
-
-		Es wäre durchaus denkbar, dass zu Stosszeiten mehr Personal in der Küche zum Einsatz kommt und man hier mit Arbeitsschichten optimieren kann. Der in der Simulation gefundene Wert variiert aber nicht, sondern ist fix über die Simulationsdauer festgelegt. Die Simulation könnte in Folgeprojekten auf Schichtenplanungen ausgebaut werden. 
-
-
-
 	\section{Fragestellungen (If Questions)}
 		\begin{itemize}
 			\item \textbf{Was passiert, wenn die Anzahl Köche erhöht wird?} \\
@@ -610,30 +618,46 @@ Die Kosten für Angestellte sind konstant und nicht von der Anzahl Bestellungen 
 
 
 \chapter{Arena Report}
-	\begin{center}
-		\includegraphics[page=1, trim=0cm 10cm 0cm 0cm, clip=true, width=\textwidth]{../Auswertung/Raport 14-3-9/category overview.pdf}
-	\end{center}
-	\begin{center}
-		\includegraphics[page=2, trim=0cm 0cm 0cm 0cm, clip=true, width=\textwidth]{../Auswertung/Raport 14-3-9/category overview.pdf}
-	\end{center}
-	\begin{center}
+	\begin{figure}[H]
+		\begin{center}
+			\includegraphics[page=1, trim=0cm 10cm 0cm 0cm, clip=true, width=\textwidth]{../Auswertung/Raport 14-3-9/category overview.pdf}
+		\end{center}
+	\end{figure}
+	\begin{figure}[H]
+		\begin{center}
+		\includegraphics[page=2, width=0.95\textwidth]{../Auswertung/Raport 14-3-9/category overview.pdf}
+		\end{center}
+	\end{figure}
+	\begin{figure}[H]
+		\begin{center}
 		\includegraphics[page=3, trim=0cm 0cm 0cm 0cm, clip=true, width=\textwidth]{../Auswertung/Raport 14-3-9/category overview.pdf}
-	\end{center}
-	\begin{center}
+		\end{center}
+	\end{figure}
+	\begin{figure}[H]
+		\begin{center}
 		\includegraphics[page=4, trim=0cm 0cm 0cm 0cm, clip=true, width=\textwidth]{../Auswertung/Raport 14-3-9/category overview.pdf}
-	\end{center}
-	\begin{center}
+		\end{center}
+	\end{figure}
+	\begin{figure}[H]
+		\begin{center}
 		\includegraphics[page=5, trim=0cm 0cm 0cm 0cm, clip=true, width=\textwidth]{../Auswertung/Raport 14-3-9/category overview.pdf}
-	\end{center}
-	\begin{center}
+		\end{center}
+	\end{figure}
+	\begin{figure}[H]
+		\begin{center}
 		\includegraphics[page=6, trim=0cm 0cm 0cm 0cm, clip=true, width=\textwidth]{../Auswertung/Raport 14-3-9/category overview.pdf}
-	\end{center}
-	\begin{center}
+		\end{center}
+	\end{figure}
+	\begin{figure}[H]
+		\begin{center}
 		\includegraphics[page=7, trim=0cm 0cm 0cm 0cm, clip=true, width=\textwidth]{../Auswertung/Raport 14-3-9/category overview.pdf}
-	\end{center}
-	\begin{center}
+		\end{center}
+	\end{figure}
+	\begin{figure}[H]
+		\begin{center}
 		\includegraphics[page=8, trim=0cm 0cm 0cm 0cm, clip=true, width=\textwidth]{../Auswertung/Raport 14-3-9/category overview.pdf}
-	\end{center}
+		\end{center}
+	\end{figure}
 	
 
 \chapter{Präsentation Projektvorstellung}
