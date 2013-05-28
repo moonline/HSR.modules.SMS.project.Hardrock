@@ -155,37 +155,37 @@ Als Ausgangskonzept wird das Hardrock in Atlantic City verwendet.
 \end{figure}
 
 \subsection{Eingangsbereich}
-Vor dem Eingangsbereich warten die Gäste in einer Schlange, bis an der Bar Plätze frei werden. Ziel ist, diese Warteschlange so kurz wie möglich zu halten. Die Gäste sollen stattdessen an der Bar warten und zum Konsumieren angeregt werden.
+Vor dem Eingangsbereich warten die Gäste in einer Schlange, bis an der Bar Plätze frei werden. Ziel ist, diese Warteschlange so kurz wie möglich zu halten. 
 
-Ist die Schlange vor dem Eingang zu lang, verlassen die Gäste das Restaurant wieder ohne Konsumentation. Dies soll möglichst vermieden werden, da diese Gäste keinen Umsatz bescheren.
+Ist die Schlange vor dem Eingang zu lang, verlassen die Gäste das Restaurant wieder ohne Konsumation. Dies soll möglichst vermieden werden, da diese Gäste keinen Umsatz bescheren. Sind dagegen Plätze an der Bar frei, so bewegen sich die Gäste direkt dort hin.
 
 \subsection{Bar}
-Die Bar dient als Warteschlange für die Gäste, bis Plätze an einem Tisch frei werden. Gäste werden an der Bar bedient und konsumieren Getränke.
+Die Bar dient als Warteschlange für die Gäste, bis Plätze an einem Tisch frei werden. Gäste werden an der Bar mit Getränken bedient.
 
 In der Realität wäre das Ziel, dass die Bar optimal besetzt ist, weil dies zusätzliche Einnahmen durch Konsumation generiert. Gleichzeitig sollte vor der Türe die Schlange möglichst klein sein oder gar nicht existieren, damit keine Gäste an der Kälte warten müssen, oder sogar wieder gehen. Die Wartezeit an der Bar sollte nicht mehr als ein bis zwei Drinks betragen, damit niemand wieder geht, bevor ein Tisch frei wird.
 
-Das Servicepersonal an der Bar soll in unserer Simulation nicht berücksichtigt werden. Grund dafür ist die Unabhängigkeit des Barbereichs vom Rest des Lokals. Das heisst: Das Barpersonal ist nicht in der Lage, kurzzeitig die Bar zu verlassen und Tische zu bedienen. Weil das Barpersonal nur für die Ausgabe der Getränke verantwortlich ist, kann es in der Simulation vernachlässigt werden, ohne das System zu verfälschen. Zudem gehen wir von einer fixen Bargrösse aus und berechnen auch den durch die Bar erzielten Umsatz nicht.
+Das Barpersonal soll in unserer Simulation nicht berücksichtigt werden. Grund dafür ist die Unabhängigkeit des Barbereichs vom Rest des Lokals. Das heisst: Das Barpersonal ist nicht in der Lage, kurzzeitig die Bar zu verlassen und Tische zu bedienen. Weil das Barpersonal nur für die Ausgabe der Getränke verantwortlich ist, kann es in der Simulation vernachlässigt werden, ohne das System zu verfälschen. Zudem gehen wir von einer fixen Bargrösse aus und beziehen auch den durch die Bar erzielten Umsatz nicht in die Simulation mit ein.
 
 \subsection{Tische}
 Am Tisch werden ein bis drei Gänge gegessen. In einem ersten Schritt soll dies sehr einfach abgebildet werden. Auf eine komplexe Menüsimulation in der Granularität der einzelnen Gänge wird verzichtet.
 
-Das Servicepersonal kommt einmal und nimmt Bestelllungen auf. Das Servicepersonal ist somit für eine bestimmte Zeit belegt und anschliessend wieder frei. 
+Das Servicepersonal bewegt sich ein einziges Mal zum Tisch und nimmt Bestelllungen auf. Das Servicepersonal ist somit pro Tisch ein Mal für eine bestimmte Zeit belegt und anschliessend wieder frei.
 
-Das Szenario Teller und Karte bringen soll erst in einem zweiten Schritt modelliert werden, je nach verfügbarer Projektzeit.
+Ein Szenario, in dem das Servicepersonal mehrfach an einem Tisch vorbeikommt -- z.B. um das Gedeck, Teller und Karte zu bringen und den Tisch am Ende wieder abzuräumen -- soll erst in einem zweiten Schritt modelliert werden, je nach verfügbarer Projektzeit.
 
-In der realen Welt bestehen die Tische aus Vierertischen. Ankommende Gruppen müssen aufgeteilt oder Tische zusammengeschoben werden. Bei weniger als 4 Personen kann es zu leeren Plätzen kommen. Um die Simulation nicht unnötig aufzublähen, soll dies nicht berücksichtigt werden.
+In der realen Welt bestehen die Tische aus Vierertischen. Ankommende Gruppen müssen entweder aufgeteilt oder Tische zusammengeschoben werden, damit Gruppen zusammen sitzen können. Bei Gruppen von weniger als 4 Personen kann es unbesetzten Plätzen an den Tischen kommen: Ein einzelner Gast setzt sich selten zu einer Gruppe von 3 Personen an einem Vierertisch. Um die Simulation nicht unnötig aufzublähen, soll dies nicht berücksichtigt werden.
 Die Anzahl Plätze werden fix gewählt anhand des Beispiels von Atlantic City (250 Plätze).
 
-Nach dem Esssen  verlassen die Gäste das Hardrock und der Tisch wird frei für neue Gäste.
-In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zurückkehren.
+Nach dem Esssen  verlassen die Gäste das Hardrock Cafe und der Tisch wird frei für neue Gäste.
+In der Realität kann es durchaus vorkommen, dass Gäste nach dem Essen nochmals an die Bar zurückkehren. Auch dies soll in der Simulation nicht berücksichtigt werden.
 
 
 \subsection{Küche}
-	In der Küche werden die verschiedenen Mahlzeiten gekocht und angerichtet. Die Köche arbeiten gleichzeitig an mehreren Menüs und versuchen, zusammengehörende Menüs möglichst gleichzeitig fertigzustellen.
+	In der Küche werden die verschiedenen Mahlzeiten gekocht und angerichtet. Die Köche arbeiten gleichzeitig an mehreren Menüs und versuchen, alle zu einer Gruppe von Gästen gehörenden Mahlzeiten  gleichzeitig fertigzustellen.
 
-	In einem ersten Schritt soll die Küche sehr rudimentär simuliert werden. Es existieren Köche, die eine bestimmte Zeit benötigen, um Essen zuzubereiten. Paralleles Kochen von Menüs soll nur durch entsprechende Verkürzung der Gesammtkochzeit abgebildet werden.
+	In einem ersten Schritt soll die Küche sehr rudimentär simuliert werden. Es existieren Köche, die eine bestimmte Zeit benötigen, um Essen zuzubereiten. Paralleles Kochen von Mahlzeiten soll nur durch entsprechende Verkürzung der Gesammtkochzeit abgebildet werden.
 
-	In einem Zweiten Schritte könnnten verschiedene Köche, die pro Essen und Gang an eine bestimmte Zeit gebunden sind, modelliert werden.
+	In einem zweiten Schritt könnnten verschiedene Köche, die pro Mahlzeit und Gang für eine bestimmte Zeit gebunden sind, modelliert werden.
 
 
 \section{Bewegungsabläufe}
@@ -196,22 +196,22 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 			\label{schemaHardrock}
 	\end{figure}
 
-	Die Verschiedenen Aktivitäten finden an unterschiedlichen Orten im Café statt. Die daraus resultierenden Wegzeiten variieren stark, unterliegen sehr komplexen Verteilungen und können nur empirisch ermittelt werden.
+	Die verschiedenen Aktivitäten finden an unterschiedlichen Orten im Café statt. Die daraus resultierenden Wegzeiten variieren stark, unterliegen sehr komplexen Verteilungen und können nur empirisch ermittelt werden.
 
 	\subsection{Gäste}
 		\begin{itemize}
 			\item Gäste benötigen eine variierende Zeit um vom Eingang an die Bar zu gelangen. 
 			\item Gäste benötigen eine variierende Zeit, um von der Bar zum zugewiesenen Tisch zu gelangen.
-			Diese kann von der Gruppengrösse, der Anordnung der Tische und der Belegung des Restaurants (verschiedene "Gästeströme") abhängen. Diesen Umstand berücksichtigen wir in der Simulation jedoch nur durch eine variable Zeit - unabhängig von den beeinflussenden Faktoren.
+			Diese kann von der Gruppengrösse, der Anordnung der Tische und der Belegung des Restaurants (verschiedene "Gästeströme") abhängen. Diesen Umstand berücksichtigen wir in der Simulation jedoch nur durch eine Variation der Wegzeit -- unabhängig von den beeinflussenden Faktoren.
 			\item Gäste benötigen eine variierende Zeit, um das Lokal wieder zu verlassen.
 		\end{itemize}
 
 	\subsection{Personal}
 		\begin{itemize}
-			\item Köche bewegen sich innerhalb der Küche
-			\item Servicepersonal benötigt eine variierende Zeit um von Tisch zu Tisch zu gehen sowie eine variierende Zeit um von der Küche zu den Tischen zu gelangen.
+			\item Köche bewegen sich nur innerhalb der Küche
+			\item Das Servicepersonal benötigt eine variierende Zeit einerseits für den Weg von Tisch zu Tisch und andrerseits für den Weg von der Küche zu den Tischen.
 			\item Die Tellerbinger benötigen je nach Tisch unterschiedlich viel Zeit, um von der Küche zu den Tischen zu gelangen.
-			\item Servicepersonal, Tellerbringer und Gäste beeinflussen sich gegenseitig. Eine grosse Anzahl von Personen im Raum führt zu Verzögerungen bei allen Laufwegen. Theoretisch kann es auch zu Zusammenstössen kommen. Dies wird in der Simulation nicht berücksichtigt.
+			\item Servicepersonal, Tellerbringer und Gäste beeinflussen sich gegenseitig in den Wegzeiten: Eine grosse Anzahl von Personen im Raum führt zu Verzögerungen bei allen Laufwegen. Theoretisch kann es auch zu Zusammenstössen kommen. Dies wird in der Simulation nicht berücksichtigt.
 		\end{itemize}
 
 	\subsection{Realität und Simulation}
@@ -221,12 +221,12 @@ In der Realität kann es durchaus vorkommen, dass Gäste nochmals an die Bar zur
 
 \section{Warum soll simuliert werden?}
 	\begin{itemize}
-		\item Das Szenario ist zu komplex, um alle einfliessenden Faktoren in statischen Berechnungen zu berücksichtigen, weil zu viele Variablen im Spiel sind.
-		\item Gegenseitige Beeinflussung der Faktoren: Das System Restaurant eignet sich für die Simulation, da die Werte wie Umsatz und Auslastung von verschiedenen Faktoren abhängen und eine einfache Berechnung deshalb nicht möglich ist. Die Wahl und Anzahl der Ressourcen wie Anzahl Köche, Servicepersonal und Tellerbringer ist entscheidend für das Funktionieren des Systems. Zudem beeinflussen sich die Ressourcen beeinflussen gegenseitig und stehen in Abhängigkeit zueinander.
-		\item Gebäudebau: Aus Kostengründen ist es nicht möglich einen Prototyp zu bauen
-		\item Ist das Gebäude einmal gebaut, so kann die Bar kann nachträglich nur mit grossen Kostenaufwänden vergrössert oder verkleinert werden.
+		\item Das Szenario ist zu komplex, um alle einfliessenden Faktoren in statischen Berechnungen zu berücksichtigen. Es sind zu  viele Variablen im Spiel.
+		\item Gegenseitige Beeinflussung der Faktoren: Das System Restaurant eignet sich für die Simulation, da die Werte wie Umsatz und Auslastung von verschiedenen Faktoren abhängen und eine einfache Berechnung deshalb nicht möglich ist. Die Wahl und Anzahl der Ressourcen wie Anzahl Köche, Servicepersonal und Tellerbringer ist entscheidend für das Funktionieren des Systems. Zudem beeinflussen sich die Ressourcen gegenseitig und stehen in Abhängigkeit zueinander.
+		\item Gebäudebau: Aus Kostengründen ist es nicht möglich einen Prototypen zu bauen und darin zu testen.
+		\item Ist das Gebäude einmal gebaut, so sind  architektonische Veränderungen, die sich aus einer falschen Annahme der Anzahl von Gästen und Mitarbeitern ergeben (Anzahl Kochplätze, Grösse der Bar, Abstand der Tische zueinander) nur mit grossem Kostenaufwand realisiert werden.
 		\item Testen durch Reallife-Simulation ist nicht möglich, weil Statisten beim Warten sterben würden, vom vielen Essen dick würden oder verhungern würden beim Warten auf die Bestellung. Möglicherweise würden Sie auch an der Bar zu viele Drinks nehmen und wären zu betrunken um an einen Tisch zu wechseln.
-		\item Zudem tauchen Unsicherheiten auf durch Verteilungen und Verstreuungen und Variabilitäten der Gäste, Serviceagents und deren Servicetime, Warteschlangen und Wartezeiten.
+		\item Zudem tauchen Unsicherheiten auf durch Verteilungen,  Streuungen und Variabilitäten in der Anzahl der Gäste, Serviceagents und deren Servicetime, Warteschlangen und Wartezeiten.
 	\end{itemize}
 
 \section{Objectives}
