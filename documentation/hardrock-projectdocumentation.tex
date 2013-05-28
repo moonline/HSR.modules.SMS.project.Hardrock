@@ -215,7 +215,7 @@ In der Realität kann es durchaus vorkommen, dass Gäste nach dem Essen nochmals
 		\end{itemize}
 
 	\subsection{Realität und Simulation}
-		Für die Simulation sollen sinnvolle Annahmen über das Verhalten der Wegzeiten getroffen werden und die gegenseitige Beeinflussung der Gäste und des Personals gegenseitig und untereinander vernachlässigt werden. Eine zusätzliche 2D/3D Animation wäre sehr aufwändig, was den Rahmen dieses Projektes sprengen würde.
+		Für die Simulation sollen sinnvolle Annahmen über das Verhalten der Wegzeiten getroffen werden und die gegenseitige Beeinflussung der Gäste und des Personals gegenseitig und untereinander vernachlässigt werden. Eine zusätzliche 2D/3D Animation wäre sehr aufwändig, was den Rahmen dieses Projektes sprengen würde. Zudem kann aus einer Animation kein grosser Mehrwert gezogen werden, da die Prozesse auch ohne gut vorstellbar sind.
 
 
 
@@ -224,7 +224,7 @@ In der Realität kann es durchaus vorkommen, dass Gäste nach dem Essen nochmals
 		\item Das Szenario ist zu komplex, um alle einfliessenden Faktoren in statischen Berechnungen zu berücksichtigen. Es sind zu  viele Variablen im Spiel.
 		\item Gegenseitige Beeinflussung der Faktoren: Das System Restaurant eignet sich für die Simulation, da die Werte wie Umsatz und Auslastung von verschiedenen Faktoren abhängen und eine einfache Berechnung deshalb nicht möglich ist. Die Wahl und Anzahl der Ressourcen wie Anzahl Köche, Servicepersonal und Tellerbringer ist entscheidend für das Funktionieren des Systems. Zudem beeinflussen sich die Ressourcen gegenseitig und stehen in Abhängigkeit zueinander.
 		\item Gebäudebau: Aus Kostengründen ist es nicht möglich einen Prototypen zu bauen und darin zu testen.
-		\item Ist das Gebäude einmal gebaut, so sind  architektonische Veränderungen, die sich aus einer falschen Annahme der Anzahl von Gästen und Mitarbeitern ergeben (Anzahl Kochplätze, Grösse der Bar, Abstand der Tische zueinander) nur mit grossem Kostenaufwand realisiert werden.
+		\item Ist das Gebäude einmal gebaut, so sind  architektonische Veränderungen, die sich aus einer falschen Annahme der Anzahl von Gästen und Mitarbeitern ergeben (Anzahl Kochplätze, Grösse der Bar, Abstand der Tische zueinander) nur mit grossem Kostenaufwand realisierbar.
 		\item Testen durch Reallife-Simulation ist nicht möglich, weil Statisten beim Warten sterben würden, vom vielen Essen dick würden oder verhungern würden beim Warten auf die Bestellung. Möglicherweise würden Sie auch an der Bar zu viele Drinks nehmen und wären zu betrunken um an einen Tisch zu wechseln.
 		\item Zudem tauchen Unsicherheiten auf durch Verteilungen,  Streuungen und Variabilitäten in der Anzahl der Gäste, Serviceagents und deren Servicetime, Warteschlangen und Wartezeiten.
 	\end{itemize}
@@ -237,7 +237,7 @@ In der Realität kann es durchaus vorkommen, dass Gäste nach dem Essen nochmals
 	Indirekt abhängig von der Utiliziation der beteiligten Ressourcen ist das Ziel der Gewinnmaximierung. So ist zum Beispiel ein nicht ausreichend ausgelastetes Servicepersonal mit Kosten verbunden, denen keine Einnahmen in Form von verkauften Mahlzeiten gegenüber steht.
 	  
 	\subsection{Dauer des Aufenthalts}
-		Ebenfalls ein Hinweis auf geringen Umsatz ist eine zu kurze mittlere Aufenthaltszeit am Tisch oder sehr lange Wartezeiten der Gäste auf bestellte Mahlzeiten. Wir gehen davon aus, dass die Aufenthaltsdauer bei ca. 1.5 Stunden liegt und die mittlere Wartezeit für die Bedienung 15 Minuten nicht übersteigt.
+		Ebenfalls ein Hinweis auf geringen Umsatz ist eine zu grosse mittlere Aufenthaltszeit am Tisch oder sehr lange Wartezeiten der Gäste auf bestellte Mahlzeiten. Wir gehen davon aus, dass die Aufenthaltsdauer bei ca. 1.5 Stunden liegt und die mittlere Wartezeit für die Bedienung 15 Minuten nicht übersteigt.
 
 \section{Spezifikationen}
 	Gearbeitet wird mit fiktiven Daten, ausgenommen die Anzahl der Plätze im Saal. Diese werden vom Hardrock Atlantic City übernommen.
@@ -265,6 +265,8 @@ Zusätzlich soll anhand von festgelegten Kosten der Gewinn berechnet werden.
 		\item Weitere Resultate: Wie lange dauert die Bestellaufnahme, wie lange muss ein Gast durchschnittlich auf die Bestellung warten und wie lange wartet er auf die Rechnung? Wie oft muss das Servicepersonal an einen Tisch gehen pro Gast?
 		\item Optional: Kleine Animation
 	\end{itemize}
+	
+	Im grunde kann die Simulation beliebig verfeinert werden.
 
 
 \chapter{Modellierung}
@@ -321,13 +323,13 @@ Zusätzlich soll anhand von festgelegten Kosten der Gewinn berechnet werden.
 		Wenn Gäste mehrere Gänge bestellt haben, so kommen auch mehrmals die Tellerbringer und bringen das Gekochte.
 		
 		\subsection{Payment}
-		Für die Bezahlung ist bis jetzt kein Szenario definiert, sie wird hier nur der Vollständigkeit Willen aufgeführt.
+		Für die Bezahlung ist bis jetzt kein Szenario definiert, sie wird hier nur der Vollständigkeitshalber aufgeführt.
 		
 		\subsection{Exit}
 		Gäste geben die belegte Ressource Tisch wieder frei und verlassen das Restaurant.
 		
 		\subsection{Kitchen}
-		Die Bestellung der Gruppe wird in einzelneUnterbestellungen aufgesplittet (je nach Gruppengrösse 1-4) und kann parallel verarbeitet werden. Eine Unterbestellung belegt eine Ressource Koch für die Dauer der Zubereitung, welche mittels einer Verteilfunktion bestimmt wird.
+		Die Bestellung der Gruppe wird in einzelneUnterbestellungen aufgesplittet (je nach Gruppengrösse 1-4) und kann dadurch parallel verarbeitet werden. Eine Unterbestellung belegt eine Ressource Koch für die Dauer der Zubereitung, welche mittels einer Verteilfunktion bestimmt wird.
 		
 		\begin{figure}[H]
 			\begin{center}
@@ -384,7 +386,7 @@ Zusätzlich soll anhand von festgelegten Kosten der Gewinn berechnet werden.
 			\end{figure}
 	
 			\subsubsection{Gruppengrösse}
-			Einer angekommenden Entität wird anschliessend eine zufällige Gruppengrösse zwischen eins und vier Personen zugeteilt. Dazu wird eine Triangularfunktion mit einem Mittelwert von 2 verwendet und der Ausgabewert auf die nächste ganze Zahl gerundet.
+			Einer angekommenden Entität wird anschliessend eine zufällige Gruppengrösse zwischen eins und vier Personen zugeteilt. Dazu wird eine Triangularfunktion mit einem Mittelwert von 2 verwendet und der Ausgabewert auf die nächste ganze Zahl gerundet. So entsteht eine diskrete Verteilung.
 			
 	
 	\section{Placement}
@@ -398,11 +400,11 @@ Zusätzlich soll anhand von festgelegten Kosten der Gewinn berechnet werden.
 		\subsection{Überlauf am Eingang}
 			Warten zu viele Gäste vor dem Eingang, werden weitere Gruppen abgeschreckt und kehren wieder um.
 		
-			Für die Simulation wird eine fixe Grösse verwendet: 			Befinden sich in der EntryQueue weniger als 10 Gruppen, so stellt sich die neue Gruppe an, andernfalls nicht. Mittels einem alternativen Dispose werden die abgeschreckten Gruppen gezählt.
+			Für die Simulation wird eine fixe Grösse verwendet: 			Befinden sich in der EntryQueue weniger als 10 Gruppen, so stellt sich die neue Gruppe an, andernfalls nicht. Mittels einem alternativen Dispose und Record werden die abgeschreckten Kunden gezählt.
 			
 			
 		\subsection{Assignement und Release von Warteschlange, Bar und Tisch}
-			In Arena wird das Assign/Release mittels Ressourcen umgesetzt. Als erstes wird die EntryQueue zugewiesen. Sobald an der Bar Plätze frei werden, wird die BarQueue assigned. Erst wenn der Platz an der BarQueue assigned ist, wird die EntryQueue released. Genau gleich wird für den Wechsel von der Bar an den Tisch verfahren.
+			In Arena wird das Assign/Release mittels Ressourcen umgesetzt. Als erstes wird die Bar zugewiesen. Sobald die ganze Gruppe freie Tischplätze hat, wird die der Tisch assigned. Erst wenn der Platz am Tisch assigned ist, wird die Bar released.
 	
 	
 		\subsection{Laufweg der Gäste von der Bar zum Tisch}
@@ -411,7 +413,9 @@ Zusätzlich soll anhand von festgelegten Kosten der Gewinn berechnet werden.
 	
 	\section{Ordering}			
 		\subsection{Bestellvorgang}
-			Das Erreichen des Tisches durch die Bedienung und die Bestellungsaufnahme werden zusammengefasst und mittels einer Triangularverteilung mit einem Mittelwert von 6 sowie einem Minimum von 3 und Maximum von 8 abgebildet. Pro Person am Tisch wird eine Minute aufgeschlagen, um die Abhängigkeit der Bestellzeit von der Gruppengrösse zu realisieren. Zudem ist in dieser grosszügigen Zeitberechnung der Anteil für einen zweiten Besuch am Tisch und die zusätzlichen Aufgaben wie Bereitmachen und Abräumen des Tisches enthalten.
+			Das Erreichen des Tisches durch die Bedienung und die Bestellungsaufnahme werden zusammengefasst und mittels einer Triangularverteilung mit einem Mittelwert von 6 sowie einem Minimum von 3 und Maximum von 8 abgebildet. Pro Person am Tisch wird eine Minute aufgeschlagen, um die Abhängigkeit der Bestellzeit von der Gruppengrösse zu realisieren.
+			
+			Zudem ist in dieser grosszügigen Zeitberechnung der Anteil für einen zweiten Besuch am Tisch und die zusätzlichen Aufgaben wie Bereitmachen und Abräumen des Tisches enthalten.
 	
 	
 	\section{Preparation}	
