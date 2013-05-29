@@ -420,7 +420,7 @@ Zusätzlich soll anhand von festgelegten Kosten der Gewinn berechnet werden.
 	
 	\section{Preparation}	
 		\subsection{Verteilung der Zubereitungszeit}
-			Für die Verteilung der Kochzeit wählen wir eine Normalverteilung mit einem Mittelwert von fünf und einer Standardabweichung von drei Minuten. Da im Hardrock verschiedenste Speisen zubereitet werden, von Salaten über Hauptgängen bis Desserts, ist die Normalverteilung hier die sinnvollste Abbildung. Die Kochzeit wird so kurz gewählt, weil ein guter Koch durch kochen von mehreren Menüs gleichzeitig Synergien nutzen kann.
+			Für die Verteilung der Kochzeit wählen wir eine Triangularverteilung von eins bis zehn Minuten und einem Mttelwert von fünf Minuten. Da im Hardrock verschiedenste Speisen zubereitet werden, von Salaten über Hauptgängen bis Desserts, ist die Verteilung hier die sinnvollste Abbildung. Unsere erste Idee war eine Normalverteilung mit einem Mittel von fünf und einer Standardabweichung von drei. Jedoch giebt es bei dieser Verteilung auch Werte im Minusbereich was nicht Realitätsgetreu ist. Die Kochzeit wird so kurz gewählt, weil ein guter Koch durch kochen von mehreren Menüs gleichzeitig Synergien nutzen kann.
 	
 	
 		\subsection{Gruppenbestellungen}
@@ -484,7 +484,7 @@ Die Kosten für Angestellte sind konstant und nicht von der Anzahl Bestellungen 
 	
 \chapter{Auswertung}
 	\section{Szenarien}
-			Gestartet wird mit 24 Szenarien, die sich verdoppelden Anzahlen von Angestellten in jedem Bereich (2, 4, 8, 16, 32) und Variationen beinhalten.
+			Gestartet wird mit 24 Szenarien, die sich verdoppelden Anzahlen von Angestellten in jedem Bereich (2, 4, 8, 16) und Variationen beinhalten.
 		
 		\begin{figure}[H]
 			\centering
@@ -561,7 +561,7 @@ Die Kosten für Angestellte sind konstant und nicht von der Anzahl Bestellungen 
 			
 			Die vier besten Resultate dieser Simulation erweisen sich als die allerbesten Resultate über alle bisherigen Szenarien hinaus. Alle diese Szenarien benötigen 10 Servicekräfte, die Tellerbringer variieren zwischen 3 und 4 und die Köche zwischen 13 und 15. Denr besten Fall erhalten wir mit 10 Servicekräften, 3 Tellerbringer und 14 Köchen.
 			
-			In einem nächsten Schritt müssten wir noch die Fälle auf zwei Tellerbringer und 9 oder 8 Servierkräfte ausdehnen, um sicher zu gehen, dass der optimale Fall gefunden wurde. Wir entscheiden uns jedoch für eine Verifikation mit den in Arena eingebauten Tools.
+			In einem nächsten Schritt müssten wir noch die Fälle auf zwei Tellerbringer und 9 oder 8 Servierkräfte ausdehnen, um sicher zu gehen, dass der optimale Fall gefunden wurde. Auch dann kann jedoch nicht ausgeschlossen werden, dass nur ein Suboptimum gefunden wurde. Wir entscheiden uns jedoch für eine Verifikation mit den in Arena eingebauten Tools.
 		
 		\subsection{Verifikation}
 			Zur Verifikation der Resultate nutzen wir OptQuest von Arena. Wir lassen OptQuest die Personalgrössen nach dem Gewinn optimieren. Arena liefert nach zwei Tagen Simulation beinahe das gleiche Resultat welches wir weiter oben erhalten haben. Lediglich für die Servicekräfte schlägt Arena eine Person weniger vor.
